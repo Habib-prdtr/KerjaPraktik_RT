@@ -37,4 +37,10 @@ class Warga extends Model
     {
         return $this->hasMany(Pengajuan::class);
     }
+
+    // relasi ke user (akun login)
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }
