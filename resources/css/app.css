@@ -8,14 +8,57 @@
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 
-    --color-primary-50:  #eff6ff;
-    --color-primary-100: #dbeafe;
-    --color-primary-200: #bfdbfe;
-    --color-primary-300: #93c5fd;
-    --color-primary-400: #60a5fa;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #2563eb;
-    --color-primary-700: #1d4ed8;
-    --color-primary-800: #1e40af;
-    --color-primary-900: #1e3a8a;
+    /* --- Primary: Soft Lilac (Very Soft, Pastel, Sweet) --- */
+    --color-blue-50: #F8F6FB;
+    --color-blue-100: #F0EBF5;
+    --color-blue-200: #E1D6EA;
+    --color-blue-300: #D0BCDE;
+    --color-blue-400: #C1A6D4;
+    --color-blue-500: #B18FCA; /* Primary Base (Pastel Lilac) */
+    --color-blue-600: #9B75B8; /* Primary Hover */
+    --color-blue-700: #825BA0;
+    --color-blue-800: #6A4786;
+    --color-blue-900: #54366A;
+
+    --color-primary-50: var(--color-blue-50);
+    --color-primary-100: var(--color-blue-100);
+    --color-primary-200: var(--color-blue-200);
+    --color-primary-300: var(--color-blue-300);
+    --color-primary-400: var(--color-blue-400);
+    --color-primary-500: var(--color-blue-500);
+    --color-primary-600: var(--color-blue-600);
+    --color-primary-700: var(--color-blue-700);
+    --color-primary-800: var(--color-blue-800);
+    --color-primary-900: var(--color-blue-900);
+
+    /* Cyan override to blend gracefully with Lilac */
+    --color-cyan-700: #825BA0;
+    --color-cyan-800: #6A4786;
+
+    /* --- Neutrals: Cream (Warm, Elegant, Cozy) --- */
+    --color-slate-50: #FDFAF4; /* Main Background (Soft Cream) */
+    --color-slate-100: #F8F3E9; /* Card/Section backgrounds (Deeper Cream) */
+    --color-slate-200: #EFE8D8; /* Borders */
+    --color-slate-300: #DFD3C0;
+    --color-slate-400: #C6B7A2; /* Placeholders */
+    --color-slate-500: #A6967F; /* Muted Text */
+    --color-slate-600: #8A7961; /* Secondary Text */
+    --color-slate-700: #6B5C46;
+    --color-slate-800: #4F4332; /* Main Text (Warm Espresso/Brown) */
+    --color-slate-900: #332A1D;
+    
+    /* Gray mapping mapped to Cream */
+    --color-gray-50: var(--color-slate-50);
+    --color-gray-100: var(--color-slate-100);
+    --color-gray-200: var(--color-slate-200);
+    --color-gray-300: var(--color-slate-300);
+    --color-gray-400: var(--color-slate-400);
+    --color-gray-500: var(--color-slate-500);
+    --color-gray-600: var(--color-slate-600);
+    --color-gray-700: var(--color-slate-700);
+    --color-gray-800: var(--color-slate-800);
+    --color-gray-900: var(--color-slate-900);
+    
+    /* Accent */
+    --color-accent-500: #D4AF37; /* Gold Accent */
 }

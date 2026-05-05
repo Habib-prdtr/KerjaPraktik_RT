@@ -5,9 +5,9 @@
 @section('content')
 
     {{-- Header Card --}}
-    <div class="text-center mb-7">
-        <h2 class="text-2xl font-bold text-slate-800">Selamat Datang</h2>
-        <p class="text-slate-500 text-sm mt-1">Masuk ke akun Anda untuk melanjutkan</p>
+    <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Selamat Datang</h2>
+        <p class="text-slate-500 mt-2">Masuk ke akun Anda untuk melanjutkan</p>
     </div>
 
     {{-- Validation Errors --}}
@@ -49,7 +49,7 @@
                        required
                        autofocus
                        placeholder="contoh@email.com"
-                       class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base
                               {{ $errors->has('email') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -73,7 +73,7 @@
                        name="password"
                        required
                        placeholder="••••••••"
-                       class="w-full pl-10 pr-10 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-10 py-3.5 border rounded-xl text-base
                               {{ $errors->has('password') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -101,9 +101,9 @@
 
         {{-- Submit --}}
         <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4
-                       rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/30
-                       hover:shadow-blue-500/50 hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4
+                       rounded-xl transition-all duration-200 shadow-xl shadow-blue-500/20
+                       hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 text-base mt-2">
             Masuk ke Sistem
         </button>
     </form>
@@ -120,10 +120,10 @@
 
     {{-- Link Register --}}
     <a href="{{ route('register') }}"
-       class="w-full flex items-center justify-center gap-2 border border-slate-200 text-slate-600
-              hover:border-blue-400 hover:text-blue-600 font-medium py-2.5 px-4 rounded-xl
-              transition-all duration-200 text-sm hover:bg-blue-50">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+       class="w-full flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600
+              hover:border-blue-400 hover:text-blue-600 font-bold py-3 px-4 rounded-xl
+              transition-all duration-200 text-base hover:bg-blue-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
         </svg>

@@ -5,9 +5,9 @@
 @section('content')
 
     {{-- Header Card --}}
-    <div class="text-center mb-7">
-        <h2 class="text-2xl font-bold text-slate-800">Daftar Akun</h2>
-        <p class="text-slate-500 text-sm mt-1">Buat akun untuk mengakses layanan RT</p>
+    <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Daftar Akun</h2>
+        <p class="text-slate-500 mt-2">Buat akun untuk mengakses layanan RT</p>
     </div>
 
     {{-- Info Box --}}
@@ -53,7 +53,7 @@
                 <select id="warga_id"
                         name="warga_id"
                         required
-                        class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm appearance-none
+                        class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base appearance-none
                                {{ $errors->has('warga_id') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                                transition-all duration-200 text-slate-800">
@@ -88,7 +88,7 @@
                        value="{{ old('name') }}"
                        required
                        placeholder="Nama lengkap Anda"
-                       class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base
                               {{ $errors->has('name') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -113,7 +113,7 @@
                        value="{{ old('email') }}"
                        required
                        placeholder="contoh@email.com"
-                       class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base
                               {{ $errors->has('email') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -137,7 +137,7 @@
                        name="password"
                        required
                        placeholder="Minimal 6 karakter"
-                       class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base
                               {{ $errors->has('password') ? 'border-red-400 bg-red-50' : 'border-slate-200 bg-slate-50' }}
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -161,7 +161,7 @@
                        name="password_confirmation"
                        required
                        placeholder="Ulangi password Anda"
-                       class="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm
+                       class="w-full pl-10 pr-4 py-3.5 border rounded-xl text-base
                               border-slate-200 bg-slate-50
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                               transition-all duration-200 text-slate-800 placeholder-slate-400">
@@ -170,9 +170,9 @@
 
         {{-- Submit --}}
         <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4
-                       rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/30
-                       hover:shadow-blue-500/50 hover:-translate-y-0.5 active:translate-y-0 text-sm mt-2">
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4
+                       rounded-xl transition-all duration-200 shadow-xl shadow-blue-500/20
+                       hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 text-base mt-2">
             Buat Akun Saya
         </button>
     </form>
@@ -189,10 +189,10 @@
 
     {{-- Link Login --}}
     <a href="{{ route('login') }}"
-       class="w-full flex items-center justify-center gap-2 border border-slate-200 text-slate-600
-              hover:border-blue-400 hover:text-blue-600 font-medium py-2.5 px-4 rounded-xl
-              transition-all duration-200 text-sm hover:bg-blue-50">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+       class="w-full flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600
+              hover:border-blue-400 hover:text-blue-600 font-bold py-3 px-4 rounded-xl
+              transition-all duration-200 text-base hover:bg-blue-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
         </svg>
