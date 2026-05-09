@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(Auth::user()->role === 'admin' ? 'layouts.app' : 'layouts.warga')
 
 @section('title', 'Profil Saya — RT 08 RW 02')
 @section('page-title', 'Profil Saya')

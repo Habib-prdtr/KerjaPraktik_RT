@@ -77,7 +77,7 @@ class PengaduanController extends Controller
         $warga = Auth::user()->warga;
 
         if (!$warga) {
-            return view('warga.pengaduan.index', ['pengaduan' => collect()]);
+            return view('warga.pengaduan.index', ['pengaduanSaya' => collect()]);
         }
 
         $query = Pengajuan::where('warga_id', $warga->id);
@@ -86,10 +86,10 @@ class PengaduanController extends Controller
             $query->where('status', $request->status);
         }
 
-        $pengaduan  = $query->orderByDesc('created_at')->paginate(10)->withQueryString();
+        $pengaduanSaya  = $query->orderByDesc('created_at')->paginate(10)->withQueryString();
         $statusList = self::STATUS_LIST;
 
-        return view('warga.pengaduan.index', compact('pengaduan', 'statusList'));
+        return view('warga.pengaduan.index', compact('pengaduanSaya', 'statusList'));
     }
 
     // =============================

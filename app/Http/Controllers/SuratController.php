@@ -105,7 +105,7 @@ class SuratController extends Controller
         $warga = Auth::user()->warga;
 
         if (!$warga) {
-            return view('warga.surat.index', ['surat' => collect(), 'jenisSurat' => self::JENIS_SURAT]);
+            return view('warga.surat.index', ['suratSaya' => collect(), 'jenisSurat' => self::JENIS_SURAT]);
         }
 
         $query = Surat::where('warga_id', $warga->id);
@@ -114,11 +114,11 @@ class SuratController extends Controller
             $query->where('status', $request->status);
         }
 
-        $surat      = $query->orderByDesc('created_at')->paginate(10)->withQueryString();
+        $suratSaya  = $query->orderByDesc('created_at')->paginate(10)->withQueryString();
         $statusList = self::STATUS_LIST;
         $jenisSurat = self::JENIS_SURAT;
 
-        return view('warga.surat.index', compact('surat', 'statusList', 'jenisSurat'));
+        return view('warga.surat.index', compact('suratSaya', 'statusList', 'jenisSurat'));
     }
 
     // =============================
