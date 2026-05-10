@@ -47,6 +47,19 @@
     </div>
 
     <div class="-mt-8 relative z-20 space-y-6 pb-6">
+        {{-- Foto Dokumentasi --}}
+        @if($kegiatan->foto)
+        <div class="glass-panel rounded-[2rem] p-2 shadow-lg overflow-hidden group">
+            <div class="relative overflow-hidden rounded-[1.5rem]">
+                <img src="{{ Storage::url($kegiatan->foto) }}" alt="Foto Kegiatan" class="w-full h-auto max-h-96 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <p class="text-xs font-black uppercase tracking-widest drop-shadow-md">Dokumentasi</p>
+                </div>
+            </div>
+        </div>
+        @endif
+
         {{-- Info Cards --}}
         <div class="grid grid-cols-2 gap-4">
             <div class="glass-panel rounded-[1.5rem] p-5 lg:p-6 text-center shadow-lg transform hover:-translate-y-1 transition-transform">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KegiatanRt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class KegiatanRtController extends Controller
 {
@@ -55,23 +56,33 @@ class KegiatanRtController extends Controller
             'deskripsi'     => 'nullable|string|max:1000',
             'tanggal'       => 'required|date',
             'lokasi'        => 'required|string|max:150',
+            'foto'          => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ], [
             'nama_kegiatan.required' => 'Nama kegiatan wajib diisi.',
             'nama_kegiatan.max'      => 'Nama kegiatan maksimal 150 karakter.',
             'tanggal.required'       => 'Tanggal wajib diisi.',
             'tanggal.date'           => 'Format tanggal tidak valid.',
             'lokasi.required'        => 'Lokasi wajib diisi.',
+            'foto.image'             => 'File harus berupa gambar.',
+            'foto.max'               => 'Ukuran foto maksimal 10MB.',
         ]);
+
+        $fotoPath = null;
+        if ($request->hasFile('foto')) {
+            $fileName = 'kegiatan_' . time() . '.' . $request->file('foto')->extension();
+            $fotoPath = $request->file('foto')->storeAs('kegiatan', $fileName, 'public');
+        }
 
         KegiatanRt::create([
             'nama_kegiatan' => $request->nama_kegiatan,
             'deskripsi'     => $request->deskripsi,
             'tanggal'       => $request->tanggal,
             'lokasi'        => $request->lokasi,
+            'foto'          => $fotoPath,
             'created_by'    => Auth::id(),
         ]);
 
-        return redirect()->route('kegiatan.index')
+        return redirect()->route('admin.kegiatan.index')
             ->with('success', 'Kegiatan RT berhasil ditambahkan.');
     }
 
@@ -102,17 +113,29 @@ class KegiatanRtController extends Controller
             'deskripsi'     => 'nullable|string|max:1000',
             'tanggal'       => 'required|date',
             'lokasi'        => 'required|string|max:150',
+            'foto'          => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ], [
             'nama_kegiatan.required' => 'Nama kegiatan wajib diisi.',
             'tanggal.required'       => 'Tanggal wajib diisi.',
             'lokasi.required'        => 'Lokasi wajib diisi.',
+            'foto.image'             => 'File harus berupa gambar.',
+            'foto.max'               => 'Ukuran foto maksimal 10MB.',
         ]);
 
-        $kegiatan->update($request->only([
-            'nama_kegiatan', 'deskripsi', 'tanggal', 'lokasi'
-        ]));
+        $data = $request->only(['nama_kegiatan', 'deskripsi', 'tanggal', 'lokasi']);
 
-        return redirect()->route('kegiatan.index')
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
+            if ($kegiatan->foto && Storage::disk('public')->exists($kegiatan->foto)) {
+                Storage::disk('public')->delete($kegiatan->foto);
+            }
+            $fileName = 'kegiatan_' . time() . '.' . $request->file('foto')->extension();
+            $data['foto'] = $request->file('foto')->storeAs('kegiatan', $fileName, 'public');
+        }
+
+        $kegiatan->update($data);
+
+        return redirect()->route('admin.kegiatan.index')
             ->with('success', 'Kegiatan RT berhasil diperbarui.');
     }
 
@@ -121,9 +144,13 @@ class KegiatanRtController extends Controller
     // =============================
     public function destroy(KegiatanRt $kegiatan)
     {
+        if ($kegiatan->foto && Storage::disk('public')->exists($kegiatan->foto)) {
+            Storage::disk('public')->delete($kegiatan->foto);
+        }
+
         $kegiatan->delete();
 
-        return redirect()->route('kegiatan.index')
+        return redirect()->route('admin.kegiatan.index')
             ->with('success', 'Kegiatan RT berhasil dihapus.');
     }
 

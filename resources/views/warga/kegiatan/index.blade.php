@@ -54,29 +54,35 @@
             $isPast  = \Carbon\Carbon::parse($item->tanggal)->isPast();
             $isToday = \Carbon\Carbon::parse($item->tanggal)->isToday();
             
-            $cardBg = $isToday ? 'bg-gradient-to-br from-teal-500 to-emerald-600 text-white' : 'bg-white/80 backdrop-blur-xl';
-            $textColor = $isToday ? 'text-white' : 'text-slate-800';
-            $descColor = $isToday ? 'text-teal-50' : 'text-slate-500';
-            $iconColor = $isToday ? 'text-teal-200' : 'text-teal-500';
-            $dateBg = $isToday ? 'bg-white/20' : ($isPast ? 'bg-slate-100' : 'bg-gradient-to-br from-teal-100 to-emerald-100');
-            $dateMonth = $isToday ? 'text-white' : ($isPast ? 'text-slate-400' : 'text-teal-600');
-            $dateDay = $isToday ? 'text-white' : ($isPast ? 'text-slate-500' : 'text-teal-700');
+            $cardBg = 'bg-white/80 backdrop-blur-xl';
+            $textColor = 'text-slate-800';
+            $descColor = 'text-slate-500';
+            $dateBg = $isPast ? 'bg-slate-100' : 'bg-gradient-to-br from-teal-100 to-emerald-100';
+            $dateMonth = $isPast ? 'text-slate-400' : 'text-teal-600';
+            $dateDay = $isPast ? 'text-slate-500' : 'text-teal-700';
         @endphp
         
-        <a href="{{ route('warga.kegiatan.show', $item) }}" class="glass-card-hover {{ $cardBg }} rounded-[1.5rem] border {{ $isToday ? 'border-teal-400 shadow-lg shadow-teal-500/30' : 'border-white shadow-sm' }} flex flex-col group overflow-hidden relative">
+        <a href="{{ route('warga.kegiatan.show', $item) }}" class="glass-card-hover {{ $cardBg }} rounded-[1.5rem] border {{ $isToday ? 'border-teal-400/60 shadow-lg shadow-teal-500/10 ring-2 ring-teal-50' : 'border-white shadow-sm' }} flex flex-col group overflow-hidden relative">
             
             @if($isToday)
-            <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 rounded-full blur-2xl z-0 pointer-events-none"></div>
-            @else
-            <div class="absolute top-0 left-0 w-1 h-full bg-slate-200 group-hover:bg-gradient-to-b group-hover:from-teal-500 group-hover:to-emerald-500 transition-all duration-300"></div>
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-teal-100/50 rounded-full blur-2xl z-0 pointer-events-none"></div>
             @endif
             
-            <div class="p-6 flex-1 flex flex-col relative z-10 {{ $isToday ? '' : 'pl-7' }}">
+            <div class="absolute top-0 left-0 w-1 h-full {{ $isToday ? 'bg-teal-500' : 'bg-slate-200' }} group-hover:bg-gradient-to-b group-hover:from-teal-500 group-hover:to-emerald-500 transition-all duration-300 z-10 pointer-events-none"></div>
+
+            @if($item->foto)
+            <div class="h-56 w-full overflow-hidden relative shrink-0 z-0">
+                <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_kegiatan }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+            @endif
+            
+            <div class="p-5 flex-1 flex flex-col relative z-10 pl-6">
                 <div class="flex items-start gap-4 mb-5">
                     {{-- Calendar Badge --}}
-                    <div class="w-16 h-16 rounded-[1.25rem] {{ $dateBg }} border {{ $isToday ? 'border-white/30 backdrop-blur-md' : 'border-slate-100' }} flex flex-col items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105">
-                        <p class="font-black text-xl leading-none {{ $dateDay }}">{{ \Carbon\Carbon::parse($item->tanggal)->format('d') }}</p>
-                        <p class="{{ $dateMonth }} text-[10px] font-bold uppercase tracking-widest leading-none mt-1.5">{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('M') }}</p>
+                    <div class="w-14 h-14 rounded-[1.25rem] {{ $dateBg }} border border-slate-100 flex flex-col items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105">
+                        <p class="font-black text-lg leading-none {{ $dateDay }}">{{ \Carbon\Carbon::parse($item->tanggal)->format('d') }}</p>
+                        <p class="{{ $dateMonth }} text-[10px] font-bold uppercase tracking-widest leading-none mt-1">{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('M') }}</p>
                     </div>
                     
                     <div class="flex-1 min-w-0 pt-1">
@@ -89,20 +95,20 @@
                             <span class="text-[10px] font-black bg-teal-50 text-teal-600 px-2.5 py-1 rounded-md uppercase tracking-wider border border-teal-100">Mendatang</span>
                             @endif
                         </div>
-                        <h3 class="text-lg font-black {{ $textColor }} leading-snug group-hover:{{ $isToday ? 'text-white' : 'text-teal-600' }} transition-colors line-clamp-2">{{ $item->nama_kegiatan }}</h3>
+                        <h3 class="text-lg font-black {{ $textColor }} leading-snug transition-colors line-clamp-2">{{ $item->nama_kegiatan }}</h3>
                     </div>
                 </div>
                 
                 <div class="space-y-3 mb-6 flex-1">
                     <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full {{ $isToday ? 'bg-white/20' : 'bg-teal-50' }} flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-6 h-6 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5">
                             <span class="text-xs">📍</span>
                         </div>
                         <p class="text-sm font-medium {{ $descColor }} leading-relaxed line-clamp-2 pt-0.5">{{ $item->lokasi }}</p>
                     </div>
                     @if($item->waktu)
                     <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full {{ $isToday ? 'bg-white/20' : 'bg-teal-50' }} flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-6 h-6 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5">
                             <span class="text-xs">🕐</span>
                         </div>
                         <p class="text-sm font-medium {{ $descColor }} leading-relaxed pt-0.5">{{ $item->waktu }}</p>
@@ -110,8 +116,8 @@
                     @endif
                 </div>
                 
-                <div class="mt-auto pt-4 border-t {{ $isToday ? 'border-white/20' : 'border-slate-100' }} flex justify-end">
-                    <span class="text-xs font-black {{ $isToday ? 'text-teal-50' : 'text-teal-600' }} flex items-center gap-1 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all uppercase tracking-widest {{ $isToday ? 'bg-white/20' : 'bg-teal-50' }} px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <div class="mt-auto pt-4 border-t border-slate-100 flex justify-end">
+                    <span class="text-xs font-black text-teal-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-lg">
                         Detail <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </span>
                 </div>

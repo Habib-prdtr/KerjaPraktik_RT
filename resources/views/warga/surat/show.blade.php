@@ -75,6 +75,25 @@
         </div>
         @endif
 
+        {{-- File PDF Surat --}}
+        @if($surat->file_pdf)
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-[1.5rem] p-5 lg:p-6 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shrink-0 shadow-sm shadow-orange-500/30">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <div>
+                    <h4 class="font-black text-amber-900 text-lg mb-0.5">Dokumen Surat Selesai</h4>
+                    <p class="text-xs font-medium text-amber-800">Surat pengantar Anda telah diterbitkan oleh Admin RT.</p>
+                </div>
+            </div>
+            <a href="{{ Storage::url($surat->file_pdf) }}" download class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-orange-500/20 hover:-translate-y-0.5 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Unduh PDF
+            </a>
+        </div>
+        @endif
+
         {{-- Timeline / Steps --}}
         <div class="glass-panel rounded-[2rem] p-6 lg:p-8">
             <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Jejak Status</p>

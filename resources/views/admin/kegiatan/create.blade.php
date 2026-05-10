@@ -11,7 +11,7 @@
             <h2 class="font-semibold text-slate-800">Data Kegiatan RT</h2>
         </div>
 
-        <form method="POST" action="{{ route('admin.kegiatan.store') }}" class="px-6 py-6 space-y-5">
+        <form method="POST" action="{{ route('admin.kegiatan.store') }}" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
             @csrf
 
             <div>
@@ -52,6 +52,16 @@
                           placeholder="Keterangan tambahan tentang kegiatan ini…"
                           class="w-full px-4 py-3 text-sm rounded-xl border @error('deskripsi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">{{ old('deskripsi') }}</textarea>
                 @error('deskripsi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
+            </div>
+
+            <div>
+                <label for="foto" class="block text-sm font-medium text-slate-700 mb-1.5">
+                    Foto Dokumentasi <span class="text-slate-400 text-xs">(opsional)</span>
+                </label>
+                <input type="file" id="foto" name="foto" accept="image/*"
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100">
+                <p class="text-xs text-slate-500 mt-1.5">Format: JPG, PNG, WEBP (Maks: 10MB)</p>
+                @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
             <div class="flex items-center gap-3 pt-2">

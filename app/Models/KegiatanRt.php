@@ -13,6 +13,7 @@ class KegiatanRt extends Model
         'deskripsi',
         'tanggal',
         'lokasi',
+        'foto',
         'created_by'
     ];
 
