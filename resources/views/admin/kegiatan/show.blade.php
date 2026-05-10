@@ -76,6 +76,13 @@
                 <div class="bg-slate-50 rounded-xl p-4 text-slate-700 leading-relaxed whitespace-pre-wrap">{{ $kegiatan->deskripsi }}</div>
             </div>
             @endif
+
+            @if($kegiatan->foto)
+            <div>
+                <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Foto Dokumentasi</p>
+                <img src="{{ Storage::url($kegiatan->foto) }}" alt="Foto Kegiatan" class="max-w-md w-full rounded-xl border border-slate-200 shadow-sm">
+            </div>
+            @endif
         </div>
     </div>
 </div>
