@@ -4,77 +4,110 @@
 @section('page-subtitle', 'Status Pengaduan')
 
 @section('content')
-<div class="max-w-3xl mx-auto space-y-6">
-    <div class="bg-white border-b border-slate-100 px-4 py-4 flex items-center gap-3">
-        <a href="{{ route('warga.pengaduan.index') }}" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
-            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+<div class="max-w-3xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
+    <div class="glass-panel rounded-[2rem] p-6 flex items-center gap-4 relative overflow-hidden">
+        <a href="{{ route('warga.pengaduan.index') }}" class="w-12 h-12 rounded-[1rem] bg-white border border-slate-200 hover:bg-slate-50 flex items-center justify-center transition-all shadow-sm hover:shadow group shrink-0 relative z-10">
+            <svg class="w-6 h-6 text-slate-600 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
         </a>
-        <h1 class="text-base font-bold text-slate-800">Detail Pengaduan</h1>
+        <div class="relative z-10">
+            <h1 class="text-xl lg:text-2xl font-black text-slate-800">Detail Pengaduan</h1>
+            <p class="text-sm font-medium text-slate-500 mt-0.5">Pantau status laporan dan tanggapan RT</p>
+        </div>
     </div>
 
     @php
         $sc = match($pengaduan->status) {
-            'dikirim'  => ['emoji'=>'📤','bg'=>'from-amber-500 to-orange-500','label'=>'Dikirim','desc'=>'Pengaduan Anda sudah diterima dan menunggu respons.'],
-            'diproses' => ['emoji'=>'🔄','bg'=>'from-blue-500 to-indigo-600','label'=>'Sedang Diproses','desc'=>'RT sedang menindaklanjuti pengaduan Anda.'],
-            'selesai'  => ['emoji'=>'✅','bg'=>'from-green-500 to-emerald-600','label'=>'Selesai Ditangani','desc'=>'Pengaduan Anda sudah berhasil ditangani oleh RT.'],
+            'dikirim'  => ['emoji'=>'📤','bg'=>'from-amber-400 to-orange-500','label'=>'Terkirim','desc'=>'Laporan Anda sudah diterima dan menunggu respons RT.'],
+            'diproses' => ['emoji'=>'🔄','bg'=>'from-blue-500 to-indigo-600','label'=>'Sedang Diproses','desc'=>'RT sedang menindaklanjuti pengaduan Anda saat ini.'],
+            'selesai'  => ['emoji'=>'✅','bg'=>'from-green-400 to-emerald-600','label'=>'Selesai Ditangani','desc'=>'Masalah pada pengaduan Anda sudah berhasil diselesaikan.'],
             default    => ['emoji'=>'📢','bg'=>'from-slate-500 to-slate-600','label'=>$pengaduan->status,'desc'=>''],
         };
     @endphp
 
     {{-- Status Hero --}}
-    <div class="bg-gradient-to-br {{ $sc['bg'] }} px-4 pt-6 pb-10 relative overflow-hidden rounded-3xl">
-        <div class="absolute top-0 right-0 w-36 h-36 bg-white/10 rounded-full -translate-y-1/3 translate-x-1/3"></div>
+    <div class="bg-gradient-to-br {{ $sc['bg'] }} px-6 pt-8 pb-12 relative overflow-hidden rounded-[2rem] shadow-xl shadow-slate-500/20">
+        <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/3 translate-x-1/3 blur-xl"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full translate-y-1/3 -translate-x-1/3 blur-xl"></div>
         <div class="relative z-10 text-center">
-            <div class="text-5xl mb-3">{{ $sc['emoji'] }}</div>
-            <p class="text-white text-xl font-black">{{ $sc['label'] }}</p>
-            <p class="text-white/75 text-xs mt-2">{{ $sc['desc'] }}</p>
+            <div class="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30 shadow-inner">
+                <div class="text-5xl drop-shadow-md">{{ $sc['emoji'] }}</div>
+            </div>
+            <p class="text-white text-2xl font-black tracking-tight drop-shadow-sm">{{ $sc['label'] }}</p>
+            <p class="text-white/80 text-sm font-medium mt-2 max-w-sm mx-auto leading-relaxed">{{ $sc['desc'] }}</p>
         </div>
     </div>
 
-    <div class="px-4 -mt-5 space-y-4 pb-6">
+    <div class="-mt-8 relative z-20 space-y-6 pb-6">
         {{-- Isi Pengaduan --}}
-        <div class="bg-white rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-100 overflow-hidden">
-            <div class="px-5 py-3 border-b border-slate-100 bg-slate-50">
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Isi Pengaduan</p>
+        <div class="glass-panel rounded-[2rem] shadow-lg overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-100/50 bg-white/50 backdrop-blur-md">
+                <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Informasi Pengaduan</p>
             </div>
-            <div class="p-5">
-                <h2 class="text-base font-black text-slate-800 mb-3">{{ $pengaduan->judul }}</h2>
-                <p class="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{{ $pengaduan->isi }}</p>
-                <p class="text-xs text-slate-400 mt-4 flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Dikirim {{ $pengaduan->created_at->translatedFormat('d F Y, H:i') }}
-                </p>
+            <div class="p-6 lg:p-8 bg-white/80">
+                <h2 class="text-xl font-black text-slate-800 mb-4">{{ $pengaduan->judul }}</h2>
+                <div class="bg-slate-50/50 border border-slate-100 rounded-[1.25rem] p-5">
+                    <p class="text-base text-slate-600 font-medium leading-relaxed whitespace-pre-wrap">{{ $pengaduan->isi }}</p>
+                </div>
+                @if($pengaduan->foto)
+                <div class="mt-5">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Foto Lampiran</p>
+                    <a href="{{ Storage::url($pengaduan->foto) }}" target="_blank" class="block overflow-hidden rounded-[1.25rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" class="w-full h-auto max-h-96 object-contain bg-slate-50">
+                    </a>
+                </div>
+                @endif
+                <div class="mt-5 flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Waktu Laporan</p>
+                        <p class="text-xs font-bold text-slate-600">{{ $pengaduan->created_at->translatedFormat('l, d F Y - H:i') }}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         {{-- Tanggapan RT --}}
-        @if($pengaduan->tanggapan)
-        <div class="bg-green-50 border border-green-200 rounded-2xl overflow-hidden">
-            <div class="px-5 py-3 border-b border-green-200 bg-green-100 flex items-center gap-2">
-                <span class="text-lg">💬</span>
-                <p class="text-xs font-bold text-green-800 uppercase tracking-wider">Tanggapan dari RT</p>
-            </div>
-            <div class="p-5">
-                <p class="text-sm text-green-800 leading-relaxed whitespace-pre-wrap">{{ $pengaduan->tanggapan }}</p>
+        @if($pengaduan->tanggapan_admin)
+        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/60 rounded-[2rem] p-6 shadow-sm relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-100 rounded-full blur-2xl opacity-50"></div>
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-[1rem] bg-emerald-100 flex items-center justify-center text-xl shrink-0">
+                        💬
+                    </div>
+                    <div>
+                        <p class="text-xs font-black text-emerald-700 uppercase tracking-widest">Tanggapan Resmi</p>
+                        <p class="text-sm font-bold text-emerald-900">Dari Pengurus RT</p>
+                    </div>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm border border-emerald-100 rounded-[1.25rem] p-5">
+                    <p class="text-sm font-semibold text-emerald-800 leading-relaxed whitespace-pre-wrap">{{ $pengaduan->tanggapan_admin }}</p>
+                </div>
             </div>
         </div>
         @else
-        <div class="bg-slate-50 border border-slate-200 border-dashed rounded-2xl p-6 text-center">
-            <p class="text-2xl mb-2">⏳</p>
-            <p class="text-sm font-semibold text-slate-600">Belum ada tanggapan</p>
-            <p class="text-xs text-slate-400 mt-1">Pihak RT akan segera menindaklanjuti pengaduan Anda.</p>
+        <div class="glass-panel rounded-[2rem] p-8 text-center border-dashed border-2">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">⏳</span>
+            </div>
+            <h3 class="text-base font-black text-slate-700 mb-1">Belum Ada Tanggapan</h3>
+            <p class="text-sm font-medium text-slate-500 max-w-sm mx-auto">Pengurus RT akan segera meninjau dan menindaklanjuti laporan yang Anda kirimkan.</p>
         </div>
         @endif
 
         {{-- Hapus --}}
         @if($pengaduan->status === 'dikirim')
-        <form method="POST" action="{{ route('warga.pengaduan.destroy', $pengaduan) }}" onsubmit="return confirm('Yakin ingin menghapus pengaduan ini?')">
-            @csrf @method('DELETE')
-            <button type="submit" class="w-full border-2 border-red-200 text-red-500 hover:bg-red-50 font-semibold py-3 rounded-2xl transition-colors text-sm flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                Hapus Pengaduan
-            </button>
-        </form>
+        <div class="pt-2">
+            <form method="POST" action="{{ route('warga.pengaduan.destroy', $pengaduan) }}" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan dan menghapus laporan ini secara permanen?')">
+                @csrf @method('DELETE')
+                <button type="submit" class="w-full bg-white border-2 border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 font-bold py-4 rounded-[1.25rem] transition-all text-sm flex items-center justify-center gap-2 group shadow-sm">
+                    <svg class="w-4 h-4 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    Batalkan & Hapus Laporan
+                </button>
+            </form>
+        </div>
         @endif
     </div>
 </div>

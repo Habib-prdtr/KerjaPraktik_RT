@@ -122,14 +122,14 @@ class PengaduanController extends Controller
         $request->validate([
             'judul' => 'required|string|max:150',
             'isi'   => 'required|string|max:2000',
-            'foto'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ], [
             'judul.required' => 'Judul pengaduan wajib diisi.',
             'judul.max'      => 'Judul maksimal 150 karakter.',
             'isi.required'   => 'Isi pengaduan wajib diisi.',
             'foto.image'     => 'File harus berupa gambar.',
             'foto.mimes'     => 'Format gambar: JPG, PNG, atau WEBP.',
-            'foto.max'       => 'Ukuran gambar maksimal 2MB.',
+            'foto.max'       => 'Ukuran gambar maksimal 10MB.',
         ]);
 
         $fotoPath = null;
