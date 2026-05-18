@@ -3,61 +3,71 @@
 @section('title', 'Detail Surat')
 @section('page-subtitle', 'Status Surat')
 
+@push('styles')
+<style>
+    .bento-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        border-radius: 1.5rem;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
-    <div class="glass-panel rounded-[2rem] p-6 flex items-center gap-4 relative overflow-hidden">
-        <a href="{{ route('warga.surat.index') }}" class="w-12 h-12 rounded-[1rem] bg-white border border-slate-200 hover:bg-slate-50 flex items-center justify-center transition-all shadow-sm hover:shadow group shrink-0 relative z-10">
+    <div class="bento-card p-6 flex items-center gap-4 relative overflow-hidden">
+        <a href="{{ route('warga.surat.index') }}" class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 flex items-center justify-center transition-all shadow-sm hover:shadow group shrink-0 relative z-10">
             <svg class="w-6 h-6 text-slate-600 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
         </a>
         <div class="relative z-10">
-            <h1 class="text-xl lg:text-2xl font-black text-slate-800">Detail Surat</h1>
+            <h1 class="text-xl lg:text-2xl font-black text-slate-900">Detail Surat</h1>
             <p class="text-sm font-medium text-slate-500 mt-0.5">Lacak status proses surat pengantar Anda</p>
         </div>
     </div>
 
     @php
         $statusConf = match($surat->status) {
-            'diajukan' => ['emoji'=>'⏳','bg'=>'from-slate-400 to-slate-600','label'=>'Menunggu Diproses','desc'=>'Pengajuan Anda sudah diterima dan menunggu diproses oleh Admin RT.'],
-            'diproses' => ['emoji'=>'🔄','bg'=>'from-blue-500 to-indigo-600','label'=>'Sedang Diproses','desc'=>'Surat Anda sedang dalam proses pembuatan oleh Admin RT.'],
-            'selesai'  => ['emoji'=>'✅','bg'=>'from-green-400 to-emerald-600','label'=>'Selesai','desc'=>'Surat Anda sudah selesai! Silakan ambil ke kantor RT.'],
-            'ditolak'  => ['emoji'=>'❌','bg'=>'from-red-500 to-rose-600','label'=>'Ditolak','desc'=>'Maaf, pengajuan surat Anda ditolak. Lihat keterangan di bawah.'],
-            default    => ['emoji'=>'📄','bg'=>'from-slate-500 to-slate-600','label'=>$surat->status,'desc'=>''],
+            'diajukan' => ['icon'=>'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','bg'=>'from-slate-700 to-slate-900','color'=>'text-slate-400','label'=>'Menunggu Diproses','desc'=>'Pengajuan Anda sudah diterima dan menunggu diproses oleh Admin RT.'],
+            'diproses' => ['icon'=>'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15','bg'=>'from-blue-600 to-indigo-800','color'=>'text-blue-400','label'=>'Sedang Diproses','desc'=>'Surat Anda sedang dalam proses pembuatan oleh Admin RT.'],
+            'selesai'  => ['icon'=>'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z','bg'=>'from-emerald-600 to-teal-800','color'=>'text-emerald-400','label'=>'Selesai','desc'=>'Surat Anda sudah selesai! Silakan ambil ke kantor RT.'],
+            'ditolak'  => ['icon'=>'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z','bg'=>'from-red-600 to-rose-800','color'=>'text-red-400','label'=>'Ditolak','desc'=>'Maaf, pengajuan surat Anda ditolak. Lihat keterangan di bawah.'],
+            default    => ['icon'=>'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z','bg'=>'from-slate-600 to-slate-800','color'=>'text-slate-400','label'=>$surat->status,'desc'=>''],
         };
     @endphp
 
     {{-- Status Hero --}}
-    <div class="bg-gradient-to-br {{ $statusConf['bg'] }} px-6 pt-8 pb-12 relative overflow-hidden rounded-[2rem] shadow-xl shadow-slate-500/20">
-        <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/3 translate-x-1/3 blur-xl"></div>
-        <div class="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full translate-y-1/3 -translate-x-1/3 blur-xl"></div>
+    <div class="bg-gradient-to-br {{ $statusConf['bg'] }} px-6 py-10 relative overflow-hidden rounded-[2rem] shadow-xl shadow-slate-900/20">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         <div class="relative z-10 text-center">
-            <div class="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30 shadow-inner">
-                <div class="text-5xl drop-shadow-md">{{ $statusConf['emoji'] }}</div>
+            <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-5 border border-white/20 shadow-inner">
+                <svg class="w-10 h-10 {{ $statusConf['color'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $statusConf['icon'] }}"/></svg>
             </div>
             <p class="text-white text-2xl font-black tracking-tight drop-shadow-sm">{{ $statusConf['label'] }}</p>
-            <p class="text-white/80 text-sm font-medium mt-2 max-w-sm mx-auto leading-relaxed">{{ $statusConf['desc'] }}</p>
+            <p class="text-white/70 text-sm font-medium mt-2 max-w-sm mx-auto leading-relaxed">{{ $statusConf['desc'] }}</p>
         </div>
     </div>
 
-    <div class="-mt-8 relative z-20 space-y-6 pb-6">
+    <div class="space-y-6 pb-6">
         {{-- Info Utama --}}
-        <div class="glass-panel rounded-[2rem] shadow-lg overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-100/50 bg-white/50 backdrop-blur-md">
-                <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Informasi Surat</p>
+        <div class="bento-card overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                <p class="text-xs font-black text-slate-500 uppercase tracking-widest">Informasi Surat</p>
             </div>
-            <div class="divide-y divide-slate-100/50 bg-white/80">
-                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+            <div class="divide-y divide-slate-100 bg-white">
+                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                     <span class="text-sm text-slate-500 font-bold">Nomor Surat</span>
-                    <span class="text-sm font-black font-mono text-slate-800 bg-slate-100 px-3 py-1 rounded-md">{{ $surat->nomor_surat }}</span>
+                    <span class="text-sm font-black font-mono text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-md">{{ $surat->nomor_surat }}</span>
                 </div>
-                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                     <span class="text-sm text-slate-500 font-bold">Jenis Surat</span>
-                    <span class="text-sm font-black text-slate-800 text-right max-w-[60%]">{{ $surat->jenis_surat }}</span>
+                    <span class="text-sm font-black text-slate-900 text-right max-w-[60%]">{{ $surat->jenis_surat }}</span>
                 </div>
-                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                     <span class="text-sm text-slate-500 font-bold">Tanggal Ajuan</span>
-                    <span class="text-sm font-black text-slate-800">{{ $surat->created_at->translatedFormat('d M Y') }}</span>
+                    <span class="text-sm font-bold text-slate-900">{{ $surat->created_at->translatedFormat('d M Y') }}</span>
                 </div>
-                <div class="px-6 py-4 flex items-start justify-between gap-4 hover:bg-slate-50/50 transition-colors">
+                <div class="px-6 py-4 flex items-start justify-between gap-4 hover:bg-slate-50 transition-colors">
                     <span class="text-sm text-slate-500 font-bold shrink-0">Keperluan</span>
                     <span class="text-sm font-semibold text-slate-700 text-right leading-relaxed">{{ $surat->keperluan ?? '-' }}</span>
                 </div>
@@ -66,28 +76,28 @@
 
         {{-- Keterangan Admin --}}
         @if($surat->keterangan)
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/60 rounded-[1.5rem] p-5 shadow-sm">
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 shadow-sm">
             <div class="flex items-center gap-2 mb-2">
                 <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
                 <p class="text-sm font-black text-blue-700 uppercase tracking-widest">Keterangan Admin RT</p>
             </div>
-            <p class="text-sm text-blue-900 font-medium leading-relaxed bg-white/50 rounded-xl p-3 border border-blue-100">{{ $surat->keterangan }}</p>
+            <p class="text-sm text-slate-700 font-medium leading-relaxed bg-white rounded-xl p-4 border border-blue-100">{{ $surat->keterangan }}</p>
         </div>
         @endif
 
         {{-- File PDF Surat --}}
         @if($surat->file_pdf)
-        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-[1.5rem] p-5 lg:p-6 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 lg:p-6 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shrink-0 shadow-sm shadow-orange-500/30">
+                <div class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-sm shadow-indigo-600/30">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                 </div>
                 <div>
-                    <h4 class="font-black text-amber-900 text-lg mb-0.5">Dokumen Surat Selesai</h4>
-                    <p class="text-xs font-medium text-amber-800">Surat pengantar Anda telah diterbitkan oleh Admin RT.</p>
+                    <h4 class="font-black text-indigo-900 text-lg mb-0.5">Dokumen Surat Selesai</h4>
+                    <p class="text-xs font-medium text-indigo-700">Surat pengantar Anda telah diterbitkan oleh Admin RT.</p>
                 </div>
             </div>
-            <a href="{{ Storage::url($surat->file_pdf) }}" download class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-orange-500/20 hover:-translate-y-0.5 shrink-0">
+            <a href="{{ Storage::url($surat->file_pdf) }}" download class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md hover:-translate-y-0.5 shrink-0">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 Unduh PDF
             </a>
@@ -95,9 +105,9 @@
         @endif
 
         {{-- Timeline / Steps --}}
-        <div class="glass-panel rounded-[2rem] p-6 lg:p-8">
-            <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Jejak Status</p>
-            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-[1.1rem] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+        <div class="bento-card p-6 lg:p-8">
+            <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-6">Jejak Status</p>
+            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-[1.125rem] before:h-full before:w-0.5 before:bg-slate-200">
                 @php
                     $steps = ['diajukan','diproses','selesai'];
                     $currentIdx = array_search($surat->status, $steps);
@@ -108,9 +118,9 @@
                     $isCurrent = $surat->status === $step;
                     $labels = ['diajukan'=>'Surat Diajukan','diproses'=>'Sedang Diproses','selesai'=>'Surat Selesai'];
                 @endphp
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="relative flex items-start gap-4">
                     <!-- Icon -->
-                    <div class="flex items-center justify-center w-9 h-9 rounded-full border-4 border-white {{ $isDone ? 'bg-green-500 shadow-md shadow-green-500/20' : 'bg-slate-200' }} text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-300 z-10">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full border-4 border-white {{ $isDone ? 'bg-blue-600 shadow-md shadow-blue-500/20' : 'bg-slate-200' }} text-slate-500 shadow shrink-0 transition-colors duration-300 z-10">
                         @if($isDone)
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         @else
@@ -118,9 +128,9 @@
                         @endif
                     </div>
                     <!-- Card -->
-                    <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl {{ $isCurrent ? 'bg-white shadow-md border border-blue-100 ring-2 ring-blue-50' : 'bg-slate-50/50 border border-slate-100' }} transition-all">
+                    <div class="flex-1 p-4 rounded-xl {{ $isCurrent ? 'bg-white border border-blue-200 shadow-md ring-2 ring-blue-50' : 'bg-slate-50/50 border border-slate-200' }} transition-all">
                         <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-bold {{ $isDone ? 'text-green-700' : 'text-slate-500' }}">{{ $labels[$step] }}</h3>
+                            <h3 class="font-bold {{ $isDone ? 'text-blue-700' : 'text-slate-500' }}">{{ $labels[$step] }}</h3>
                             @if($isCurrent && $surat->status !== 'selesai')
                             <span class="text-[10px] font-black bg-blue-100 text-blue-700 px-2 py-1 rounded-md uppercase tracking-wider">Saat ini</span>
                             @endif
@@ -130,11 +140,11 @@
                 @endforeach
                 
                 @if($surat->status === 'ditolak')
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                    <div class="flex items-center justify-center w-9 h-9 rounded-full border-4 border-white bg-red-500 shadow-md shadow-red-500/20 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div class="relative flex items-start gap-4">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full border-4 border-white bg-red-600 shadow-md shadow-red-500/20 shrink-0 z-10">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                     </div>
-                    <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl bg-red-50 border border-red-100 ring-2 ring-red-50">
+                    <div class="flex-1 p-4 rounded-xl bg-white border border-red-200 ring-2 ring-red-50 shadow-md">
                         <h3 class="font-bold text-red-600">Pengajuan Ditolak</h3>
                     </div>
                 </div>
