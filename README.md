@@ -1,58 +1,151 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏡 Portal Digital & Informasi Warga RT 08 RW 02 — Desa Penambangan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-red.svg?logo=laravel&style=flat-square)](https://laravel.com)
+[![TailwindCSS Version](https://img.shields.io/badge/TailwindCSS-v4.0-38bdf8.svg?logo=tailwind-css&style=flat-square)](https://tailwindcss.com)
+[![Vite Version](https://img.shields.io/badge/Vite-v8.x-646cff.svg?logo=vite&style=flat-square)](https://vitejs.dev)
+[![PHP Version](https://img.shields.io/badge/PHP-%3E%3D_8.2-777bb4.svg?logo=php&style=flat-square)](https://php.net)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-## About Laravel
+Aplikasi web **Portal Digital Warga RT 08 RW 02 Desa Penambangan** merupakan sistem informasi pelayanan administrasi dan komunikasi warga yang dibangun khusus untuk mendigitalisasi rukun tetangga secara transparan, modern, dan kekeluargaan. Proyek ini dikembangkan sebagai bagian dari program **Kerja Praktik (KP)**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sistem ini didesain menggunakan tema **"Desa Hijau & Asri"** yang memadukan estetika modern *glassmorphic* dengan warna hijau zamrud (*emerald*), teal, dan krem lembut (`#FAF9F5`). Skema visual ini ramah mata, berukuran longgar (*elder-friendly*), dan sangat mudah digunakan oleh warga dari segala rentang usia.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🌟 Fitur Utama Portal Warga
 
-## Learning Laravel
+### 🏠 1. Beranda Warga (Bento-Style Dashboard)
+* **Sapaan Kekeluargaan**: Menyambut warga secara hangat berdasarkan waktu hari (Pagi/Siang/Sore/Malam).
+* **Menu Bento Raksasa**: Navigasi intuitif dengan ikon menarik yang memudahkan akses cepat ke seluruh fitur utama.
+* **Sekilas Informasi**: Menampilkan status pengajuan surat aktif dan agenda terdekat warga langsung di halaman utama.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📄 2. Pengajuan Surat Pengantar Online
+* **Pendaftaran Mandiri**: Warga dapat mengajukan Surat Pengantar RT (untuk keperluan KTP, KK, SKCK, dll) tanpa harus bertatap muka langsung.
+* **Pelacakan Transparan**: Status real-time yang informatif (`Menunggu`, `Sedang Dibuat`, `Siap Diambil`, `Perlu Diperbaiki`).
+* **Kertas Surat Fisik**: Detail surat disajikan layaknya kertas fisik resmi dan dilengkapi dengan tombol unduh PDF resmi.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📢 3. Layanan Pengaduan & Aspirasi Warga
+* **Pelaporan Mudah**: Warga dapat mengirimkan aduan lingkungan (keamanan, sampah, infrastruktur) dengan menyertakan bukti foto langsung dari HP.
+* **WhatsApp-Style Chat**: Tanggapan dan balasan dari Pak RT disajikan dalam bentuk antarmuka percakapan bergaya balon obrolan WhatsApp yang akrab dan mudah dipahami.
+* **Aduan Rahasia**: Opsi untuk menyembunyikan identitas pelapor demi kenyamanan dan keamanan privasi.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 📌 4. Papan Mading Pengumuman RT
+* **Desain Mading Melayang**: Pengumuman dari pengurus RT disajikan dengan tipografi berjarak renggang agar nyaman dibaca oleh lansia.
+* **Bagikan ke WhatsApp**: Fitur instan untuk membagikan tautan kabar penting warga langsung ke grup obrolan WhatsApp warga sekali klik.
 
-## Agentic Development
+### 🤝 5. Agenda & Kegiatan Sosial Desa
+* **Kalender Kegiatan**: Daftar jadwal kerja bakti, posyandu ceria, rapat RT, dan kegiatan keagamaan secara rapi.
+* **Badge Status Aktif**: Status kegiatan berkode warna dinamis (🔴 Hari Ini, Selesai, Mendatang).
+* **Kartu Lokasi & Ajakan**: Detail lokasi terperinci dilengkapi spanduk ajakan kekeluargaan yang ramah.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 👤 6. Profil Warga & Keamanan
+* **Integrasi NIK Fisik**: Akun warga terverifikasi secara otomatis dengan database NIK RT 08 fisik.
+* **Biodata Terstruktur**: Menampilkan data Kependudukan (KK, Kepala Keluarga, Status Aktif) secara terorganisir.
+* **Ganti Sandi Mandiri**: Pengguna dapat memperbarui nama tampilan, email, dan sandi akun secara mandiri.
 
+### 📱 7. Navigasi Khusus Perangkat HP (Mobile Sticky Nav)
+* Antarmuka aplikasi mobile-first yang membuang hamburger menu berantakan dan menggantinya dengan **sticky bottom navigation bar** seperti aplikasi native di smartphone umumnya untuk jangkauan jempol yang ideal.
+
+---
+
+## 🛠️ Spesifikasi Teknologi (Tech Stack)
+
+* **Backend**: Laravel 11.x (PHP >= 8.2)
+* **Frontend Styles**: TailwindCSS v4.0.0 (menggunakan variabel warna kustom krem asri & visual elegan)
+* **Assets Bundler**: Vite v8.x
+* **Database**: MySQL 8.x
+* **Server Lokal**: Laragon / XAMPP (Windows environment)
+
+---
+
+## 🚀 Panduan Instalasi Lokal
+
+Silakan ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda (menggunakan Laragon/XAMPP):
+
+### 1. Prasyarat Sistem
+Pastikan komputer Anda sudah terinstal:
+* **PHP >= 8.2**
+* **Composer**
+* **Node.js & NPM**
+* **MySQL / MariaDB**
+
+### 2. Kloning Repositori
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Habib-prdtr/KerjaPraktik_RT.git
+cd KerjaPraktik_RT
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Instalasi Dependensi PHP & JavaScript
+```bash
+# Instal dependensi composer backend
+composer install
 
-## Contributing
+# Instal dependensi npm frontend
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Konfigurasi Lingkungan (`.env`)
+Salin file konfigurasi contoh dan sesuaikan pengaturannya:
+```bash
+cp .env.example .env
+```
+Buka file `.env` dan sesuaikan koneksi database MySQL lokal Anda:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=kp_rt
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Code of Conduct
+### 5. Generate Application Key
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Migrasi Database & Seeding
+Jalankan migrasi tabel beserta data awal contoh (seeders) ke database lokal Anda:
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+### 7. Jalankan Server Pengembangan
+Jalankan server backend PHP:
+```bash
+php artisan serve
+```
+Dan jalankan kompilasi aset frontend Vite (di tab terminal baru):
+```bash
+# Untuk mode pengembangan (hot reload)
+npm run dev
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# ATAU untuk membangun berkas produksi statis
+npm run build
+```
 
-## License
+Aplikasi kini dapat diakses di browser melalui alamat: `http://127.0.0.1:8000`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 👥 Pengguna Uji Coba Default (Seeder)
+
+Anda dapat masuk ke dalam portal menggunakan akun contoh berikut setelah menjalankan database seeder:
+
+* **Akun Warga**:
+  * Email: `warga@warga.com`
+  * Sandi: `password`
+* **Akun Admin (Pak RT)**:
+  * Email: `admin@admin.com`
+  * Sandi: `password`
+
+---
+
+## 📄 Lisensi
+
+Proyek aplikasi web ini bersifat open-source dan berlisensi di bawah **[MIT License](LICENSE)**.
+
+---
+<p align="center">
+  Dibuat dengan rasa cinta terhadap ketertiban dan kemakmuran warga • <b>RT 08 RW 02 Ds. Penambangan</b> 💚
+</p>
