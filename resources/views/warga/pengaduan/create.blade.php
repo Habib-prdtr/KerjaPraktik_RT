@@ -1,92 +1,114 @@
 @extends('layouts.warga')
-
-@section('title', 'Buat Pengaduan')
-@section('page-subtitle', 'Form Pengaduan')
-
-@push('styles')
-<style>
-    .bento-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-        border-radius: 1.5rem;
-    }
-</style>
-@endpush
+@section('title', 'Buat Laporan Baru — Portal Warga RT 08')
 
 @section('content')
-<div class="max-w-3xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
-    {{-- Header --}}
-    <div class="bento-card p-6 lg:p-8 flex items-center gap-4 relative overflow-hidden">
-        <a href="{{ route('warga.pengaduan.index') }}" class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 flex items-center justify-center transition-all shadow-sm hover:shadow group shrink-0 relative z-10">
-            <svg class="w-6 h-6 text-slate-600 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+<div class="max-w-2xl mx-auto px-4 sm:px-6 space-y-5">
+
+    {{-- ====== BACK HEADER ====== --}}
+    <div class="flex items-center gap-4">
+        <a href="{{ route('warga.pengaduan.index') }}"
+           class="w-11 h-11 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 flex items-center justify-center transition-all shadow-sm group">
+            <svg class="w-5 h-5 text-slate-600 group-hover:text-emerald-600 group-hover:-translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
         </a>
-        <div class="relative z-10">
-            <h1 class="text-xl lg:text-2xl font-black text-slate-900">Buat Pengaduan Baru</h1>
-            <p class="text-sm font-medium text-slate-500 mt-1">Sampaikan keluhan dan laporan untuk lingkungan RT</p>
+        <div>
+            <h1 class="text-2xl font-extrabold text-slate-900 leading-tight">Laporkan Masalah / Usulan</h1>
+            <p class="text-xs text-slate-500 font-bold mt-0.5">Sampaikan laporan atau usul perbaikan lingkungan RT</p>
         </div>
     </div>
 
-    <div class="bento-card p-6 lg:p-8 relative overflow-hidden">
+    {{-- ====== FORM CARD ====== --}}
+    <div class="card-premium p-6 md:p-8 bg-white border border-slate-100">
 
         @if($errors->any())
-        <div class="bg-red-50/80 border border-red-200 text-red-700 px-4 py-3 rounded-2xl text-sm mb-6 shadow-sm relative z-10">
-            <div class="flex items-center gap-2 mb-2">
-                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
-                <span class="font-bold">Terdapat Kesalahan</span>
-            </div>
-            <ul class="space-y-1.5 pl-7 list-disc">
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0 text-red-600 font-bold">⚠️</div>
+            <ul class="space-y-1">
                 @foreach($errors->all() as $e)
-                    <li class="font-medium">{{ $e }}</li>
+                <li class="text-xs font-bold text-red-700">{{ $e }}</li>
                 @endforeach
             </ul>
         </div>
         @endif
 
-        <form method="POST" action="{{ route('warga.pengaduan.store') }}" enctype="multipart/form-data" class="space-y-6 relative z-10">
+        <form method="POST" action="{{ route('warga.pengaduan.store') }}" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
-            <div class="group space-y-2">
-                <label for="judul" class="block text-sm font-bold text-slate-700 transition-colors group-focus-within:text-blue-600">Judul Laporan <span class="text-red-500">*</span></label>
+            {{-- Judul --}}
+            <div class="group">
+                <label for="judul" class="block text-sm font-extrabold text-slate-700 mb-1.5">
+                    Judul Laporan Bapak/Ibu <span class="text-red-500">*</span>
+                </label>
+                <p class="text-xs text-slate-400 font-semibold mb-2">Tuliskan masalah singkat yang dialami</p>
                 <input id="judul" type="text" name="judul" value="{{ old('judul') }}" required
-                    placeholder="Contoh: Lampu jalan depan RT mati 3 hari"
-                    class="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-300 shadow-sm hover:border-slate-300 placeholder-slate-400">
+                       placeholder="Contoh: Saluran air tersumbat sampah di dekat pos ronda"
+                       class="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-slate-800 text-sm font-bold focus:bg-white focus:outline-none focus:border-emerald-600 transition-all placeholder-slate-400">
             </div>
 
-            <div class="group space-y-2">
-                <label for="isi" class="block text-sm font-bold text-slate-700 transition-colors group-focus-within:text-blue-600">Detail Masalah <span class="text-red-500">*</span></label>
+            {{-- Isi --}}
+            <div class="group">
+                <label for="isi" class="block text-sm font-extrabold text-slate-700 mb-1.5">
+                    Detail Kejadian / Usulan Lengkap <span class="text-red-500">*</span>
+                </label>
+                <p class="text-xs text-slate-400 font-semibold mb-2">Jelaskan lokasi kejadian dan kendala secara detail agar Pak RT mudah memahaminya</p>
                 <textarea id="isi" name="isi" rows="5" required
-                    placeholder="Jelaskan masalah secara mendetail. Sertakan lokasi kejadian, waktu pengamatan, atau pihak yang terlibat..."
-                    class="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-300 shadow-sm hover:border-slate-300 resize-none placeholder-slate-400">{{ old('isi') }}</textarea>
+                          placeholder="Contoh: Sejak hujan lebat kemarin sore, saluran air di depan rumah No. 12 tersumbat sampah plastik sehingga air meluap ke jalan. Mohon kiranya bisa diadakan kerja bakti pembersihan."
+                          class="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-slate-800 text-sm font-bold focus:bg-white focus:outline-none focus:border-emerald-600 transition-all resize-none placeholder-slate-400">{{ old('isi') }}</textarea>
             </div>
 
-            <div class="group space-y-2">
-                <label for="foto" class="block text-sm font-bold text-slate-700 transition-colors group-focus-within:text-blue-600">Foto Lampiran (Opsional)</label>
-                <div class="relative">
-                    <input id="foto" type="file" name="foto" accept="image/*"
-                        class="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all shadow-sm hover:border-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100">
-                    <p class="text-xs font-medium text-slate-400 mt-2 ml-1">Format gambar: JPG, PNG, WEBP (Maks: 10MB).</p>
-                </div>
+            {{-- Foto --}}
+            <div class="group">
+                <label for="foto" class="block text-sm font-extrabold text-slate-700 mb-1.5">
+                    Unggah Foto Bukti Kejadian <span class="text-slate-400 font-bold">(Opsional)</span>
+                </label>
+                <p class="text-xs text-slate-400 font-semibold mb-3">Melampirkan foto akan sangat membantu Pengurus RT memahami kondisi lapangan</p>
+                <label for="foto" class="flex flex-col items-center justify-center w-full py-8 px-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-3xl cursor-pointer hover:border-emerald-500 hover:bg-emerald-50/20 transition-all group">
+                    <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">📸</div>
+                    <p class="text-sm font-extrabold text-slate-600 mb-1">Ambil Foto / Pilih Berkas Foto</p>
+                    <p class="text-xs text-slate-400 font-bold">Maksimal ukuran file: 10MB (Format: Gambar)</p>
+                    <input id="foto" type="file" name="foto" accept="image/*" class="hidden">
+                </label>
+                <p id="file-name" class="text-xs text-emerald-600 font-extrabold mt-2.5 hidden bg-emerald-50 border border-emerald-100 rounded-xl px-3 py-1.5 w-max"></p>
             </div>
 
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
-                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                </div>
+            {{-- Warning banner --}}
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center shrink-0 text-xl shadow-sm">⚠️</div>
                 <div>
-                    <h4 class="font-bold text-blue-900 text-sm mb-0.5">Perhatian Khusus</h4>
-                    <p class="text-xs text-blue-800 font-medium leading-relaxed">Harap gunakan kalimat yang jelas dan tidak mengandung unsur provokatif. Pengaduan palsu dapat ditindaklanjuti secara administratif.</p>
+                    <p class="text-sm font-extrabold text-amber-950 mb-0.5">Catatan Penting</p>
+                    <p class="text-xs text-amber-800 font-semibold leading-relaxed">
+                        Mohon sampaikan aduan secara santun dan sesuai fakta lapangan. Pak RT dan jajaran pengurus akan segera merespons demi kerukunan warga bersama.
+                    </p>
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <button type="submit" class="w-full sm:w-2/3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-0.5 active:translate-y-0 text-base flex items-center justify-center gap-2 group">
-                    <svg class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                    Kirim Laporan
+            {{-- Actions --}}
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button type="submit"
+                        class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-500/25 hover:-translate-y-0.5 transition-all text-sm flex items-center justify-center gap-2 group">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                    Kirim Laporan / Usulan
                 </button>
-                <a href="{{ route('warga.pengaduan.index') }}" class="w-full sm:w-1/3 flex items-center justify-center bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 font-extrabold py-3 px-6 rounded-xl transition-all duration-300 text-sm group shadow-sm hover:shadow-md">Batal</a>
+                <a href="{{ route('warga.pengaduan.index') }}"
+                   class="sm:w-auto flex items-center justify-center bg-white border-2 border-slate-200 text-slate-700 hover:border-red-300 hover:text-red-600 font-bold py-4 px-6 rounded-2xl transition-all text-sm">
+                    Kembali
+                </a>
             </div>
         </form>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    const fotoInput = document.getElementById('foto');
+    const fileName = document.getElementById('file-name');
+    fotoInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) {
+            fileName.textContent = '✅ Berhasil Memilih: ' + e.target.files[0].name;
+            fileName.classList.remove('hidden');
+        } else {
+            fileName.classList.add('hidden');
+        }
+    });
+</script>
+@endpush

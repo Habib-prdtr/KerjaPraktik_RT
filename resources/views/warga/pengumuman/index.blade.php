@@ -1,91 +1,75 @@
 @extends('layouts.warga')
-
-@section('title', 'Pengumuman RT')
-@section('page-subtitle', 'Informasi Warga')
-
-@push('styles')
-<style>
-    .bento-card-hover {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .bento-card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
-        border-color: #cbd5e1;
-    }
-</style>
-@endpush
+@section('title', 'Papan Mading RT — Portal Warga RT 08')
 
 @section('content')
 <div class="space-y-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {{-- ====== HERO SECTION ====== --}}
-    <div class="relative rounded-[2rem] overflow-hidden bg-slate-900 border border-slate-800 shadow-xl shadow-slate-900/20">
-        <!-- Hero Background -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        
-        <!-- Decorative Orbs -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-slate-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
-        
-        <div class="relative z-10 px-8 py-10 md:px-12 md:py-14 flex items-center gap-5">
-            <div class="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg shrink-0">
-                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
-            </div>
-            <div>
-                <h1 class="text-white text-2xl md:text-4xl font-black mb-1 drop-shadow-sm">Pengumuman RT</h1>
-                <p class="text-slate-400 text-sm md:text-base font-medium">Informasi terbaru dan terpenting untuk warga RT 08 RW 02</p>
+
+    {{-- ====== HERO BANNER ====== --}}
+    <div class="hero-warga rounded-[2.5rem] shadow-xl shadow-emerald-900/10">
+        <div class="relative z-10 px-7 py-10 md:px-12 md:py-14">
+            <div class="absolute top-0 right-0 w-80 h-80 bg-teal-400/25 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
+            <div class="relative z-10 flex items-center gap-5">
+                <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl text-3xl">
+                    📢
+                </div>
+                <div>
+                    <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-1.5">Papan Mading RT 08</h1>
+                    <p class="text-emerald-100 text-sm font-medium leading-relaxed">Informasi terbaru, pengumuman resmi, dan kabar penting untuk seluruh warga RT 08 RW 02</p>
+                </div>
             </div>
         </div>
     </div>
 
     @if($pengumuman->isEmpty())
-    <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-12 text-center max-w-2xl mx-auto mt-8">
-        <div class="w-24 h-24 bg-slate-50 border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
-        </div>
-        <p class="text-xl font-black text-slate-800 mb-2">Belum Ada Pengumuman</p>
-        <p class="text-slate-500 font-medium mb-8 max-w-sm mx-auto">Saat ini belum ada informasi terbaru dari pengurus RT.</p>
+    {{-- ====== EMPTY STATE ====== --}}
+    <div class="card-premium p-16 text-center bg-white border border-slate-100 shadow-sm">
+        <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm">📭</div>
+        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Belum Ada Pengumuman</h3>
+        <p class="text-slate-500 font-medium max-w-sm mx-auto text-sm leading-relaxed">Saat ini belum ada informasi terbaru dari pengurus RT. Silakan cek berkala ya!</p>
     </div>
     @else
-    
-    {{-- Grid Layout for Desktop --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+
+    {{-- ====== MADING CARDS ====== --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($pengumuman as $umum)
-        @php
-            $isNew = $umum->tanggal >= now()->subDays(3)->toDateString();
-        @endphp
-        <a href="{{ route('warga.pengumuman.show', $umum) }}" class="bento-card-hover bg-white rounded-[1.5rem] border border-slate-200 shadow-sm flex flex-col group overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-1 h-full bg-slate-200 group-hover:bg-blue-600 transition-colors duration-300"></div>
-            
-            <div class="p-6 flex-1 flex flex-col pl-7 relative z-10">
+        @php $isNew = $umum->tanggal >= now()->subDays(3)->toDateString(); @endphp
+        <a href="{{ route('warga.pengumuman.show', $umum) }}"
+           class="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group flex flex-col relative">
+            {{-- Left accent bar --}}
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-teal-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <div class="p-6 flex flex-col flex-1 pl-7">
                 <div class="flex items-start justify-between gap-3 mb-4">
-                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 group-hover:text-blue-600 transition-colors bg-slate-50 border border-slate-100 px-2.5 py-1 rounded-md">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100/50 px-3 py-1 rounded-xl">
+                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                         {{ \Carbon\Carbon::parse($umum->tanggal)->translatedFormat('d M Y') }}
                     </span>
                     @if($isNew)
-                    <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-700 text-[10px] font-black tracking-widest uppercase shrink-0 shadow-sm shadow-blue-500/10 animate-pulse">BARU</span>
+                    <span class="px-2.5 py-1 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] font-black tracking-wider uppercase shrink-0 shadow-md shadow-amber-500/25">
+                        BARU
+                    </span>
                     @endif
                 </div>
-                
-                <h3 class="text-lg font-black text-slate-900 leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">{{ $umum->judul }}</h3>
-                <p class="text-sm font-medium text-slate-600 leading-relaxed line-clamp-3 mb-6">{{ strip_tags($umum->isi) }}</p>
-                
-                <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-500 flex items-center gap-2">
-                        <div class="w-6 h-6 rounded-md bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-black text-slate-600 shadow-sm">RT</div>
-                        {{ $umum->user->name ?? 'Admin' }}
-                    </span>
-                    <span class="text-xs font-black text-blue-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all uppercase tracking-widest bg-blue-50 px-3 py-1.5 rounded-lg">
-                        Baca <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+                <h3 class="text-[15px] font-extrabold text-slate-800 mb-2.5 line-clamp-2 group-hover:text-emerald-700 transition-colors leading-snug">{{ $umum->judul }}</h3>
+                <p class="text-xs text-slate-500 font-medium line-clamp-3 mb-5 flex-1 leading-relaxed">{{ strip_tags($umum->isi) }}</p>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 flex items-center justify-center text-[10px] font-black text-emerald-700">RT</div>
+                        <span class="text-xs font-bold text-slate-600">{{ $umum->user->name ?? 'Admin RT' }}</span>
+                    </div>
+                    <span class="text-xs font-extrabold text-emerald-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all">
+                        Baca Selengkapnya <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                     </span>
                 </div>
             </div>
         </a>
         @endforeach
     </div>
-    
-    <div class="mt-8 flex justify-center">
+
+    {{-- pagination --}}
+    <div class="flex justify-center mt-6">
         {{ $pengumuman->links() }}
     </div>
     @endif
