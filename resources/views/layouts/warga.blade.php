@@ -85,12 +85,11 @@
             background-size: 30px 30px;
         }
 
-        /* Alert animation */
-        @keyframes slideInDown {
-            from { opacity:0; transform: translateY(-20px) scale(0.95); }
-            to { opacity:1; transform: translateY(0) scale(1); }
+        @keyframes slideInRight {
+            from { opacity:0; transform: translateX(50px); }
+            to { opacity:1; transform: translateX(0); }
         }
-        .alert-enter { animation: slideInDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .toast-enter { animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         /* Bottom mobile nav */
         .mobile-bottom-nav {
@@ -196,34 +195,51 @@
     <!-- Spacer for fixed nav -->
     <div class="h-24 md:h-28"></div>
 
-    <!-- ====== ALERTS ====== -->
+    <!-- ====== TOAST ALERTS ====== -->
     @if(session('success') || session('error') || session('info'))
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full mb-4 z-40 relative">
+    <div class="fixed top-24 right-4 sm:right-6 z-[100] flex flex-col gap-3 pointer-events-none w-full max-w-sm px-4 sm:px-0">
         @if(session('success'))
-        <div id="warga-alert" class="alert-enter flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-5 py-4 rounded-2xl text-sm shadow-xl shadow-emerald-600/20">
-            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        <div id="warga-toast" class="pointer-events-auto toast-enter bg-white border-l-4 border-emerald-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <span class="flex-1 font-semibold">{{ session('success') }}</span>
-            <button onclick="this.closest('#warga-alert, div[id]').remove()" class="text-white/70 hover:text-white transition-colors shrink-0">
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800">Berhasil!</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ session('success') }}</p>
+            </div>
+            <button onclick="this.closest('#warga-toast').style.display='none'" class="text-slate-400 hover:text-slate-600">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
         @endif
+
         @if(session('error'))
-        <div id="warga-alert" class="alert-enter flex items-center gap-3 bg-gradient-to-r from-red-600 to-rose-600 text-white px-5 py-4 rounded-2xl text-sm shadow-xl shadow-red-600/20">
-            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        <div id="warga-toast-error" class="pointer-events-auto toast-enter bg-white border-l-4 border-red-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
             </div>
-            <span class="flex-1 font-semibold">{{ session('error') }}</span>
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800">Gagal!</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ session('error') }}</p>
+            </div>
+            <button onclick="this.closest('#warga-toast-error').style.display='none'" class="text-slate-400 hover:text-slate-600">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
         </div>
         @endif
+
         @if(session('info'))
-        <div id="warga-alert" class="alert-enter flex items-center gap-3 bg-gradient-to-r from-emerald-700 to-teal-700 text-white px-5 py-4 rounded-2xl text-sm shadow-xl shadow-teal-600/20">
-            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div id="warga-toast-info" class="pointer-events-auto toast-enter bg-white border-l-4 border-amber-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+            <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <span class="flex-1 font-semibold">{{ session('info') }}</span>
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800">Informasi</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ session('info') }}</p>
+            </div>
+            <button onclick="this.closest('#warga-toast-info').style.display='none'" class="text-slate-400 hover:text-slate-600">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
         </div>
         @endif
     </div>
@@ -280,16 +296,16 @@
     </div>
 
     <script>
-        // Auto dismiss alert
+        // Auto dismiss toast
         setTimeout(() => {
-            const el = document.getElementById('warga-alert');
-            if (el) {
+            const toasts = document.querySelectorAll('[id^="warga-toast"]');
+            toasts.forEach(el => {
                 el.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(-10px) scale(0.95)';
+                el.style.transform = 'translateX(20px)';
                 setTimeout(() => el.remove(), 500);
-            }
-        }, 4500);
+            });
+        }, 5000);
 
 
     </script>

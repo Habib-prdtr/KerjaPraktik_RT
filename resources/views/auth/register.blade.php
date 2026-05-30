@@ -5,13 +5,13 @@
 @section('content')
 
 <div class="mb-3 sm:mb-4">
-    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-0.5 sm:mb-1">Buat Akun Warga Baru ✍️</h2>
+    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-0.5 sm:mb-1 flex items-center gap-2">Buat Akun Warga Baru <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></h2>
     <p class="text-slate-500 font-semibold text-[10px] sm:text-xs">Daftar untuk mengakses layanan administrasi RT 08 secara online</p>
 </div>
 
 {{-- Info banner --}}
 <div class="hidden sm:flex bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 mb-4 items-start gap-2.5">
-    <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5 text-xs">💡</div>
+    <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5"><svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
     <p class="text-xs font-semibold text-emerald-800 leading-relaxed">
         <strong>Perhatian:</strong> Pastikan NIK Anda terdaftar di RT 08. Silakan cari dan pilih nama lengkap Anda pada daftar pilihan di bawah ini.
     </p>
@@ -19,7 +19,7 @@
 
 @if($errors->any())
 <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4 flex items-start gap-3 alert-enter">
-    <div class="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5 text-lg">⚠️</div>
+    <div class="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5"><svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
     <div class="flex-1">
         <p class="text-xs font-black text-amber-800 mb-1">Ada sedikit kendala saat mendaftar:</p>
         <ul class="list-disc pl-4 space-y-1">
@@ -137,7 +137,7 @@
     {{-- Submit --}}
     <button type="submit" id="register-btn"
             class="btn-shimmer w-full bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 text-white font-extrabold py-3 px-5 rounded-xl text-xs shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group mt-2">
-        <span>Daftar Akun Warga Baru ✍️</span>
+        <span>Daftar Akun Warga Baru</span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>

@@ -71,11 +71,10 @@
         <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 30px 30px;"></div>
         <div class="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/3 translate-x-1/4 blur-2xl pointer-events-none"></div>
         <div class="relative z-10 px-8 py-10 text-center">
-            <div class="mb-4">{!! $statusConf['emoji'] !!}</div>
-            <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-5 border border-white/25">
-                <svg class="w-8 h-8 {{ $statusConf['accent'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="{{ $statusConf['icon'] }}"/>
-                </svg>
+            <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-5 border border-white/25 shadow-xl">
+                <div class="text-white animate-bounce">
+                    {!! str_replace('w-12 h-12', 'w-10 h-10', $statusConf['emoji']) !!}
+                </div>
             </div>
             <p class="text-white text-2xl font-extrabold mb-2">{{ $statusConf['label'] }}</p>
             <p class="text-white/70 text-xs font-semibold max-w-md mx-auto leading-relaxed">{{ $statusConf['desc'] }}</p>
@@ -203,5 +202,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

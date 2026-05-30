@@ -148,11 +148,22 @@
                         <p class="text-[9px] text-slate-400 font-black uppercase tracking-wider leading-none">Tanggal Pengajuan</p>
                         <p class="text-xs font-bold text-slate-600 mt-1">{{ $surat->created_at->translatedFormat('d M Y') }}</p>
                     </div>
-                    <a href="{{ route('warga.surat.show', $surat) }}"
-                       class="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white text-xs font-extrabold px-4 py-2.5 rounded-xl transition-all shadow-sm">
-                        Detail Surat
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                    </a>
+                    <div class="flex items-center gap-2">
+                        @if($surat->status === 'diajukan')
+                        <form method="POST" action="{{ route('warga.surat.destroy', $surat) }}"
+                               onsubmit="confirmAction(event, 'Apakah Bapak/Ibu yakin ingin membatalkan dan menghapus pengajuan surat ini?')">
+                            @csrf @method('DELETE')
+                            <button class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 hover:bg-rose-500 hover:border-rose-500 text-rose-600 hover:text-white flex items-center justify-center transition-all shadow-sm shrink-0" title="Batalkan Surat">
+                                <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                            </button>
+                        </form>
+                        @endif
+                        <a href="{{ route('warga.surat.show', $surat) }}"
+                           class="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white text-xs font-extrabold px-4 py-2.5 rounded-xl transition-all shadow-sm">
+                            Detail
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
