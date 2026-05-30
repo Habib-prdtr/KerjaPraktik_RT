@@ -12,8 +12,8 @@
 
         {{-- Warga Aktif --}}
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -69,9 +69,9 @@
 
     {{-- ===== STAT SEKUNDER ===== --}}
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <div class="bg-blue-600 rounded-2xl p-4 text-white text-center">
+        <div class="bg-emerald-600 rounded-2xl p-4 text-white text-center">
             <p class="text-3xl font-bold">{{ $stats['surat_diproses'] }}</p>
-            <p class="text-blue-200 text-xs mt-1">Surat Diproses</p>
+            <p class="text-emerald-200 text-xs mt-1">Surat Diproses</p>
         </div>
         <div class="bg-green-500 rounded-2xl p-4 text-white text-center">
             <p class="text-3xl font-bold">{{ $stats['surat_selesai'] }}</p>
@@ -98,7 +98,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
                 <h2 class="font-semibold text-slate-800 text-sm">Surat Terbaru</h2>
-                <a href="{{ route('admin.surat.index') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+                <a href="{{ route('admin.surat.index') }}" class="text-xs text-emerald-600 hover:underline">Lihat semua →</a>
             </div>
             <div class="divide-y divide-slate-50">
                 @forelse($suratTerbaru as $surat)
@@ -116,7 +116,7 @@
                     @php
                         $statusColor = match($surat->status) {
                             'diajukan'  => 'bg-slate-100 text-slate-600',
-                            'diproses'  => 'bg-blue-100 text-blue-700',
+                            'diproses'  => 'bg-emerald-100 text-emerald-700',
                             'selesai'   => 'bg-green-100 text-green-700',
                             'ditolak'   => 'bg-red-100 text-red-700',
                             default     => 'bg-slate-100 text-slate-600',
@@ -136,7 +136,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
                 <h2 class="font-semibold text-slate-800 text-sm">Pengaduan Terbaru</h2>
-                <a href="{{ route('admin.pengaduan.index') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+                <a href="{{ route('admin.pengaduan.index') }}" class="text-xs text-emerald-600 hover:underline">Lihat semua →</a>
             </div>
             <div class="divide-y divide-slate-50">
                 @forelse($pengaduanTerbaru as $aduan)
@@ -154,7 +154,7 @@
                     @php
                         $adColor = match($aduan->status) {
                             'dikirim'  => 'bg-amber-100 text-amber-700',
-                            'diproses' => 'bg-blue-100 text-blue-700',
+                            'diproses' => 'bg-emerald-100 text-emerald-700',
                             'selesai'  => 'bg-green-100 text-green-700',
                             default    => 'bg-slate-100 text-slate-600',
                         };
@@ -173,7 +173,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
                 <h2 class="font-semibold text-slate-800 text-sm">Kegiatan Mendatang</h2>
-                <a href="{{ route('admin.kegiatan.index') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+                <a href="{{ route('admin.kegiatan.index') }}" class="text-xs text-emerald-600 hover:underline">Lihat semua →</a>
             </div>
             <div class="divide-y divide-slate-50">
                 @forelse($kegiatanMendatang as $kegiatan)
@@ -199,7 +199,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
                 <h2 class="font-semibold text-slate-800 text-sm">Pengumuman Terbaru</h2>
-                <a href="{{ route('admin.pengumuman.index') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+                <a href="{{ route('admin.pengumuman.index') }}" class="text-xs text-emerald-600 hover:underline">Lihat semua →</a>
             </div>
             <div class="divide-y divide-slate-50">
                 @forelse($pengumumanTerbaru as $umum)

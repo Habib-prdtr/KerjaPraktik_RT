@@ -15,15 +15,15 @@
             </svg>
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Cari judul atau nama warga…"
-                   class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-60">
+                   class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 w-60">
         </div>
-        <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <option value="">Semua Status</option>
             @foreach($statusList as $s)
             <option value="{{ $s }}" {{ request('status') === $s ? 'selected' : '' }}>{{ ucfirst($s) }}</option>
             @endforeach
         </select>
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-xl hover:bg-blue-700 transition-colors">Filter</button>
+        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white text-sm rounded-xl hover:bg-emerald-700 transition-colors">Filter</button>
         @if(request()->hasAny(['search','status']))
         <a href="{{ route('admin.pengaduan.index') }}" class="px-3 py-2 text-sm text-slate-600 rounded-xl border border-slate-200 hover:bg-slate-50">Reset</a>
         @endif
@@ -34,18 +34,18 @@
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-100 bg-slate-50">
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Judul Pengaduan</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Warga</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tanggal</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Foto</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 border-b-0">
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Judul Pengaduan</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Warga</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Tanggal</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Foto</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-3.5"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @forelse($pengaduan as $p)
-                    <tr class="hover:bg-slate-50 transition-colors">
+                    <tr class="hover:bg-emerald-50/60 transition-colors border-b border-slate-50">
                         <td class="px-5 py-3.5">
                             <p class="font-medium text-slate-800">{{ $p->judul }}</p>
                             <p class="text-xs text-slate-400 mt-0.5 line-clamp-1">{{ Str::limit($p->isi, 60) }}</p>
@@ -67,7 +67,7 @@
                             @php
                                 $sc = match($p->status) {
                                     'dikirim'  => 'bg-amber-100 text-amber-700',
-                                    'diproses' => 'bg-blue-100 text-blue-700',
+                                    'diproses' => 'bg-emerald-100 text-emerald-700',
                                     'selesai'  => 'bg-green-100 text-green-700',
                                     default    => 'bg-slate-100 text-slate-600',
                                 };
@@ -75,7 +75,7 @@
                             <span class="text-xs px-2 py-0.5 rounded-full font-medium {{ $sc }} capitalize">{{ $p->status }}</span>
                         </td>
                         <td class="px-5 py-3.5 text-right">
-                            <a href="{{ route('admin.pengaduan.show', $p) }}" class="text-xs text-blue-600 hover:underline">Tanggapi →</a>
+                            <a href="{{ route('admin.pengaduan.show', $p) }}" class="text-xs text-emerald-600 hover:underline">Tanggapi →</a>
                         </td>
                     </tr>
                     @empty

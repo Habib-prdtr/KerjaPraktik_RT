@@ -10,7 +10,7 @@
             <div class="absolute top-0 right-0 w-80 h-80 bg-teal-400/25 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
             <div class="relative z-10 flex items-center gap-5">
                 <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl text-3xl">
-                    🤝
+                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 </div>
                 <div>
                     <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-1.5">Agenda & Kegiatan Desa</h1>
@@ -23,7 +23,7 @@
     @if($kegiatan->isEmpty())
     {{-- ====== EMPTY STATE ====== --}}
     <div class="card-premium p-16 text-center bg-white border border-slate-100 shadow-sm">
-        <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm">🗓️</div>
+        <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm"><svg class="w-12 h-12 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
         <h3 class="text-xl font-extrabold text-slate-800 mb-2">Belum Ada Agenda Kegiatan</h3>
         <p class="text-slate-500 font-medium max-w-sm mx-auto text-sm leading-relaxed">Saat ini belum ada jadwal kegiatan atau acara RT yang terdaftar. Cek berkala ya!</p>
     </div>
@@ -135,3 +135,4 @@
     @endif
 </div>
 @endsection
+

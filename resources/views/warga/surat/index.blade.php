@@ -11,7 +11,7 @@
             <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div class="flex items-center gap-5">
                     <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl text-3xl">
-                        📄
+                        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     </div>
                     <div>
                         <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Daftar Surat Pengantar Saya</h1>
@@ -20,7 +20,7 @@
                 </div>
                 <a href="{{ route('warga.surat.create') }}"
                    class="group inline-flex items-center gap-2.5 bg-white text-emerald-800 hover:bg-emerald-50 font-black px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all w-full lg:w-auto justify-center hover:-translate-y-0.5">
-                    <span>➕</span>
+                    <span><svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></span>
                     Buat Pengajuan Surat Baru
                 </a>
             </div>
@@ -60,7 +60,7 @@
     {{-- ====== EMPTY STATE ====== --}}
     <div class="card-premium p-16 text-center bg-white">
         <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-slate-50 border border-slate-100 flex items-center justify-center text-5xl shadow-sm">
-            📭
+            <svg class="w-16 h-16 inline-block text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
         </div>
         <h3 class="text-xl font-extrabold text-slate-800 mb-2">Bapak/Ibu Belum Memiliki Pengajuan</h3>
         <p class="text-slate-500 font-medium mb-8 max-w-sm mx-auto text-sm leading-relaxed">
@@ -68,7 +68,7 @@
         </p>
         <a href="{{ route('warga.surat.create') }}"
            class="inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg shadow-emerald-500/25 hover:-translate-y-0.5 transition-all">
-            📄 Ajukan Surat Pertama Anda
+            <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Ajukan Surat Pertama Anda
         </a>
     </div>
     @else
@@ -82,35 +82,35 @@
                     'cls' => 'pill-pending',
                     'bar' => 'from-slate-400 to-slate-500',
                     'label' => 'Menunggu RT',
-                    'icon' => '⏳',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
                     'hint' => 'Menunggu antrean berkas diperiksa Pak RT.'
                 ],
                 'diproses' => [
                     'cls' => 'pill-diproses',
                     'bar' => 'from-amber-400 to-amber-500',
                     'label' => 'Sedang Dibuat',
-                    'icon' => '✍️',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>',
                     'hint' => 'Surat sedang diketik/ditandatangani Pengurus RT.'
                 ],
                 'selesai'  => [
                     'cls' => 'pill-selesai',
                     'bar' => 'from-emerald-400 to-teal-500',
                     'label' => 'Siap Diambil',
-                    'icon' => '✅',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
                     'hint' => 'Siap! Ambil fisik di rumah RT / unduh detail.'
                 ],
                 'ditolak'  => [
                     'cls' => 'pill-ditolak',
                     'bar' => 'from-rose-400 to-red-500',
                     'label' => 'Perlu Perbaikan',
-                    'icon' => '❌',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
                     'hint' => 'Pengajuan ditolak. Periksa alasan di tombol Detail.'
                 ],
                 default    => [
                     'cls' => 'pill-pending',
                     'bar' => 'from-slate-400 to-slate-500',
                     'label' => 'Diajukan',
-                    'icon' => '📝',
+                    'icon' => '<svg class="w-4 h-4 inline-block text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>',
                     'hint' => 'Terkirim ke pengurus RT.'
                 ],
             };
@@ -122,21 +122,21 @@
             <div class="p-6 flex flex-col flex-1">
                 <div class="flex items-start justify-between gap-3 mb-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 text-2xl">
-                        📄
+                        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     </div>
                     <span class="{{ $statusData['cls'] }} text-[9px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">
-                        {{ $statusData['icon'] }} {{ $statusData['label'] }}
+                        {!! $statusData['icon'] !!} {{ $statusData['label'] }}
                     </span>
                 </div>
 
                 <h3 class="text-[15px] font-extrabold text-slate-800 mb-1.5 leading-snug">{{ $surat->jenis_surat }}</h3>
                 <p class="text-[10px] font-mono text-slate-400 bg-slate-50 border border-slate-100 inline-block px-2.5 py-0.5 rounded-md mb-3 align-middle w-max">
-                    🔑 {{ $surat->nomor_surat ?? 'Nomor belum terbit' }}
+                    <svg class="w-3.5 h-3.5 inline-block text-emerald-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg> {{ $surat->nomor_surat ?? 'Nomor belum terbit' }}
                 </p>
                 
                 <div class="bg-slate-50/50 rounded-xl p-3 border border-slate-100 flex-1 flex flex-col justify-between mb-4">
                     <p class="text-xs text-slate-500 font-semibold leading-relaxed mb-3 line-clamp-2">
-                        📋 Keperluan: <span class="font-normal text-slate-600">{{ $surat->keperluan ?? '-' }}</span>
+                        <svg class="w-3.5 h-3.5 inline-block text-slate-400 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg> Keperluan: <span class="font-normal text-slate-600">{{ $surat->keperluan ?? '-' }}</span>
                     </p>
                     <p class="text-[11px] text-slate-500 font-bold leading-normal border-t border-slate-100 pt-2">
                         {{ $statusData['hint'] }}
@@ -166,3 +166,4 @@
     @endif
 </div>
 @endsection
+

@@ -20,7 +20,7 @@
                 </label>
                 <input type="text" id="nama_kegiatan" name="nama_kegiatan" value="{{ old('nama_kegiatan') }}"
                        placeholder="Contoh: Gotong Royong Bulanan"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('nama_kegiatan') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('nama_kegiatan') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 @error('nama_kegiatan')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
@@ -30,7 +30,7 @@
                         Tanggal <span class="text-red-500">*</span>
                     </label>
                     <input type="date" id="tanggal" name="tanggal" value="{{ old('tanggal') }}"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('tanggal') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('tanggal') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     @error('tanggal')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
                 </div>
                 <div>
@@ -39,7 +39,7 @@
                     </label>
                     <input type="text" id="lokasi" name="lokasi" value="{{ old('lokasi') }}"
                            placeholder="Contoh: Balai RW 02"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('lokasi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('lokasi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     @error('lokasi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 </label>
                 <textarea id="deskripsi" name="deskripsi" rows="5"
                           placeholder="Keterangan tambahan tentang kegiatan ini…"
-                          class="w-full px-4 py-3 text-sm rounded-xl border @error('deskripsi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">{{ old('deskripsi') }}</textarea>
+                          class="w-full px-4 py-3 text-sm rounded-xl border @error('deskripsi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none">{{ old('deskripsi') }}</textarea>
                 @error('deskripsi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
@@ -59,14 +59,14 @@
                     Foto Dokumentasi <span class="text-slate-400 text-xs">(opsional)</span>
                 </label>
                 <input type="file" id="foto" name="foto" accept="image/*"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-600 hover:file:bg-emerald-100">
                 <p class="text-xs text-slate-500 mt-1.5">Format: JPG, PNG, WEBP (Maks: 10MB)</p>
                 @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
             <div class="flex items-center gap-3 pt-2">
                 <button type="submit"
-                        class="px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
+                        class="px-6 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm">
                     Simpan Kegiatan
                 </button>
                 <a href="{{ route('admin.kegiatan.index') }}"

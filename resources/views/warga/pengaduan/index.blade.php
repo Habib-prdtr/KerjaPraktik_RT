@@ -11,7 +11,7 @@
             <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div class="flex items-center gap-5">
                     <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl text-3xl">
-                        🚨
+                        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                     </div>
                     <div>
                         <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Laporan & Pengaduan Saya</h1>
@@ -20,7 +20,7 @@
                 </div>
                 <a href="{{ route('warga.pengaduan.create') }}"
                    class="group inline-flex items-center gap-2.5 bg-white text-emerald-800 hover:bg-emerald-50 font-black px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all w-full lg:w-auto justify-center hover:-translate-y-0.5">
-                    <span>📢</span>
+                    <span><svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg></span>
                     Buat Laporan Baru
                 </a>
             </div>
@@ -31,7 +31,7 @@
     {{-- ====== EMPTY STATE ====== --}}
     <div class="card-premium p-16 text-center bg-white">
         <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm">
-            🌿
+            <svg class="w-12 h-12 inline-block text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h3 class="text-xl font-extrabold text-slate-800 mb-2">Lingkungan Aman, Rukun & Nyaman!</h3>
         <p class="text-slate-500 font-medium mb-8 max-w-sm mx-auto text-sm leading-relaxed">
@@ -39,7 +39,7 @@
         </p>
         <a href="{{ route('warga.pengaduan.create') }}"
            class="inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg shadow-emerald-500/25 hover:-translate-y-0.5 transition-all">
-            🚨 Laporkan Masalah Pertama
+            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Laporkan Masalah Pertama
         </a>
     </div>
     @else
@@ -53,28 +53,28 @@
                     'cls' => 'pill-dikirim',
                     'bar' => 'from-slate-400 to-slate-500',
                     'label' => 'Terkirim',
-                    'icon' => '⏳',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
                     'desc' => 'Laporan masuk, menunggu pemeriksaan Pak RT.'
                 ],
                 'diproses' => [
                     'cls' => 'pill-diproses',
                     'bar' => 'from-amber-400 to-orange-500',
                     'label' => 'Ditinjau',
-                    'icon' => '⚙️',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
                     'desc' => 'Sedang ditindaklanjuti/didiskusikan Pengurus RT.'
                 ],
                 'selesai'  => [
                     'cls' => 'pill-selesai',
                     'bar' => 'from-emerald-400 to-teal-500',
                     'label' => 'Selesai',
-                    'icon' => '✅',
+                    'icon' => '<svg class="w-3.5 h-3.5 inline-block mr-1 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
                     'desc' => 'Selesai! Laporan telah ditanggapi dan selesai.'
                 ],
                 default    => [
                     'cls' => 'pill-pending',
                     'bar' => 'from-slate-400 to-slate-500',
                     'label' => 'Diajukan',
-                    'icon' => '📝',
+                    'icon' => '<svg class="w-4 h-4 inline-block text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>',
                     'desc' => 'Terkirim.'
                 ],
             };
@@ -84,10 +84,10 @@
             <div class="p-6 flex flex-col flex-1">
                 <div class="flex items-start justify-between gap-3 mb-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 text-2xl">
-                        🚨
+                        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                     </div>
                     <span class="{{ $statusData['cls'] }} text-[9px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">
-                        {{ $statusData['icon'] }} {{ $statusData['label'] }}
+                        {!! $statusData['icon'] !!} {{ $statusData['label'] }}
                     </span>
                 </div>
 
@@ -137,3 +137,4 @@
     @endif
 </div>
 @endsection
+

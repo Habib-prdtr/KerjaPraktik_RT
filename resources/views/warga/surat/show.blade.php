@@ -25,7 +25,7 @@
                 'accent'  => 'text-slate-300',
                 'label'   => 'Menunggu Pengurus RT',
                 'desc'    => 'Pengajuan Bapak/Ibu sudah terkirim ke sistem. Pak RT akan segera memvalidasi berkas.',
-                'emoji'   => '⏳',
+                'emoji'   => '<svg class="w-12 h-12 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
             ],
             'diproses' => [
                 'icon'    => 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
@@ -34,7 +34,7 @@
                 'accent'  => 'text-amber-200',
                 'label'   => 'Surat Sedang Dibuat',
                 'desc'    => 'Pengurus RT sedang memproses surat pengantar Bapak/Ibu. Mohon ditunggu ya.',
-                'emoji'   => '✍️',
+                'emoji'   => '<svg class="w-12 h-12 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>',
             ],
             'selesai'  => [
                 'icon'    => 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
@@ -43,7 +43,7 @@
                 'accent'  => 'text-emerald-200',
                 'label'   => 'Surat Selesai & Siap',
                 'desc'    => 'Selamat! Surat pengantar sudah selesai. Silakan ambil fisik surat resmi di rumah Pak RT.',
-                'emoji'   => '✅',
+                'emoji'   => '<svg class="w-12 h-12 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
             ],
             'ditolak'  => [
                 'icon'    => 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z',
@@ -52,7 +52,7 @@
                 'accent'  => 'text-rose-200',
                 'label'   => 'Perlu Perbaikan / Ditolak',
                 'desc'    => 'Pengajuan ini ditolak oleh Pengurus RT. Baca alasan penolakannya pada catatan di bawah.',
-                'emoji'   => '❌',
+                'emoji'   => '<svg class="w-12 h-12 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
             ],
             default    => [
                 'icon'    => 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
@@ -61,7 +61,7 @@
                 'accent'  => 'text-slate-300',
                 'label'   => $surat->status,
                 'desc'    => '',
-                'emoji'   => '📄',
+                'emoji'   => '<svg class="w-12 h-12 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
             ],
         };
     @endphp
@@ -71,7 +71,7 @@
         <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 30px 30px;"></div>
         <div class="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/3 translate-x-1/4 blur-2xl pointer-events-none"></div>
         <div class="relative z-10 px-8 py-10 text-center">
-            <div class="text-6xl mb-4">{{ $statusConf['emoji'] }}</div>
+            <div class="mb-4">{!! $statusConf['emoji'] !!}</div>
             <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-5 border border-white/25">
                 <svg class="w-8 h-8 {{ $statusConf['accent'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="{{ $statusConf['icon'] }}"/>
@@ -113,8 +113,8 @@
     @if($surat->keterangan)
     <div class="bg-amber-50/50 border border-amber-200 rounded-3xl p-5">
         <div class="flex items-center gap-2.5 mb-3">
-            <div class="w-8 h-8 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center shrink-0 text-lg">
-                💬
+            <div class="w-8 h-8 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             </div>
             <p class="text-xs font-black text-amber-800 uppercase tracking-widest">Catatan Pengurus RT</p>
         </div>
@@ -128,8 +128,8 @@
     @if($surat->file_pdf)
     <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-3xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shadow-sm">
         <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 text-2xl shrink-0">
-                📥
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 shrink-0">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
             </div>
             <div>
                 <h4 class="font-extrabold text-emerald-950 text-base">Surat Siap Diunduh!</h4>

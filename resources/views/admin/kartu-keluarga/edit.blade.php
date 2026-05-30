@@ -13,7 +13,7 @@
                 <p class="text-xs text-slate-400 mt-0.5">No. KK: <span class="font-mono">{{ $kartuKeluarga->no_kk }}</span></p>
             </div>
             <a href="{{ route('admin.kartu-keluarga.show', $kartuKeluarga) }}"
-               class="text-sm text-blue-600 hover:underline">← Detail</a>
+               class="text-sm text-emerald-600 hover:underline">← Detail</a>
         </div>
 
         <form method="POST" action="{{ route('admin.kartu-keluarga.update', $kartuKeluarga) }}" class="px-6 py-6 space-y-5">
@@ -27,7 +27,7 @@
                 </label>
                 <input type="text" id="no_kk" name="no_kk" value="{{ old('no_kk', $kartuKeluarga->no_kk) }}"
                        maxlength="16"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('no_kk') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('no_kk') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 @error('no_kk')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
@@ -39,7 +39,7 @@
                     Nama Kepala Keluarga <span class="text-red-500">*</span>
                 </label>
                 <input type="text" id="kepala_keluarga" name="kepala_keluarga" value="{{ old('kepala_keluarga', $kartuKeluarga->kepala_keluarga) }}"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('kepala_keluarga') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('kepala_keluarga') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 @error('kepala_keluarga')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
@@ -51,7 +51,7 @@
                     Alamat <span class="text-red-500">*</span>
                 </label>
                 <textarea id="alamat" name="alamat" rows="3"
-                          class="w-full px-4 py-2.5 text-sm rounded-xl border @error('alamat') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">{{ old('alamat', $kartuKeluarga->alamat) }}</textarea>
+                          class="w-full px-4 py-2.5 text-sm rounded-xl border @error('alamat') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none">{{ old('alamat', $kartuKeluarga->alamat) }}</textarea>
                 @error('alamat')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
@@ -64,7 +64,7 @@
             {{-- Actions --}}
             <div class="flex items-center gap-3 pt-2">
                 <button type="submit"
-                        class="px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
+                        class="px-6 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm">
                     Perbarui Data
                 </button>
                 <a href="{{ route('admin.kartu-keluarga.index') }}"

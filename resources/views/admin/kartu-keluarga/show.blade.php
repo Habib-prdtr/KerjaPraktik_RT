@@ -57,10 +57,10 @@
         <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
             <h2 class="font-semibold text-slate-800">
                 Anggota Keluarga
-                <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">{{ $kartuKeluarga->warga->count() }} orang</span>
+                <span class="ml-2 text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">{{ $kartuKeluarga->warga->count() }} orang</span>
             </h2>
             <a href="{{ route('admin.warga.create') }}"
-               class="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:underline">
+               class="inline-flex items-center gap-1.5 text-sm text-emerald-600 hover:underline">
                 + Tambah Warga
             </a>
         </div>
@@ -69,18 +69,18 @@
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-100 bg-slate-50">
-                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">NIK</th>
-                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Nama</th>
-                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">JK</th>
-                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Pekerjaan</th>
-                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 border-b-0">
+                        <th class="text-left px-5 py-3 text-xs font-semibold text-white/90 uppercase tracking-wider">NIK</th>
+                        <th class="text-left px-5 py-3 text-xs font-semibold text-white/90 uppercase tracking-wider">Nama</th>
+                        <th class="text-left px-5 py-3 text-xs font-semibold text-white/90 uppercase tracking-wider">JK</th>
+                        <th class="text-left px-5 py-3 text-xs font-semibold text-white/90 uppercase tracking-wider">Pekerjaan</th>
+                        <th class="text-left px-5 py-3 text-xs font-semibold text-white/90 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-3"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @foreach($kartuKeluarga->warga as $w)
-                    <tr class="hover:bg-slate-50 transition-colors">
+                    <tr class="hover:bg-emerald-50/60 transition-colors border-b border-slate-50">
                         <td class="px-5 py-3 font-mono text-xs text-slate-600">{{ $w->nik }}</td>
                         <td class="px-5 py-3 font-medium text-slate-800">{{ $w->nama }}</td>
                         <td class="px-5 py-3 text-slate-500">{{ $w->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
@@ -97,7 +97,7 @@
                             <span class="text-xs px-2 py-0.5 rounded-full font-medium capitalize {{ $sc }}">{{ $w->status }}</span>
                         </td>
                         <td class="px-5 py-3 text-right">
-                            <a href="{{ route('admin.warga.show', $w) }}" class="text-xs text-blue-600 hover:underline">Detail</a>
+                            <a href="{{ route('admin.warga.show', $w) }}" class="text-xs text-emerald-600 hover:underline">Detail</a>
                         </td>
                     </tr>
                     @endforeach

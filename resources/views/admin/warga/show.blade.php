@@ -28,7 +28,7 @@
 
         <div class="px-6 py-5">
             <div class="flex items-center gap-5 mb-6">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shrink-0">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-indigo-600 flex items-center justify-center shrink-0">
                     <span class="text-white text-2xl font-bold">{{ strtoupper(substr($warga->nama, 0, 1)) }}</span>
                 </div>
                 <div>
@@ -71,7 +71,7 @@
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Kartu Keluarga</p>
                     @if($warga->kartuKeluarga)
                     <a href="{{ route('admin.kartu-keluarga.show', $warga->kartuKeluarga) }}"
-                       class="mt-1 block text-blue-600 hover:underline font-medium">
+                       class="mt-1 block text-emerald-600 hover:underline font-medium">
                         {{ $warga->kartuKeluarga->kepala_keluarga }}
                     </a>
                     @else
@@ -98,7 +98,7 @@
                     @php
                         $statusColor = match($surat->status) {
                             'diajukan'  => 'bg-slate-100 text-slate-600',
-                            'diproses'  => 'bg-blue-100 text-blue-700',
+                            'diproses'  => 'bg-emerald-100 text-emerald-700',
                             'selesai'   => 'bg-green-100 text-green-700',
                             'ditolak'   => 'bg-red-100 text-red-700',
                             default     => 'bg-slate-100 text-slate-600',
@@ -127,7 +127,7 @@
                     @php
                         $adColor = match($aduan->status) {
                             'dikirim'  => 'bg-amber-100 text-amber-700',
-                            'diproses' => 'bg-blue-100 text-blue-700',
+                            'diproses' => 'bg-emerald-100 text-emerald-700',
                             'selesai'  => 'bg-green-100 text-green-700',
                             default    => 'bg-slate-100 text-slate-600',
                         };
