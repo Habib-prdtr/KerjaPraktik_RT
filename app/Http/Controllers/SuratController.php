@@ -68,12 +68,31 @@ class SuratController extends Controller
     // =============================
     public function updateStatus(Request $request, Surat $surat)
     {
+        if ($surat->status === 'selesai') {
+            return redirect()->route('admin.surat.index')
+                ->with('error', 'Status surat yang sudah selesai tidak dapat diubah lagi.');
+        }
+
+        // Batasi status baru yang diperbolehkan berdasarkan status saat ini
+        $allowedStatuses = [];
+        if ($surat->status === 'diajukan') {
+            $allowedStatuses = ['diproses', 'ditolak'];
+        } elseif ($surat->status === 'diproses') {
+            $allowedStatuses = ['selesai'];
+        }
+
+        // Jika status saat ini sudah ditolak atau tidak ada transisi yang diperbolehkan
+        if (empty($allowedStatuses)) {
+            return redirect()->route('admin.surat.index')
+                ->with('error', 'Status surat ini tidak dapat diubah lagi.');
+        }
+
         $request->validate([
-            'status'   => 'required|in:' . implode(',', self::STATUS_LIST),
+            'status'   => 'required|in:' . implode(',', $allowedStatuses),
             'file_pdf' => 'nullable|file|mimes:pdf|max:2048',
         ], [
             'status.required' => 'Status wajib dipilih.',
-            'status.in'       => 'Status tidak valid.',
+            'status.in'       => 'Pilihan status tidak valid untuk tahap proses ini.',
             'file_pdf.mimes'  => 'File harus berformat PDF.',
             'file_pdf.max'    => 'Ukuran file maksimal 2MB.',
         ]);
@@ -94,7 +113,7 @@ class SuratController extends Controller
 
         $surat->update($data);
 
-        return back()->with('success', 'Status surat berhasil diperbarui.');
+        return redirect()->route('admin.surat.index')->with('success', 'Status surat berhasil diperbarui.');
     }
 
     // =============================

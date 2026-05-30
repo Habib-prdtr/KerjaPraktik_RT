@@ -57,21 +57,9 @@
                 @enderror
             </div>
 
-            {{-- RT & RW --}}
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label for="rt" class="block text-sm font-medium text-slate-700 mb-1.5">RT <span class="text-red-500">*</span></label>
-                    <input type="text" id="rt" name="rt" value="{{ old('rt', $kartuKeluarga->rt) }}"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('rt') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    @error('rt')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
-                </div>
-                <div>
-                    <label for="rw" class="block text-sm font-medium text-slate-700 mb-1.5">RW <span class="text-red-500">*</span></label>
-                    <input type="text" id="rw" name="rw" value="{{ old('rw', $kartuKeluarga->rw) }}"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('rw') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    @error('rw')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
-                </div>
-            </div>
+            {{-- RT & RW (Otomatis Set RT 08 RW 02) --}}
+            <input type="hidden" name="rt" value="08">
+            <input type="hidden" name="rw" value="02">
 
             {{-- Actions --}}
             <div class="flex items-center gap-3 pt-2">

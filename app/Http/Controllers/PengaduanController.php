@@ -66,7 +66,7 @@ class PengaduanController extends Controller
             'tanggapan_admin' => $request->tanggapan_admin,
         ]);
 
-        return back()->with('success', 'Tanggapan berhasil dikirim.');
+        return redirect()->route('admin.pengaduan.index')->with('success', 'Tanggapan berhasil dikirim.');
     }
 
     // =============================

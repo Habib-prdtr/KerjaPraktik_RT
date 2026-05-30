@@ -21,7 +21,7 @@
                 </a>
                 @if($user->id !== Auth::id())
                 <form method="POST" action="{{ route('admin.user.destroy', $user) }}"
-                      onsubmit="return confirm('Hapus akun {{ $user->name }}?')" class="inline">
+                      onsubmit="confirmAction(event, 'Hapus akun {{ $user->name }}?')" class="inline">
                     @csrf @method('DELETE')
                     <button type="submit" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm text-red-700 bg-red-50 rounded-xl hover:bg-red-100 transition-colors">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

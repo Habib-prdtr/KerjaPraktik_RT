@@ -60,7 +60,7 @@ class PengumumanController extends Controller
             'created_by' => Auth::id(),
         ]);
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil ditambahkan.');
     }
 
@@ -98,7 +98,7 @@ class PengumumanController extends Controller
 
         $pengumuman->update($request->only(['judul', 'isi', 'tanggal']));
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil diperbarui.');
     }
 
@@ -109,7 +109,7 @@ class PengumumanController extends Controller
     {
         $pengumuman->delete();
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil dihapus.');
     }
 

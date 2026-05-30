@@ -84,12 +84,21 @@
 
             <div>
                 <label for="status" class="block text-sm font-medium text-slate-700 mb-1.5">Ubah Status <span class="text-red-500">*</span></label>
-                <select id="status" name="status"
-                        class="w-full sm:w-48 px-4 py-2.5 text-sm rounded-xl border @error('status') border-red-400 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-                    @foreach($statusList as $st)
-                    <option value="{{ $st }}" {{ $pengaduan->status === $st ? 'selected' : '' }}>{{ ucfirst($st) }}</option>
-                    @endforeach
-                </select>
+                @if($pengaduan->status === 'diproses')
+                    <input type="hidden" name="status" value="selesai">
+                    <div class="px-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-slate-50 text-slate-700 w-full sm:w-48 font-medium cursor-not-allowed">Selesai</div>
+                    <p class="mt-1.5 text-xs text-blue-600">Status akan diubah menjadi Selesai.</p>
+                @elseif($pengaduan->status === 'selesai')
+                    <input type="hidden" name="status" value="selesai">
+                    <div class="px-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-slate-50 text-slate-700 w-full sm:w-48 font-medium cursor-not-allowed">Selesai</div>
+                @else
+                    <select id="status" name="status"
+                            class="w-full sm:w-48 px-4 py-2.5 text-sm rounded-xl border @error('status') border-red-400 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                        @foreach($statusList as $st)
+                            <option value="{{ $st }}" {{ $pengaduan->status === $st ? 'selected' : '' }}>{{ ucfirst($st) }}</option>
+                        @endforeach
+                    </select>
+                @endif
                 @error('status')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 

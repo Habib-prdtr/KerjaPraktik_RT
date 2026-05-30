@@ -79,7 +79,7 @@
                                     </svg>
                                 </a>
                                 <form method="POST" action="{{ route('admin.kartu-keluarga.destroy', $kk) }}"
-                                      onsubmit="return confirm('Hapus Kartu Keluarga ini? Pastikan tidak ada anggota warga terdaftar.')">
+                                      onsubmit="confirmAction(event, 'Hapus Kartu Keluarga ini? Pastikan tidak ada anggota warga terdaftar.')">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

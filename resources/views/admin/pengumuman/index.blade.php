@@ -73,7 +73,7 @@
                     </svg>
                 </a>
                 <form method="POST" action="{{ route('admin.pengumuman.destroy', $p) }}"
-                      onsubmit="return confirm('Hapus pengumuman ini?')">
+                      onsubmit="confirmAction(event, 'Hapus pengumuman ini?')">
                     @csrf @method('DELETE')
                     <button type="submit" class="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

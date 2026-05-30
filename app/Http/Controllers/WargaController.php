@@ -79,7 +79,7 @@ class WargaController extends Controller
             'tanggal_lahir', 'agama', 'pekerjaan', 'status_perkawinan', 'status'
         ]));
 
-        return redirect()->route('warga.index')
+        return redirect()->route('admin.warga.index')
             ->with('success', 'Data warga berhasil ditambahkan.');
     }
 
@@ -136,7 +136,7 @@ class WargaController extends Controller
             'tanggal_lahir', 'agama', 'pekerjaan', 'status_perkawinan', 'status'
         ]));
 
-        return redirect()->route('warga.index')
+        return redirect()->route('admin.warga.index')
             ->with('success', 'Data warga berhasil diperbarui.');
     }
 
@@ -152,7 +152,7 @@ class WargaController extends Controller
 
         $warga->delete();
 
-        return redirect()->route('warga.index')
+        return redirect()->route('admin.warga.index')
             ->with('success', 'Data warga berhasil dihapus.');
     }
 }
