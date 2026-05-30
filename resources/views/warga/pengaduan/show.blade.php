@@ -128,7 +128,7 @@
     @if($pengaduan->status === 'dikirim')
     <div class="pt-2">
         <form method="POST" action="{{ route('warga.pengaduan.destroy', $pengaduan) }}"
-              onsubmit="return confirm('Apakah Bapak/Ibu yakin ingin membatalkan dan menghapus laporan pengaduan ini secara permanen?')">
+              onsubmit="confirmAction(event, 'Apakah Bapak/Ibu yakin ingin membatalkan dan menghapus laporan pengaduan ini secara permanen?')">
             @csrf @method('DELETE')
             <button type="submit"
                     class="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 hover:border-red-300 hover:text-red-600 hover:bg-rose-50/20 font-black rounded-2xl transition-all text-sm flex items-center justify-center gap-2 group shadow-sm">

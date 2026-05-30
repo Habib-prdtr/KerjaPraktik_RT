@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('styles')
 </head>
 <body class="bg-slate-50 font-sans antialiased">
@@ -315,6 +316,8 @@
         }
     </style>
 
+    {{-- (Global modal bawaan dihapus, diganti menggunakan SweetAlert2) --}}
+
     {{-- ===================== SCRIPTS ===================== --}}
     <script>
         function toggleSidebar() {
@@ -338,6 +341,31 @@
                 if (el) el.remove();
             });
         }, 5000);
+
+        // Global Confirm Modal Logic with SweetAlert2
+        function confirmAction(event, message) {
+            event.preventDefault();
+            const form = event.target;
+            
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#94a3b8',
+                confirmButtonText: 'Ya, Lanjutkan!',
+                cancelButtonText: 'Batal',
+                reverseButtons: true,
+                customClass: {
+                    popup: 'rounded-2xl',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
     </script>
 
     @stack('scripts')

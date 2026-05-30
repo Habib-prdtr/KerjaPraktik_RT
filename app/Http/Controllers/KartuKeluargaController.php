@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\KartuKeluarga;
+use App\Models\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KartuKeluargaController extends Controller
 {
@@ -47,6 +49,13 @@ class KartuKeluargaController extends Controller
             'alamat'         => 'required|string|max:255',
             'rt'             => 'required|string|max:10',
             'rw'             => 'required|string|max:10',
+            'nik'            => 'required|string|size:16|unique:warga,nik',
+            'jenis_kelamin'  => 'required|in:L,P',
+            'tanggal_lahir'  => 'required|date|before:today',
+            'agama'          => 'required|string|max:20',
+            'pekerjaan'      => 'required|string|max:50',
+            'status_perkawinan' => 'required|string|max:30',
+            'status'         => 'required|in:aktif,pindah,meninggal',
         ], [
             'no_kk.required'          => 'No. KK wajib diisi.',
             'no_kk.size'              => 'No. KK harus 16 digit.',
@@ -55,14 +64,38 @@ class KartuKeluargaController extends Controller
             'alamat.required'         => 'Alamat wajib diisi.',
             'rt.required'             => 'RT wajib diisi.',
             'rw.required'             => 'RW wajib diisi.',
+            'nik.required'            => 'NIK wajib diisi.',
+            'nik.size'                => 'NIK harus 16 digit.',
+            'nik.unique'              => 'NIK sudah terdaftar.',
+            'jenis_kelamin.required'  => 'Jenis kelamin wajib dipilih.',
+            'tanggal_lahir.required'  => 'Tanggal lahir wajib diisi.',
+            'tanggal_lahir.before'    => 'Tanggal lahir harus sebelum hari ini.',
+            'agama.required'          => 'Agama wajib diisi.',
+            'pekerjaan.required'      => 'Pekerjaan wajib diisi.',
+            'status_perkawinan.required' => 'Status perkawinan wajib dipilih.',
+            'status.required'         => 'Status wajib dipilih.',
         ]);
 
-        KartuKeluarga::create($request->only([
-            'no_kk', 'kepala_keluarga', 'alamat', 'rt', 'rw'
-        ]));
+        DB::transaction(function () use ($request) {
+            $kk = KartuKeluarga::create($request->only([
+                'no_kk', 'kepala_keluarga', 'alamat', 'rt', 'rw'
+            ]));
 
-        return redirect()->route('kartu-keluarga.index')
-            ->with('success', 'Data Kartu Keluarga berhasil ditambahkan.');
+            Warga::create([
+                'kartu_keluarga_id' => $kk->id,
+                'nik'               => $request->nik,
+                'nama'              => $request->kepala_keluarga,
+                'jenis_kelamin'     => $request->jenis_kelamin,
+                'tanggal_lahir'     => $request->tanggal_lahir,
+                'agama'             => $request->agama,
+                'pekerjaan'         => $request->pekerjaan,
+                'status_perkawinan' => $request->status_perkawinan,
+                'status'            => $request->status,
+            ]);
+        });
+
+        return redirect()->route('admin.kartu-keluarga.index')
+            ->with('success', 'Data Kartu Keluarga dan Kepala Keluarga berhasil ditambahkan.');
     }
 
     // =============================
@@ -107,7 +140,7 @@ class KartuKeluargaController extends Controller
             'no_kk', 'kepala_keluarga', 'alamat', 'rt', 'rw'
         ]));
 
-        return redirect()->route('kartu-keluarga.index')
+        return redirect()->route('admin.kartu-keluarga.index')
             ->with('success', 'Data Kartu Keluarga berhasil diperbarui.');
     }
 
@@ -123,7 +156,7 @@ class KartuKeluargaController extends Controller
 
         $kartuKeluarga->delete();
 
-        return redirect()->route('kartu-keluarga.index')
+        return redirect()->route('admin.kartu-keluarga.index')
             ->with('success', 'Data Kartu Keluarga berhasil dihapus.');
     }
 }

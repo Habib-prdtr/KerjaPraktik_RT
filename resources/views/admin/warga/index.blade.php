@@ -100,7 +100,7 @@
                                     </svg>
                                 </a>
                                 <form method="POST" action="{{ route('admin.warga.destroy', $w) }}"
-                                      onsubmit="return confirm('Yakin hapus data warga {{ $w->nama }}? Aksi ini tidak dapat dibatalkan.')">
+                                      onsubmit="confirmAction(event, 'Yakin hapus data warga {{ $w->nama }}? Aksi ini tidak dapat dibatalkan.')">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -35,78 +35,94 @@
         @php
             $isPast  = \Carbon\Carbon::parse($item->tanggal)->isPast();
             $isToday = \Carbon\Carbon::parse($item->tanggal)->isToday();
-            $day     = \Carbon\Carbon::parse($item->tanggal)->format('d');
-            $month   = \Carbon\Carbon::parse($item->tanggal)->translatedFormat('M');
+            $dateStr = \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d M Y');
         @endphp
         <a href="{{ route('warga.kegiatan.show', $item) }}"
-           class="bg-white rounded-3xl border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col relative
-                  {{ $isToday ? 'border-emerald-300 ring-2 ring-emerald-100/50 shadow-emerald-500/10' : 'border-slate-100 hover:border-emerald-200 hover:-translate-y-1.5 hover:shadow-emerald-500/5' }}
+           class="group relative bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-2xl hover:border-emerald-300 transition-all duration-300 hover:-translate-y-2 flex flex-col overflow-hidden
                   {{ $isPast ? 'opacity-80' : '' }}">
-
-            {{-- Photo or gradient header --}}
+            
+            {{-- Bagian Gambar / Header Banner --}}
             @if($item->foto)
-            <div class="h-44 overflow-hidden bg-slate-100 relative shrink-0">
-                <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_kegiatan }}"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                @if($isToday)
-                <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-emerald-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-md animate-pulse">
-                    🔴 HARI INI
+                <div class="relative w-full h-48 bg-slate-100 overflow-hidden">
+                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_kegiatan }}"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent"></div>
+                    
+                    {{-- Badges --}}
+                    <div class="absolute top-4 right-4">
+                        @if($isToday)
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500 text-white shadow-lg shadow-rose-500/30 animate-pulse">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white"></span> HARI INI
+                            </span>
+                        @elseif($isPast)
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-800/80 backdrop-blur-md text-slate-200 border border-slate-700/50">
+                                Selesai
+                            </span>
+                        @else
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/90 backdrop-blur-md text-white border border-emerald-400/50 shadow-lg shadow-emerald-500/20">
+                                Mendatang
+                            </span>
+                        @endif
+                    </div>
                 </div>
-                @elseif($isPast)
-                <div class="absolute top-3 left-3 bg-slate-700/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1.5 rounded-full">
-                    Selesai
-                </div>
-                @else
-                <div class="absolute top-3 left-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-md">
-                    Mendatang
-                </div>
-                @endif
-            </div>
             @else
-            {{-- No photo: colored gradient banner --}}
-            <div class="h-20 relative overflow-hidden {{ $isPast ? 'bg-gradient-to-r from-slate-500 to-slate-600' : ($isToday ? 'bg-gradient-to-r from-emerald-500 to-teal-600' : 'bg-gradient-to-r from-emerald-600 to-teal-700') }}">
-                <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 20px 20px;"></div>
-                @if($isToday)
-                <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-full animate-pulse">🔴 HARI INI</div>
-                @elseif($isPast)
-                <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1.5 rounded-full">Selesai</div>
-                @else
-                <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-full">Mendatang</div>
-                @endif
-            </div>
+                <div class="relative w-full h-36 overflow-hidden {{ $isPast ? 'bg-slate-700' : 'bg-gradient-to-br from-emerald-600 to-teal-800' }}">
+                    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 16px 16px;"></div>
+                    <div class="absolute top-4 right-4">
+                        @if($isToday)
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500 text-white shadow-lg shadow-rose-500/30 animate-pulse">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white"></span> HARI INI
+                            </span>
+                        @elseif($isPast)
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/20">
+                                Selesai
+                            </span>
+                        @else
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-lg shadow-black/10">
+                                Mendatang
+                            </span>
+                        @endif
+                    </div>
+                </div>
             @endif
 
-            <div class="p-5 flex-1 flex flex-col">
-                {{-- Calendar badge --}}
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 rounded-2xl shrink-0 flex flex-col items-center justify-center shadow-sm border
-                                {{ $isPast ? 'bg-slate-50 border-slate-200' : ($isToday ? 'bg-emerald-50 border-emerald-200' : 'bg-teal-50 border-teal-100/50') }} -mt-9 ring-4 ring-white">
-                        <p class="font-extrabold text-xl leading-none {{ $isPast ? 'text-slate-600' : ($isToday ? 'text-emerald-700' : 'text-teal-700') }}">{{ $day }}</p>
-                        <p class="text-[9px] font-black uppercase tracking-wider leading-none mt-0.5 {{ $isPast ? 'text-slate-400' : ($isToday ? 'text-emerald-500' : 'text-teal-500') }}">{{ $month }}</p>
-                    </div>
-                    <div class="flex-1 min-w-0 pt-1">
-                        <h3 class="text-[15px] font-extrabold text-slate-800 group-hover:text-emerald-700 transition-colors leading-snug line-clamp-2">{{ $item->nama_kegiatan }}</h3>
-                    </div>
-                </div>
+            {{-- Bagian Konten --}}
+            <div class="p-5 flex-1 flex flex-col relative bg-white">
+                {{-- Decorative Line --}}
+                <div class="absolute top-0 left-5 right-5 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
 
-                <div class="space-y-2 flex-1">
-                    <div class="flex items-start gap-2 text-xs text-slate-500 font-bold">
-                        <span class="text-sm shrink-0">📍</span>
-                        <span class="line-clamp-1">{{ $item->lokasi }}</span>
+                {{-- Tanggal & Waktu --}}
+                <div class="flex items-center gap-3 mb-3 text-sm">
+                    <div class="flex items-center gap-1.5 font-semibold {{ $isToday ? 'text-rose-600' : 'text-emerald-600' }}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>{{ $dateStr }}</span>
                     </div>
                     @if($item->waktu)
-                    <div class="flex items-center gap-2 text-xs text-slate-500 font-bold">
-                        <span class="text-sm shrink-0">🕐</span>
+                    <div class="w-1 h-1 rounded-full bg-slate-300"></div>
+                    <div class="flex items-center gap-1.5 text-slate-500 font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <span>{{ $item->waktu }}</span>
                     </div>
                     @endif
                 </div>
 
-                <div class="mt-4 pt-4 border-t border-slate-100 flex justify-end">
-                    <span class="text-[10px] font-black text-emerald-700 flex items-center gap-1 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all bg-emerald-50 px-3 py-1.5 rounded-xl">
-                        Lihat Detail <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
-                    </span>
+                {{-- Judul Kegiatan --}}
+                <h3 class="text-lg font-bold text-slate-900 mb-3 line-clamp-2 leading-snug group-hover:text-emerald-700 transition-colors">
+                    {{ $item->nama_kegiatan }}
+                </h3>
+
+                {{-- Lokasi --}}
+                <div class="mt-auto flex items-start gap-2 text-slate-600 text-sm">
+                    <svg class="w-4 h-4 mt-0.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span class="line-clamp-1 leading-relaxed">{{ $item->lokasi }}</span>
+                </div>
+
+                {{-- Hover Indicator --}}
+                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-emerald-600">Baca Selengkapnya</span>
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </div>
                 </div>
             </div>
         </a>
