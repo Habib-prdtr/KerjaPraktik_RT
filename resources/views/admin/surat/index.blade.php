@@ -15,15 +15,15 @@
             </svg>
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Cari nomor, jenis, atau nama warga…"
-                   class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+                   class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 w-64">
         </div>
-        <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <option value="">Semua Status</option>
             @foreach($statusList as $s)
             <option value="{{ $s }}" {{ request('status') === $s ? 'selected' : '' }} class="capitalize">{{ ucfirst($s) }}</option>
             @endforeach
         </select>
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-xl hover:bg-blue-700 transition-colors">Filter</button>
+        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white text-sm rounded-xl hover:bg-emerald-700 transition-colors">Filter</button>
         @if(request()->hasAny(['search','status']))
         <a href="{{ route('admin.surat.index') }}" class="px-3 py-2 text-sm text-slate-600 rounded-xl border border-slate-200 hover:bg-slate-50">Reset</a>
         @endif
@@ -34,14 +34,14 @@
         @php
             $statusBadges = [
                 'diajukan' => ['bg-slate-100 text-slate-600', 'Diajukan'],
-                'diproses' => ['bg-blue-100 text-blue-700', 'Diproses'],
+                'diproses' => ['bg-emerald-100 text-emerald-700', 'Diproses'],
                 'selesai'  => ['bg-green-100 text-green-700', 'Selesai'],
                 'ditolak'  => ['bg-red-100 text-red-700', 'Ditolak'],
             ];
         @endphp
         @foreach($statusBadges as $key => [$cls, $label])
         <a href="{{ route('admin.surat.index', ['status' => $key]) }}"
-           class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors {{ request('status') === $key ? 'ring-2 ring-blue-500' : '' }}">
+           class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors {{ request('status') === $key ? 'ring-2 ring-emerald-500' : '' }}">
             <span class="text-xs px-2 py-0.5 rounded-full font-medium {{ $cls }}">{{ $label }}</span>
         </a>
         @endforeach
@@ -52,18 +52,18 @@
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-100 bg-slate-50">
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Nomor Surat</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Jenis Surat</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Warga</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tanggal</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 border-b-0">
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Nomor Surat</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Jenis Surat</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Warga</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Tanggal</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-3.5"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @forelse($surat as $s)
-                    <tr class="hover:bg-slate-50 transition-colors">
+                    <tr class="hover:bg-emerald-50/60 transition-colors border-b border-slate-50">
                         <td class="px-5 py-3.5 font-mono text-xs text-slate-600">{{ $s->nomor_surat }}</td>
                         <td class="px-5 py-3.5 font-medium text-slate-800">{{ $s->jenis_surat }}</td>
                         <td class="px-5 py-3.5 text-slate-600">{{ $s->warga->nama ?? '-' }}</td>
@@ -72,7 +72,7 @@
                             @php
                                 $sc = match($s->status) {
                                     'diajukan'  => 'bg-slate-100 text-slate-600',
-                                    'diproses'  => 'bg-blue-100 text-blue-700',
+                                    'diproses'  => 'bg-emerald-100 text-emerald-700',
                                     'selesai'   => 'bg-green-100 text-green-700',
                                     'ditolak'   => 'bg-red-100 text-red-700',
                                     default     => 'bg-slate-100 text-slate-600',
@@ -82,7 +82,7 @@
                         </td>
                         <td class="px-5 py-3.5 text-right">
                             <a href="{{ route('admin.surat.show', $s) }}"
-                               class="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline">
+                               class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:underline">
                                 Proses →
                             </a>
                         </td>

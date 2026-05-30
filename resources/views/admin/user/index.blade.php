@@ -16,9 +16,9 @@
                 </svg>
                 <input type="text" name="search" value="{{ request('search') }}"
                        placeholder="Cari nama atau email…"
-                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-52">
+                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 w-52">
             </div>
-            <select name="role" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select name="role" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 <option value="">Semua Role</option>
                 <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>Admin</option>
                 <option value="warga" {{ request('role') === 'warga' ? 'selected' : '' }}>Warga</option>
@@ -30,7 +30,7 @@
         </form>
 
         <a href="{{ route('admin.user.create') }}"
-           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm shrink-0">
+           class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
@@ -43,21 +43,21 @@
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-100 bg-slate-50">
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Pengguna</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Role</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Data Warga</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Terdaftar</th>
+                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 border-b-0">
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Pengguna</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Email</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Role</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Data Warga</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Terdaftar</th>
                         <th class="px-5 py-3.5"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @forelse($users as $user)
-                    <tr class="hover:bg-slate-50 transition-colors">
+                    <tr class="hover:bg-emerald-50/60 transition-colors border-b border-slate-50">
                         <td class="px-5 py-3.5">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shrink-0">
+                                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-indigo-600 flex items-center justify-center shrink-0">
                                     <span class="text-white text-xs font-bold">{{ strtoupper(substr($user->name, 0, 2)) }}</span>
                                 </div>
                                 <span class="font-medium text-slate-800">{{ $user->name }}</span>
@@ -65,7 +65,7 @@
                         </td>
                         <td class="px-5 py-3.5 text-slate-500">{{ $user->email }}</td>
                         <td class="px-5 py-3.5">
-                            @php $roleColor = $user->role === 'admin' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'; @endphp
+                            @php $roleColor = $user->role === 'admin' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'; @endphp
                             <span class="text-xs px-2 py-0.5 rounded-full font-medium {{ $roleColor }} capitalize">{{ $user->role }}</span>
                         </td>
                         <td class="px-5 py-3.5 text-slate-500">
@@ -79,7 +79,7 @@
                         <td class="px-5 py-3.5">
                             <div class="flex items-center gap-1.5 justify-end">
                                 <a href="{{ route('admin.user.show', $user) }}"
-                                   class="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Detail">
+                                   class="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="Detail">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>

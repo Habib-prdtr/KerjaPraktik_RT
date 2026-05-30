@@ -9,20 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Subtle mesh bg */
+        .page-bg {
+            background:
+                radial-gradient(ellipse 70% 50% at 0% 0%, rgba(16,185,129,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 100% 100%, rgba(20,184,166,0.05) 0%, transparent 60%),
+                #f4f7f5;
+        }
+    </style>
     @stack('styles')
 </head>
-<body class="bg-slate-50 font-sans antialiased">
+<body class="page-bg font-sans antialiased text-slate-800">
 
     <div class="flex h-screen overflow-hidden">
 
         {{-- ===================== SIDEBAR ===================== --}}
         <aside id="sidebar"
-               class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-blue-900 to-blue-800 shadow-2xl
+               class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-emerald-900 to-emerald-800 shadow-2xl
                       transform -translate-x-full transition-transform duration-300 ease-in-out
                       lg:relative lg:translate-x-0 lg:flex lg:flex-col lg:shrink-0">
 
             {{-- Logo / Branding --}}
-            <div class="flex items-center gap-3 px-6 py-5 border-b border-blue-700/50">
+            <div class="flex items-center gap-3 px-6 py-5 border-b border-emerald-700/50">
                 <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,7 +40,7 @@
                 </div>
                 <div>
                     <p class="text-white font-bold text-sm leading-tight">RT 08 / RW 02</p>
-                    <p class="text-blue-200 text-xs">Sistem Informasi Warga</p>
+                    <p class="text-emerald-200 text-xs">Sistem Informasi Warga</p>
                 </div>
             </div>
 
@@ -40,7 +49,7 @@
 
                 @if(Auth::user()->role === 'admin')
                     {{-- ===== MENU ADMIN ===== --}}
-                    <p class="px-3 pt-2 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Menu Utama</p>
+                    <p class="px-3 pt-2 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Menu Utama</p>
 
                     <a href="{{ route('admin.dashboard') }}"
                        class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -51,7 +60,7 @@
                         Dashboard
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Data Warga</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Data Warga</p>
 
                     <a href="{{ route('admin.kartu-keluarga.index') }}"
                        class="sidebar-link {{ request()->routeIs('admin.kartu-keluarga.*') ? 'active' : '' }}">
@@ -71,7 +80,7 @@
                         Data Warga
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Layanan</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Layanan</p>
 
                     <a href="{{ route('admin.surat.index') }}"
                        class="sidebar-link {{ request()->routeIs('admin.surat.*') ? 'active' : '' }}">
@@ -91,7 +100,7 @@
                         Pengaduan Warga
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Informasi</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Informasi</p>
 
                     <a href="{{ route('admin.pengumuman.index') }}"
                        class="sidebar-link {{ request()->routeIs('admin.pengumuman.*') ? 'active' : '' }}">
@@ -111,7 +120,7 @@
                         Kegiatan RT
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Sistem</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Sistem</p>
 
                     <a href="{{ route('admin.user.index') }}"
                        class="sidebar-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
@@ -124,7 +133,7 @@
 
                 @else
                     {{-- ===== MENU WARGA ===== --}}
-                    <p class="px-3 pt-2 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Menu Utama</p>
+                    <p class="px-3 pt-2 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Menu Utama</p>
 
                     <a href="{{ route('warga.dashboard') }}"
                        class="sidebar-link {{ request()->routeIs('warga.dashboard') ? 'active' : '' }}">
@@ -135,7 +144,7 @@
                         Dashboard
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Layanan</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Layanan</p>
 
                     <a href="{{ route('warga.surat.index') }}"
                        class="sidebar-link {{ request()->routeIs('warga.surat.*') ? 'active' : '' }}">
@@ -155,7 +164,7 @@
                         Pengaduan
                     </a>
 
-                    <p class="px-3 pt-4 pb-1 text-blue-300 text-xs font-semibold uppercase tracking-widest">Informasi</p>
+                    <p class="px-3 pt-4 pb-1 text-emerald-300 text-xs font-semibold uppercase tracking-widest">Informasi</p>
 
                     <a href="{{ route('warga.pengumuman.index') }}"
                        class="sidebar-link {{ request()->routeIs('warga.pengumuman.*') ? 'active' : '' }}">
@@ -178,21 +187,21 @@
             </nav>
 
             {{-- User Footer --}}
-            <div class="px-4 py-4 border-t border-blue-700/50">
+            <div class="px-4 py-4 border-t border-emerald-700/50">
                 <a href="{{ route('profile') }}"
                    class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors duration-200 group">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center shrink-0">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-300 flex items-center justify-center shrink-0">
                         <span class="text-white text-xs font-bold">{{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-white text-sm font-medium truncate">{{ Auth::user()->name }}</p>
-                        <p class="text-blue-300 text-xs capitalize">{{ Auth::user()->role }}</p>
+                        <p class="text-emerald-300 text-xs capitalize">{{ Auth::user()->role }}</p>
                     </div>
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="mt-1">
                     @csrf
                     <button type="submit"
-                            class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-blue-200 hover:text-white hover:bg-red-500/20 transition-all duration-200 text-sm">
+                            class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-emerald-200 hover:text-white hover:bg-red-500/20 transition-all duration-200 text-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
@@ -238,7 +247,7 @@
                     {{-- Avatar --}}
                     <a href="{{ route('profile') }}"
                        class="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-slate-100 transition-colors">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-cyan-400 flex items-center justify-center">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-600 to-teal-400 flex items-center justify-center">
                             <span class="text-white text-xs font-bold">{{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
                         </div>
                         <span class="hidden sm:block text-sm font-medium text-slate-700">{{ Auth::user()->name }}</span>
@@ -273,12 +282,12 @@
 
                 @if(session('info'))
                 <div id="alert-info"
-                     class="flex items-center gap-3 bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-xl text-sm">
-                    <svg class="w-5 h-5 text-blue-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                     class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-xl text-sm">
+                    <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                     </svg>
                     <span class="flex-1">{{ session('info') }}</span>
-                    <button onclick="document.getElementById('alert-info').remove()" class="text-blue-400 hover:text-blue-600">✕</button>
+                    <button onclick="document.getElementById('alert-info').remove()" class="text-emerald-400 hover:text-emerald-600">✕</button>
                 </div>
                 @endif
             </div>

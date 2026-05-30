@@ -1,4 +1,4 @@
-@extends('layouts.warga')
+﻿@extends('layouts.warga')
 @section('title', 'Papan Mading RT — Portal Warga RT 08')
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="absolute top-0 right-0 w-80 h-80 bg-teal-400/25 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
             <div class="relative z-10 flex items-center gap-5">
                 <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl text-3xl">
-                    📢
+                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
                 </div>
                 <div>
                     <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-1.5">Papan Mading RT 08</h1>
@@ -23,7 +23,7 @@
     @if($pengumuman->isEmpty())
     {{-- ====== EMPTY STATE ====== --}}
     <div class="card-premium p-16 text-center bg-white border border-slate-100 shadow-sm">
-        <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm">📭</div>
+        <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-sm"><svg class="w-16 h-16 inline-block text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg></div>
         <h3 class="text-xl font-extrabold text-slate-800 mb-2">Belum Ada Pengumuman</h3>
         <p class="text-slate-500 font-medium max-w-sm mx-auto text-sm leading-relaxed">Saat ini belum ada informasi terbaru dari pengurus RT. Silakan cek berkala ya!</p>
     </div>
@@ -75,3 +75,4 @@
     @endif
 </div>
 @endsection
+

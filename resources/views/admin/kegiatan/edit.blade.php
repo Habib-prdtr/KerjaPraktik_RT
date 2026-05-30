@@ -9,7 +9,7 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
             <h2 class="font-semibold text-slate-800">Edit Kegiatan</h2>
-            <a href="{{ route('admin.kegiatan.show', $kegiatan) }}" class="text-sm text-blue-600 hover:underline">← Detail</a>
+            <a href="{{ route('admin.kegiatan.show', $kegiatan) }}" class="text-sm text-emerald-600 hover:underline">← Detail</a>
         </div>
 
         <form method="POST" action="{{ route('admin.kegiatan.update', $kegiatan) }}" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
@@ -21,7 +21,7 @@
                     Nama Kegiatan <span class="text-red-500">*</span>
                 </label>
                 <input type="text" id="nama_kegiatan" name="nama_kegiatan" value="{{ old('nama_kegiatan', $kegiatan->nama_kegiatan) }}"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('nama_kegiatan') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('nama_kegiatan') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 @error('nama_kegiatan')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
@@ -29,13 +29,13 @@
                 <div>
                     <label for="tanggal" class="block text-sm font-medium text-slate-700 mb-1.5">Tanggal <span class="text-red-500">*</span></label>
                     <input type="date" id="tanggal" name="tanggal" value="{{ old('tanggal', $kegiatan->tanggal) }}"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('tanggal') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('tanggal') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     @error('tanggal')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
                 </div>
                 <div>
                     <label for="lokasi" class="block text-sm font-medium text-slate-700 mb-1.5">Lokasi <span class="text-red-500">*</span></label>
                     <input type="text" id="lokasi" name="lokasi" value="{{ old('lokasi', $kegiatan->lokasi) }}"
-                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('lokasi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full px-4 py-2.5 text-sm rounded-xl border @error('lokasi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     @error('lokasi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <div>
                 <label for="deskripsi" class="block text-sm font-medium text-slate-700 mb-1.5">Deskripsi</label>
                 <textarea id="deskripsi" name="deskripsi" rows="5"
-                          class="w-full px-4 py-3 text-sm rounded-xl border @error('deskripsi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">{{ old('deskripsi', $kegiatan->deskripsi) }}</textarea>
+                          class="w-full px-4 py-3 text-sm rounded-xl border @error('deskripsi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none">{{ old('deskripsi', $kegiatan->deskripsi) }}</textarea>
                 @error('deskripsi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
@@ -58,14 +58,14 @@
                     </div>
                 @endif
                 <input type="file" id="foto" name="foto" accept="image/*"
-                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100">
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-600 hover:file:bg-emerald-100">
                 <p class="text-xs text-slate-500 mt-1.5">Biarkan kosong jika tidak ingin mengganti foto. Format: JPG, PNG, WEBP (Maks: 10MB)</p>
                 @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
             <div class="flex items-center gap-3 pt-2">
                 <button type="submit"
-                        class="px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
+                        class="px-6 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm">
                     Perbarui Kegiatan
                 </button>
                 <a href="{{ route('admin.kegiatan.index') }}"

@@ -40,13 +40,13 @@
 
         <div class="px-6 py-5">
             <div class="flex items-center gap-5 mb-6">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shrink-0">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-indigo-600 flex items-center justify-center shrink-0">
                     <span class="text-white text-2xl font-bold">{{ strtoupper(substr($user->name, 0, 2)) }}</span>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold text-slate-800">{{ $user->name }}</h3>
                     <p class="text-slate-500 text-sm mt-0.5">{{ $user->email }}</p>
-                    @php $roleColor = $user->role === 'admin' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'; @endphp
+                    @php $roleColor = $user->role === 'admin' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'; @endphp
                     <span class="inline-block mt-1 text-xs px-2.5 py-0.5 rounded-full font-medium capitalize {{ $roleColor }}">{{ $user->role }}</span>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
             <h2 class="font-semibold text-slate-800">Data Warga Terhubung</h2>
-            <a href="{{ route('admin.warga.show', $user->warga) }}" class="text-sm text-blue-600 hover:underline">Lihat Detail →</a>
+            <a href="{{ route('admin.warga.show', $user->warga) }}" class="text-sm text-emerald-600 hover:underline">Lihat Detail →</a>
         </div>
         <div class="px-6 py-5 grid grid-cols-2 lg:grid-cols-3 gap-5 text-sm">
             <div>
@@ -105,7 +105,7 @@
             <div class="col-span-2 lg:col-span-3">
                 <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Kartu Keluarga</p>
                 <a href="{{ route('admin.kartu-keluarga.show', $user->warga->kartuKeluarga) }}"
-                   class="mt-1 block text-blue-600 hover:underline">
+                   class="mt-1 block text-emerald-600 hover:underline">
                     {{ $user->warga->kartuKeluarga->kepala_keluarga }} ({{ $user->warga->kartuKeluarga->no_kk }})
                 </a>
             </div>

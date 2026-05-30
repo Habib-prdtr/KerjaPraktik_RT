@@ -1,4 +1,4 @@
-@extends('layouts.warga')
+﻿@extends('layouts.warga')
 @section('title', $kegiatan->nama_kegiatan . ' — Portal Warga RT 08')
 
 @section('content')
@@ -36,7 +36,7 @@
             </div>
             @else
             <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-2xl px-4 py-2 mb-4">
-                <span class="text-base">📅</span>
+                <span class="text-base"><svg class="w-4 h-4 inline-block text-emerald-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
                 <span class="text-[10px] font-extrabold text-white/90 uppercase tracking-widest">Akan Datang</span>
             </div>
             @endif
@@ -60,12 +60,12 @@
     {{-- Info Cards --}}
     <div class="grid grid-cols-2 gap-4">
         <div class="card-premium p-5 text-center bg-white border border-slate-100 shadow-sm">
-            <div class="text-3xl mb-2">📅</div>
+            <div class="text-3xl mb-2"><svg class="w-4 h-4 inline-block text-emerald-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
             <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">TANGGAL</p>
             <p class="text-sm font-extrabold text-slate-800">{{ \Carbon\Carbon::parse($kegiatan->tanggal)->translatedFormat('d M Y') }}</p>
         </div>
         <div class="card-premium p-5 text-center bg-white border border-slate-100 shadow-sm">
-            <div class="text-3xl mb-2">📍</div>
+            <div class="text-3xl mb-2"><svg class="w-3.5 h-3.5 inline-block text-slate-400 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
             <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">LOKASI</p>
             <p class="text-sm font-extrabold text-slate-800 leading-tight line-clamp-2">{{ $kegiatan->lokasi }}</p>
         </div>
@@ -90,7 +90,7 @@
     @if($kegiatan->deskripsi)
     <div class="card-premium p-6 bg-white border border-slate-100 shadow-sm">
         <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-            <span class="text-lg">📋</span>
+            <span class="text-lg"><svg class="w-3.5 h-3.5 inline-block text-slate-400 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></span>
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Rincian Kegiatan</p>
         </div>
         <div class="text-slate-700 text-sm md:text-base font-bold leading-relaxed whitespace-pre-wrap">
@@ -102,7 +102,7 @@
     {{-- CTA Banner --}}
     @if(!$isPast)
     <div class="bg-gradient-to-br from-emerald-50 to-teal-50/50 border border-emerald-100 rounded-3xl p-6 flex items-start gap-4 shadow-sm">
-        <div class="w-12 h-12 rounded-2xl bg-white border border-emerald-100 flex items-center justify-center shrink-0 shadow-sm text-2xl">🤝</div>
+        <div class="w-12 h-12 rounded-2xl bg-white border border-emerald-100 flex items-center justify-center shrink-0 shadow-sm text-2xl"><svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
         <div>
             <p class="text-base font-extrabold text-emerald-950 mb-0.5">Mari Hadir & Berpartisipasi!</p>
             <p class="text-xs text-emerald-800 font-bold leading-relaxed">Kehadiran Bapak/Ibu sekalian sangat berharga demi kerukunan, kelancaran, dan kebersamaan seluruh warga RT 08 RW 02.</p>
@@ -126,3 +126,4 @@
     </a>
 </div>
 @endsection
+

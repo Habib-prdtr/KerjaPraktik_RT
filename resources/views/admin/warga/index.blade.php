@@ -16,22 +16,22 @@
                 </svg>
                 <input type="text" name="search" value="{{ request('search') }}"
                        placeholder="Cari NIK atau nama…"
-                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-56">
+                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 w-56">
             </div>
-            <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select name="status" class="px-3 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 <option value="">Semua Status</option>
                 <option value="aktif" {{ request('status') === 'aktif' ? 'selected' : '' }}>Aktif</option>
                 <option value="pindah" {{ request('status') === 'pindah' ? 'selected' : '' }}>Pindah</option>
                 <option value="meninggal" {{ request('status') === 'meninggal' ? 'selected' : '' }}>Meninggal</option>
             </select>
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-xl hover:bg-blue-700 transition-colors">Filter</button>
+            <button type="submit" class="px-4 py-2 bg-emerald-600 text-white text-sm rounded-xl hover:bg-emerald-700 transition-colors">Filter</button>
             @if(request()->hasAny(['search','status']))
             <a href="{{ route('admin.warga.index') }}" class="px-3 py-2 text-sm text-slate-600 rounded-xl border border-slate-200 hover:bg-slate-50">Reset</a>
             @endif
         </form>
 
         <a href="{{ route('admin.warga.create') }}"
-           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm shrink-0">
+           class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
@@ -44,19 +44,19 @@
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-100 bg-slate-50">
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Nama / NIK</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">JK</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Agama</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Pekerjaan</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">KK</th>
-                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 border-b-0">
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Nama / NIK</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">JK</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Agama</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Pekerjaan</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">KK</th>
+                        <th class="text-left px-5 py-3.5 text-xs font-semibold text-white/90 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-3.5"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @forelse($warga as $w)
-                    <tr class="hover:bg-slate-50 transition-colors">
+                    <tr class="hover:bg-emerald-50/60 transition-colors border-b border-slate-50">
                         <td class="px-5 py-3.5">
                             <p class="font-medium text-slate-800">{{ $w->nama }}</p>
                             <p class="font-mono text-xs text-slate-400">{{ $w->nik }}</p>
@@ -66,7 +66,7 @@
                         <td class="px-5 py-3.5 text-slate-500">{{ $w->pekerjaan }}</td>
                         <td class="px-5 py-3.5 text-slate-500 text-xs">
                             @if($w->kartuKeluarga)
-                            <a href="{{ route('admin.kartu-keluarga.show', $w->kartuKeluarga) }}" class="hover:text-blue-600 hover:underline">
+                            <a href="{{ route('admin.kartu-keluarga.show', $w->kartuKeluarga) }}" class="hover:text-emerald-600 hover:underline">
                                 {{ $w->kartuKeluarga->kepala_keluarga }}
                             </a>
                             @else
@@ -87,7 +87,7 @@
                         <td class="px-5 py-3.5">
                             <div class="flex items-center gap-2 justify-end">
                                 <a href="{{ route('admin.warga.show', $w) }}"
-                                   class="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Detail">
+                                   class="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="Detail">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>

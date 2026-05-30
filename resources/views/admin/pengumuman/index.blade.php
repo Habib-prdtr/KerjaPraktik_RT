@@ -16,7 +16,7 @@
                 </svg>
                 <input type="text" name="search" value="{{ request('search') }}"
                        placeholder="Cari judul pengumuman…"
-                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-56">
+                       class="pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 w-56">
             </div>
             <button type="submit" class="px-4 py-2 bg-slate-100 text-slate-700 text-sm rounded-xl hover:bg-slate-200 transition-colors">Cari</button>
             @if(request('search'))
@@ -25,7 +25,7 @@
         </form>
 
         <a href="{{ route('admin.pengumuman.create') }}"
-           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm shrink-0">
+           class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors shadow-sm shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
@@ -36,7 +36,7 @@
     {{-- List Pengumuman --}}
     <div class="space-y-3">
         @forelse($pengumuman as $p)
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 px-5 py-4 flex items-start gap-4 hover:border-blue-100 transition-colors">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 px-5 py-4 flex items-start gap-4 hover:border-emerald-100 transition-colors">
             <div class="w-11 h-11 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -60,7 +60,7 @@
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
                 <a href="{{ route('admin.pengumuman.show', $p) }}"
-                   class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Detail">
+                   class="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="Detail">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -90,7 +90,7 @@
                       d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
             </svg>
             <p class="font-medium">Belum ada pengumuman.</p>
-            <a href="{{ route('admin.pengumuman.create') }}" class="text-blue-600 text-sm mt-1 inline-block hover:underline">Buat sekarang →</a>
+            <a href="{{ route('admin.pengumuman.create') }}" class="text-emerald-600 text-sm mt-1 inline-block hover:underline">Buat sekarang →</a>
         </div>
         @endforelse
     </div>

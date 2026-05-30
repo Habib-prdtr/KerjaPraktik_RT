@@ -1,4 +1,4 @@
-@extends('layouts.warga')
+﻿@extends('layouts.warga')
 @section('title', $pengumuman->judul . ' — Portal Warga RT 08')
 
 @section('content')
@@ -21,7 +21,7 @@
         <div class="absolute top-0 right-0 w-64 h-64 bg-teal-400/25 rounded-full -translate-y-1/3 translate-x-1/4 blur-3xl pointer-events-none"></div>
         <div class="relative z-10 px-7 py-10 md:px-10 md:py-12">
             <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-2xl px-3.5 py-2 mb-5">
-                <span class="text-base">📢</span>
+                <span class="text-base"><svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg></span>
                 <span class="text-[10px] font-black text-white/90 uppercase tracking-widest">Pengumuman RT</span>
             </div>
             <h1 class="text-white text-xl md:text-3xl font-extrabold leading-tight mb-5 drop-shadow-sm">{{ $pengumuman->judul }}</h1>
@@ -69,3 +69,4 @@
     </div>
 </div>
 @endsection
+
