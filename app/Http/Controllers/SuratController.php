@@ -205,7 +205,30 @@ class SuratController extends Controller
 
         return view('warga.surat.show', compact('surat'));
     }
+    // =============================
+    // [WARGA] Hapus/Batalkan surat
+    // =============================
+    public function destroy(Surat $surat)
+    {
+        $warga = Auth::user()->warga;
+        if (!$warga || $surat->warga_id !== $warga->id) {
+            abort(403, 'Akses ditolak.');
+        }
 
+        if ($surat->status !== 'diajukan') {
+            return redirect()->route('warga.surat.show', $surat)
+                ->with('error', 'Hanya surat dengan status "diajukan" yang dapat dibatalkan.');
+        }
+
+        if ($surat->file_pdf && Storage::disk('public')->exists($surat->file_pdf)) {
+            Storage::disk('public')->delete($surat->file_pdf);
+        }
+
+        $surat->delete();
+
+        return redirect()->route('warga.surat.index')
+            ->with('success', 'Pengajuan surat berhasil dibatalkan dan dihapus.');
+    }
     // =============================
     // Helper: generate nomor surat
     // =============================

@@ -71,6 +71,7 @@ Route::middleware(['auth', 'is_warga'])->prefix('warga')->name('warga.')->group(
     Route::get('/surat/buat', [SuratController::class, 'create'])->name('surat.create');
     Route::post('/surat', [SuratController::class, 'store'])->name('surat.store');
     Route::get('/surat/{surat}', [SuratController::class, 'showMySurat'])->name('surat.show');
+    Route::delete('/surat/{surat}', [SuratController::class, 'destroy'])->name('surat.destroy');
 
     // Pengaduan
     Route::get('/pengaduan', [PengaduanController::class, 'myPengaduan'])->name('pengaduan.index');

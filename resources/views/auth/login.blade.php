@@ -5,13 +5,13 @@
 @section('content')
 
 <div class="mb-6">
-    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2">Selamat Datang, Tetangga! 👋</h2>
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">Selamat Datang, Tetangga! <svg class="w-8 h-8 text-amber-500 origin-bottom-right animate-[wave_2s_ease-in-out_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/></svg></h2>
     <p class="text-slate-500 font-semibold text-xs sm:text-sm">Silakan masuk menggunakan akun Bapak/Ibu untuk mengakses seluruh layanan digital RT 08.</p>
 </div>
 
 @if($errors->any())
 <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 flex items-start gap-3 alert-enter">
-    <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5 text-lg">⚠️</div>
+    <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5"><svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
     <div class="flex-1">
         <p class="text-xs font-black text-amber-800 mb-1">Ada sedikit kendala:</p>
         <ul class="list-disc pl-4 space-y-1">
@@ -77,7 +77,7 @@
     {{-- CTA Button --}}
     <button type="submit" id="login-btn"
             class="btn-shimmer w-full bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 text-white font-extrabold py-3.5 px-6 rounded-2xl text-sm shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/55 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 group mt-2">
-        <span>Masuk ke Beranda Warga 🚪</span>
+        <span>Masuk ke Beranda Warga</span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>
@@ -94,7 +94,7 @@
     <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
     </svg>
-    Daftar Akun Warga Baru ✍️
+    Daftar Akun Warga Baru
 </a>
 
 @endsection

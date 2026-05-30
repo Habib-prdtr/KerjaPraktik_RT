@@ -255,39 +255,51 @@
                 </div>
             </header>
 
-            {{-- ALERT MESSAGES --}}
+            {{-- ALERT MESSAGES (TOAST) --}}
             @if(session('success') || session('error') || session('info'))
-            <div class="px-4 lg:px-6 pt-4">
+            <div class="fixed top-20 right-4 sm:right-6 z-[100] flex flex-col gap-3 pointer-events-none w-full max-w-sm px-4 sm:px-0">
                 @if(session('success'))
-                <div id="alert-success"
-                     class="flex items-center gap-3 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl text-sm">
-                    <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="flex-1">{{ session('success') }}</span>
-                    <button onclick="document.getElementById('alert-success').remove()" class="text-green-400 hover:text-green-600">✕</button>
+                <div id="admin-toast-success" class="pointer-events-auto toast-enter bg-white border-l-4 border-emerald-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-slate-800">Berhasil!</p>
+                        <p class="text-xs text-slate-500 mt-0.5">{{ session('success') }}</p>
+                    </div>
+                    <button onclick="this.closest('.pointer-events-auto').style.display='none'" class="text-slate-400 hover:text-slate-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
                 @endif
 
                 @if(session('error'))
-                <div id="alert-error"
-                     class="flex items-center gap-3 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-sm">
-                    <svg class="w-5 h-5 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="flex-1">{{ session('error') }}</span>
-                    <button onclick="document.getElementById('alert-error').remove()" class="text-red-400 hover:text-red-600">✕</button>
+                <div id="admin-toast-error" class="pointer-events-auto toast-enter bg-white border-l-4 border-red-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-slate-800">Gagal!</p>
+                        <p class="text-xs text-slate-500 mt-0.5">{{ session('error') }}</p>
+                    </div>
+                    <button onclick="this.closest('.pointer-events-auto').style.display='none'" class="text-slate-400 hover:text-slate-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
                 @endif
 
                 @if(session('info'))
-                <div id="alert-info"
-                     class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-xl text-sm">
-                    <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="flex-1">{{ session('info') }}</span>
-                    <button onclick="document.getElementById('alert-info').remove()" class="text-emerald-400 hover:text-emerald-600">✕</button>
+                <div id="admin-toast-info" class="pointer-events-auto toast-enter bg-white border-l-4 border-amber-500 rounded-xl p-4 shadow-2xl flex items-start gap-3 w-full">
+                    <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-slate-800">Informasi</p>
+                        <p class="text-xs text-slate-500 mt-0.5">{{ session('info') }}</p>
+                    </div>
+                    <button onclick="this.closest('.pointer-events-auto').style.display='none'" class="text-slate-400 hover:text-slate-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
                 @endif
             </div>
@@ -323,6 +335,12 @@
             color: #ffffff;
             box-shadow: inset 3px 0 0 #60a5fa;
         }
+
+        @keyframes slideInRight {
+            from { opacity:0; transform: translateX(50px); }
+            to { opacity:1; transform: translateX(0); }
+        }
+        .toast-enter { animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
     </style>
 
     {{-- (Global modal bawaan dihapus, diganti menggunakan SweetAlert2) --}}
@@ -343,11 +361,14 @@
             }
         }
 
-        // Auto-close alert setelah 5 detik
+        // Auto-close toast setelah 5 detik
         setTimeout(() => {
-            ['alert-success', 'alert-error', 'alert-info'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.remove();
+            const toasts = document.querySelectorAll('[id^="admin-toast"]');
+            toasts.forEach(el => {
+                el.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(20px)';
+                setTimeout(() => el.remove(), 500);
             });
         }, 5000);
 

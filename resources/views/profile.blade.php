@@ -29,8 +29,8 @@
                                 ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-amber-500/25'
                                 : 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/25';
                         @endphp
-                        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider {{ $roleColor }}">
-                            {{ $user->role === 'admin' ? '👑 Admin' : '🏠 Warga' }}
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider {{ $roleColor }}">
+                            {!! $user->role === 'admin' ? '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> Admin' : '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg> Warga' !!}
                         </span>
                         @if($user->warga)
                         <span class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -57,13 +57,13 @@
                     <p class="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-1">Status Kependudukan</p>
                     @php
                         $statusData = match($user->warga->status) {
-                            'aktif'     => ['cls' => 'text-emerald-700 font-black', 'emoji' => '✅'],
-                            'pindah'    => ['cls' => 'text-amber-700 font-black', 'emoji' => '🚚'],
-                            'meninggal' => ['cls' => 'text-slate-500 font-black', 'emoji' => '🕊️'],
-                            default     => ['cls' => 'text-slate-600 font-black', 'emoji' => '❓'],
+                            'aktif'     => ['cls' => 'text-emerald-700 font-black', 'emoji' => '<svg class="w-4 h-4 inline-block -mt-0.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'],
+                            'pindah'    => ['cls' => 'text-amber-700 font-black', 'emoji' => '<svg class="w-4 h-4 inline-block -mt-0.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>'],
+                            'meninggal' => ['cls' => 'text-slate-500 font-black', 'emoji' => '<svg class="w-4 h-4 inline-block -mt-0.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>'],
+                            default     => ['cls' => 'text-slate-600 font-black', 'emoji' => '<svg class="w-4 h-4 inline-block -mt-0.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'],
                         };
                     @endphp
-                    <p class="text-sm {{ $statusData['cls'] }} capitalize">{{ $statusData['emoji'] }} {{ $user->warga->status }}</p>
+                    <p class="text-sm {{ $statusData['cls'] }} capitalize flex items-center gap-1.5">{!! $statusData['emoji'] !!} {{ $user->warga->status }}</p>
                 </div>
                 @if($user->warga->kartuKeluarga)
                 <div class="col-span-1 sm:col-span-2 lg:col-span-3 bg-slate-50 border border-slate-200/60 rounded-2xl p-4">
@@ -75,7 +75,7 @@
             </div>
             @else
             <div class="mt-5 bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-start gap-3">
-                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-lg">⚠️</div>
+                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
                 <div>
                     <p class="text-sm font-black text-amber-900 mb-0.5">Akun Belum Terhubung</p>
                     <p class="text-xs text-amber-700 font-medium leading-relaxed">Akun Anda belum terhubung ke data warga fisik RT. Silakan hubungi pengurus RT untuk sinkronisasi data Anda.</p>
@@ -88,13 +88,13 @@
     {{-- ====== Form Update Profil ====== --}}
     <div class="card-premium overflow-hidden">
         <div class="px-7 py-5 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-emerald-50/10">
-            <h3 class="font-black text-slate-800 text-lg">Perbarui Profil Bapak/Ibu 📝</h3>
+            <h3 class="font-black text-slate-800 text-lg flex items-center gap-2">Perbarui Profil Bapak/Ibu <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></h3>
             <p class="text-xs text-slate-450 font-semibold mt-0.5">Silakan perbarui data Anda jika diperlukan. Kosongkan sandi jika tidak ingin diganti.</p>
         </div>
 
         @if(session('success'))
         <div class="mx-7 mt-5 bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center gap-3 alert-enter">
-            <span class="text-xl">✅</span>
+            <svg class="w-6 h-6 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <p class="text-sm font-bold text-emerald-700">{{ session('success') }}</p>
         </div>
         @endif
@@ -172,7 +172,7 @@
                 <button type="submit"
                         class="flex-1 bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/35 hover:-translate-y-0.5 transition-all text-sm flex items-center justify-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    Simpan Perubahan Profil 💾
+                    Simpan Perubahan Profil
                 </button>
             </div>
         </form>
