@@ -1,4 +1,4 @@
-﻿@extends('layouts.warga')
+@extends('layouts.warga')
 @section('title', $kegiatan->nama_kegiatan . ' — Portal Warga RT 08')
 
 @section('content')
@@ -27,7 +27,7 @@
         <div class="relative z-10 px-7 py-10 md:px-10 md:py-12">
             @if($isToday)
             <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 rounded-2xl px-4 py-2 mb-4 animate-pulse">
-                <span class="text-base">🎉</span>
+                <span class="text-base"><svg class="w-5 h-5 text-emerald-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"/></svg></span>
                 <span class="text-[10px] font-black text-emerald-100 uppercase tracking-widest">Hari Ini!</span>
             </div>
             @elseif($isPast)
@@ -51,7 +51,7 @@
             <img src="{{ Storage::url($kegiatan->foto) }}" alt="Foto Kegiatan"
                  class="w-full h-auto max-h-80 object-cover group-hover:scale-[1.01] transition-transform duration-700">
             <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <p class="text-[10px] font-black text-slate-700 uppercase tracking-widest">📸 Dokumentasi</p>
+                <p class="flex items-center gap-1 text-[10px] font-black text-slate-700 uppercase tracking-widest"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Dokumentasi</p>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
         </div>
         @if($kegiatan->waktu)
         <div class="card-premium p-5 col-span-2 flex items-center gap-5 bg-white border border-slate-100 shadow-sm">
-            <div class="text-3xl shrink-0">🕐</div>
+            <div class="shrink-0"><svg class="w-9 h-9 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
             <div class="flex-1">
                 <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-0.5">WAKTU PELAKSANAAN</p>
                 <p class="text-base font-extrabold text-slate-800">{{ $kegiatan->waktu }} WIB</p>
@@ -110,7 +110,7 @@
     </div>
     @else
     <div class="bg-slate-50 border border-slate-200 border-dashed rounded-3xl p-6 flex items-center gap-4">
-        <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm text-2xl">📸</div>
+        <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm"><svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
         <div>
             <p class="text-sm font-extrabold text-slate-700">Kegiatan Telah Selesai</p>
             <p class="text-xs font-bold text-slate-500 mt-0.5">Terima kasih banyak atas partisipasi, tenaga, dan waktu yang diluangkan oleh seluruh warga RT!</p>

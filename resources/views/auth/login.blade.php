@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="mb-6">
-    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">Selamat Datang, Tetangga! <svg class="w-8 h-8 text-amber-500 origin-bottom-right animate-[wave_2s_ease-in-out_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/></svg></h2>
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">Selamat Datang, Tetangga! <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></h2>
     <p class="text-slate-500 font-semibold text-xs sm:text-sm">Silakan masuk menggunakan akun Bapak/Ibu untuk mengakses seluruh layanan digital RT 08.</p>
 </div>
 

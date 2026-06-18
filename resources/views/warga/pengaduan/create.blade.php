@@ -68,6 +68,9 @@
                     <input id="foto" type="file" name="foto" accept="image/*" class="hidden">
                 </label>
                 <p id="file-name" class="text-xs text-emerald-600 font-extrabold mt-2.5 hidden bg-emerald-50 border border-emerald-100 rounded-xl px-3 py-1.5 w-max"></p>
+                <div id="image-preview-container" class="mt-4 hidden">
+                    <img id="image-preview" src="" alt="Preview Foto" class="w-full max-w-sm rounded-2xl border-2 border-slate-200 object-cover shadow-sm">
+                </div>
             </div>
 
             {{-- Warning banner --}}
@@ -102,12 +105,25 @@
 <script>
     const fotoInput = document.getElementById('foto');
     const fileName = document.getElementById('file-name');
+    const previewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview');
+
     fotoInput.addEventListener('change', (e) => {
-        if (e.target.files[0]) {
-            fileName.innerHTML = '<svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Berhasil Memilih: ' + e.target.files[0].name;
+        const file = e.target.files[0];
+        if (file) {
+            fileName.innerHTML = '<svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Berhasil Memilih: ' + file.name;
             fileName.classList.remove('hidden');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                previewContainer.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
         } else {
             fileName.classList.add('hidden');
+            previewContainer.classList.add('hidden');
+            imagePreview.src = '';
         }
     });
 </script>
