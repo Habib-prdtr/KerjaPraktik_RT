@@ -61,6 +61,9 @@
                 <input type="file" id="foto" name="foto" accept="image/*"
                        class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-600 hover:file:bg-emerald-100">
                 <p class="text-xs text-slate-500 mt-1.5">Format: JPG, PNG, WEBP (Maks: 10MB)</p>
+                <div id="image-preview-container" class="mt-3 hidden">
+                    <img id="image-preview" src="" alt="Preview Foto" class="max-w-xs rounded-xl border border-slate-200 object-cover shadow-sm">
+                </div>
                 @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
@@ -78,3 +81,26 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    const fotoInput = document.getElementById('foto');
+    const previewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview');
+
+    fotoInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                previewContainer.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.classList.add('hidden');
+            imagePreview.src = '';
+        }
+    });
+</script>
+@endpush

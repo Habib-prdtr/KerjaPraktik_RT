@@ -127,7 +127,7 @@
 <body class="page-bg antialiased text-slate-800 flex flex-col min-h-screen relative overflow-x-hidden">
 
     <!-- ====== FLOATING NAVBAR ====== -->
-    <div class="fixed top-0 inset-x-0 z-50 pt-3 px-4 sm:px-6 pointer-events-none">
+    <div class="absolute md:fixed top-0 inset-x-0 z-50 pt-3 px-4 sm:px-6 pointer-events-none">
         <nav class="max-w-6xl mx-auto nav-glass rounded-2xl md:rounded-full pointer-events-auto transition-all duration-300">
             <div class="px-4 sm:px-5 h-16 flex items-center justify-between gap-4">
 

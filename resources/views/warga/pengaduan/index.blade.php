@@ -97,7 +97,7 @@
                 @if($aduan->tanggapan_admin)
                 <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 mb-4">
                     <p class="text-[10px] font-black text-emerald-800 uppercase tracking-wider mb-1 flex items-center gap-1">
-                        <span>💬</span> Balasan Pak RT:
+                        <svg class="w-4 h-4 text-emerald-800 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> Balasan Pak RT:
                     </p>
                     <p class="text-xs text-slate-700 font-bold leading-normal line-clamp-2">{{ $aduan->tanggapan_admin }}</p>
                 </div>
