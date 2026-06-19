@@ -98,8 +98,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // ======================================================
-// ROOT — redirect ke login
+// ROOT — Landing Page
 // ======================================================
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', [\App\Http\Controllers\LandingController::class, 'index'])->name('landing');
