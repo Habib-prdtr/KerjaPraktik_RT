@@ -12,6 +12,9 @@ class LandingController extends Controller
         // Ambil 3 pengumuman terbaru untuk ditampilkan di mading landing page
         $pengumuman = Pengumuman::with('user')->orderByDesc('tanggal')->take(3)->get();
         
-        return view('landing', compact('pengumuman'));
+        // Ambil 3 kegiatan terbaru
+        $kegiatan = \App\Models\KegiatanRt::with('user')->orderByDesc('tanggal')->take(3)->get();
+        
+        return view('landing', compact('pengumuman', 'kegiatan'));
     }
 }

@@ -12,6 +12,7 @@ class Pengumuman extends Model
         'judul',
         'isi',
         'tanggal',
+        'foto',
         'created_by'
     ];
 

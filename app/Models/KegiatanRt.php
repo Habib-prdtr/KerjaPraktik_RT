@@ -17,6 +17,10 @@ class KegiatanRt extends Model
         'created_by'
     ];
 
+    protected $casts = [
+        'foto' => 'array',
+    ];
+
     // 🔗 relasi ke user (admin/pengurus)
     public function user()
     {
