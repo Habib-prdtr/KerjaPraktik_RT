@@ -6,11 +6,228 @@
 <div class="space-y-6 pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- ====== HERO SECTION (WELCOME BANNER) ====== --}}
-    <div class="hero-warga rounded-[2.5rem] shadow-xl shadow-emerald-900/10">
+    <div class="hero-warga rounded-[2.5rem] shadow-xl shadow-emerald-900/10 relative overflow-hidden">
+        <!-- Festive Floating Balloons, Confetti & Sparkles Background -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
+            <!-- Styles for festive elements -->
+            <style>
+                @keyframes float-balloon {
+                    0% { transform: translateY(120%) translateX(0) rotate(0deg); opacity: 0; }
+                    10% { opacity: 0.35; }
+                    90% { opacity: 0.35; }
+                    100% { transform: translateY(-120%) translateX(20px) rotate(15deg); opacity: 0; }
+                }
+                @keyframes confetti-fall {
+                    0% { transform: translateY(-10px) rotate(0deg); opacity: 0.8; }
+                    100% { transform: translateY(320px) rotate(720deg); opacity: 0; }
+                }
+                .asri-balloon {
+                    position: absolute;
+                    border-radius: 50%;
+                    animation: float-balloon linear infinite;
+                }
+                .confetti-particle {
+                    position: absolute;
+                    top: -10px;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 1.5px;
+                    animation: confetti-fall 4s linear infinite;
+                }
+            </style>
+            
+            <!-- Confetti Rain (20 colorful elements) -->
+            <div class="confetti-particle bg-red-400" style="left: 5%; animation-duration: 3.5s; animation-delay: 0s;"></div>
+            <div class="confetti-particle bg-amber-400" style="left: 15%; animation-duration: 4.5s; animation-delay: 1.5s;"></div>
+            <div class="confetti-particle bg-teal-300" style="left: 25%; animation-duration: 3.8s; animation-delay: 0.5s;"></div>
+            <div class="confetti-particle bg-indigo-400" style="left: 35%; animation-duration: 4.2s; animation-delay: 2.5s;"></div>
+            <div class="confetti-particle bg-rose-400" style="left: 45%; animation-duration: 3.6s; animation-delay: 1s;"></div>
+            <div class="confetti-particle bg-emerald-400" style="left: 55%; animation-duration: 4s; animation-delay: 3s;"></div>
+            <div class="confetti-particle bg-yellow-300" style="left: 65%; animation-duration: 4.4s; animation-delay: 0.2s;"></div>
+            <div class="confetti-particle bg-sky-400" style="left: 75%; animation-duration: 3.7s; animation-delay: 1.8s;"></div>
+            <div class="confetti-particle bg-purple-400" style="left: 85%; animation-duration: 4.1s; animation-delay: 0.8s;"></div>
+            <div class="confetti-particle bg-pink-400" style="left: 95%; animation-duration: 4.3s; animation-delay: 2.2s;"></div>
+            <div class="confetti-particle bg-emerald-300" style="left: 10%; animation-duration: 3.9s; animation-delay: 2.8s;"></div>
+            <div class="confetti-particle bg-amber-300" style="left: 30%; animation-duration: 4.6s; animation-delay: 0.7s;"></div>
+            <div class="confetti-particle bg-teal-400" style="left: 50%; animation-duration: 3.5s; animation-delay: 2.1s;"></div>
+            <div class="confetti-particle bg-rose-300" style="left: 70%; animation-duration: 4.2s; animation-delay: 1.2s;"></div>
+            <div class="confetti-particle bg-indigo-300" style="left: 90%; animation-duration: 3.8s; animation-delay: 0.3s;"></div>
+
+            <!-- Balloon 1 (Red) -->
+            <div class="asri-balloon w-8 h-10 bg-red-400 bottom-0 left-[12%]" style="animation-duration: 9s; animation-delay: 0s;">
+                <div class="absolute bottom-[-3px] left-[13px] w-1.5 h-1.5 bg-red-500 rotate-45"></div>
+                <div class="absolute bottom-[-15px] left-[14px] w-[1px] h-4 bg-white/40"></div>
+            </div>
+            <!-- Balloon 2 (Gold) -->
+            <div class="asri-balloon w-10 h-12 bg-amber-400 bottom-0 left-[42%]" style="animation-duration: 11s; animation-delay: 2.5s;">
+                <div class="absolute bottom-[-3px] left-[17px] w-1.5 h-1.5 bg-amber-500 rotate-45"></div>
+                <div class="absolute bottom-[-18px] left-[18px] w-[1px] h-5 bg-white/40"></div>
+            </div>
+            <!-- Balloon 3 (Teal) -->
+            <div class="asri-balloon w-9 h-11 bg-teal-300 bottom-0 left-[72%]" style="animation-duration: 10s; animation-delay: 1.2s;">
+                <div class="absolute bottom-[-3px] left-[15px] w-1.5 h-1.5 bg-teal-400 rotate-45"></div>
+                <div class="absolute bottom-[-16px] left-[16px] w-[1px] h-4.5 bg-white/40"></div>
+            </div>
+            <!-- Twinkling Sparkles Background -->
+            <div class="absolute top-[20%] left-[28%] w-3 h-3 bg-amber-200 rounded-full animate-ping" style="animation-duration: 3.5s;"></div>
+            <div class="absolute top-[50%] left-[62%] w-2 h-2 bg-white rounded-full animate-ping" style="animation-duration: 4.5s;"></div>
+        </div>
+
         <div class="relative z-10 px-6 py-10 md:px-12 md:py-14">
             <!-- Warm decorative glow orbs -->
             <div class="absolute top-0 right-0 w-80 h-80 bg-teal-400/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
             <div class="absolute bottom-0 left-10 w-48 h-48 bg-emerald-400/20 rounded-full blur-3xl translate-y-1/3 pointer-events-none"></div>
+
+            <!-- Si Asri Mascot & Chat Bubble -->
+            <div id="asri-mascot-container" class="absolute right-4 top-4 lg:right-72 lg:top-auto lg:bottom-0 w-24 h-24 lg:w-44 lg:h-44 pointer-events-auto cursor-pointer z-20 group/asri">
+                <!-- Speech Bubble -->
+                <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[10px] lg:text-xs font-black px-4 py-2 rounded-full shadow-2xl border border-white/20 opacity-0 scale-75 pointer-events-none transition-all duration-300 group-hover/asri:opacity-100 group-hover/asri:scale-100 group-hover/asri:-top-16 select-none whitespace-nowrap z-30">
+                    Halo, Tetangga! 👋
+                    <div class="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-teal-500 border-r border-b border-white/20 rotate-45"></div>
+                </div>
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-lg">
+                    <!-- Styles for Si Asri -->
+                    <style>
+                        @keyframes asri-bob {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-8px); }
+                        }
+                        @keyframes asri-jump {
+                            0%, 100% { transform: translateY(0) scale(1); }
+                            30% { transform: translateY(-20px) scale(0.95); }
+                            50% { transform: translateY(0) scale(1.05); }
+                            70% { transform: translateY(-6px) scale(0.98); }
+                        }
+                        @keyframes asri-wave {
+                            0%, 100% { transform: rotate(0deg); }
+                            50% { transform: rotate(-15deg); }
+                        }
+                        @keyframes asri-wave-fast {
+                            0%, 100% { transform: rotate(0deg); }
+                            50% { transform: rotate(-35deg); }
+                        }
+                        @keyframes asri-eye-blink {
+                            0%, 90%, 100% { transform: scaleY(1); }
+                            95% { transform: scaleY(0.1); }
+                        }
+                        @keyframes bird-wing-flap-fast {
+                            0%, 100% { transform: rotate(0deg); }
+                            50% { transform: rotate(-25deg); }
+                        }
+                        @keyframes bird-fly-up {
+                            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+                            100% { transform: translate(-30px, -45px) scale(0.8); opacity: 0; }
+                        }
+                        @keyframes sparkle-burst {
+                            0% { opacity: 0; transform: scale(0.5); }
+                            50% { opacity: 1; transform: scale(1.1); }
+                            100% { opacity: 0; transform: scale(0.5); }
+                        }
+
+                        .asri-bob-anim { animation: asri-bob 4s ease-in-out infinite; }
+                        .asri-arm-anim { animation: asri-wave 2.5s ease-in-out infinite; transform-origin: 60px 120px; }
+                        .asri-eye-anim { animation: asri-eye-blink 5s infinite; transform-origin: 100px 78px; }
+                        .asri-bird-wing-anim { transform-origin: 96px 28px; }
+
+                        /* Hover interactive jumping & fast waving */
+                        #asri-mascot-container:hover .asri-bob-anim {
+                            animation: asri-jump 0.9s ease-in-out infinite;
+                        }
+                        #asri-mascot-container:hover .asri-arm-anim {
+                            animation: asri-wave-fast 0.6s ease-in-out infinite;
+                        }
+                        #asri-mascot-container:hover .asri-bird-anim {
+                            animation: bird-fly-up 0.8s forwards ease-out;
+                        }
+                        #asri-mascot-container:hover .asri-bird-wing-anim {
+                            animation: bird-wing-flap-fast 0.2s infinite;
+                        }
+                        #asri-mascot-container:hover .asri-sparkles {
+                            animation: sparkle-burst 1.2s ease-in-out infinite;
+                            transform-origin: 100px 100px;
+                        }
+                    </style>
+
+                    <!-- MAGIC SPARKLES BURST (Lower z-index) -->
+                    <g class="asri-sparkles" opacity="0">
+                        <path d="M50 70 L52 75 L57 77 L52 79 L50 84 L48 79 L43 77 L48 75 Z" fill="#fbbf24" />
+                        <path d="M150 70 L152 75 L157 77 L152 79 L150 84 L148 79 L143 77 L148 75 Z" fill="#fbbf24" />
+                        <path d="M60 40 L62 43 L66 45 L62 47 L60 50 L58 47 L54 45 L58 43 Z" fill="#fbbf24" />
+                        <path d="M140 40 L142 43 L146 45 L142 47 L140 50 L138 47 L134 45 L138 43 Z" fill="#fbbf24" />
+                    </g>
+
+                    <g class="asri-bob-anim">
+                        <!-- BODY / SHIRT (Batik style) -->
+                        <path d="M60 135C60 115 70 105 100 105C130 105 140 115 140 135V180H60V135Z" fill="#047857" />
+                        <!-- Batik patterns -->
+                        <circle cx="80" cy="125" r="3" fill="#a7f3d0" opacity="0.8"/>
+                        <circle cx="120" cy="125" r="3" fill="#a7f3d0" opacity="0.8"/>
+                        <circle cx="100" cy="140" r="4.5" fill="#fbbf24" opacity="0.9"/>
+                        <circle cx="80" cy="155" r="3" fill="#a7f3d0" opacity="0.8"/>
+                        <circle cx="120" cy="155" r="3" fill="#a7f3d0" opacity="0.8"/>
+                        <path d="M96 155 L104 155 M100 151 L100 159" stroke="#a7f3d0" stroke-width="1.5"/>
+
+                        <!-- COLLAR -->
+                        <path d="M85 105L100 120L115 105" stroke="#fef08a" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- LEFT HAND (Resting/holding side) -->
+                        <path d="M140 120C150 130 155 140 150 150C148 154 143 153 140 150L135 135" stroke="#047857" stroke-width="14" stroke-linecap="round"/>
+                        <circle cx="150" cy="152" r="7" fill="#fbcfe8" />
+
+                        <!-- RIGHT ARM & HAND (Waving) -->
+                        <g class="asri-arm-anim">
+                            <path d="M60 120C45 110 32 90 38 75" stroke="#047857" stroke-width="14" stroke-linecap="round"/>
+                            <circle cx="36" cy="70" r="9" fill="#fbcfe8" />
+                            <path d="M30 63C29 59 31 56 34 57" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M36 61C35 57 37 54 40 55" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M42 63C42 59 44 56 47 58" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- HEAD (Skin) -->
+                        <circle cx="100" cy="78" r="36" fill="#fbcfe8" />
+
+                        <!-- EARS -->
+                        <circle cx="63" cy="80" r="7" fill="#fbcfe8" />
+                        <circle cx="137" cy="80" r="7" fill="#fbcfe8" />
+
+                        <!-- HAIR (Under Peci) -->
+                        <path d="M68 63C75 53 125 53 132 63C132 63 120 50 100 50C80 50 68 63 68 63Z" fill="#1e293b" />
+
+                        <!-- PECI (Indonesian cap) -->
+                        <path d="M66 58 C66 42 75 39 100 39 C125 39 134 42 134 58 Z" fill="#0f172a" />
+                        <!-- Golden Peci accent -->
+                        <path d="M66 56 L134 56" stroke="#fbbf24" stroke-width="1.5"/>
+                        <path d="M100 39 L100 46" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/>
+
+                        <!-- CUTE BLUEBIRD ON PECI -->
+                        <g class="asri-bird-anim">
+                            <circle cx="100" cy="28" r="8" fill="#38bdf8" />
+                            <circle cx="103" cy="26" r="1.5" fill="#1e293b" />
+                            <polygon points="107,26 112,28 107,30" fill="#f59e0b" />
+                            <!-- Wing -->
+                            <path d="M96 28 C92 25 90 28 92 32 Z" fill="#0284c7" class="asri-bird-wing-anim" />
+                            <!-- Legs -->
+                            <path d="M98 34 Q94 37 96 40" stroke="#f59e0b" stroke-width="1" stroke-linecap="round" />
+                            <path d="M102 34 Q98 37 100 40" stroke="#f59e0b" stroke-width="1" stroke-linecap="round" />
+                        </g>
+
+                        <!-- EYES -->
+                        <g class="asri-eye-anim">
+                            <circle cx="87" cy="78" r="5.5" fill="#0f172a" />
+                            <circle cx="85" cy="76" r="1.8" fill="white" />
+                            <circle cx="113" cy="78" r="5.5" fill="#0f172a" />
+                            <circle cx="111" cy="76" r="1.8" fill="white" />
+                        </g>
+
+                        <!-- CHEEKS (Blush) -->
+                        <circle cx="78" cy="86" r="5" fill="#f472b6" opacity="0.5" />
+                        <circle cx="122" cy="86" r="5" fill="#f472b6" opacity="0.5" />
+
+                        <!-- SMILE -->
+                        <path d="M92 88C92 93 108 93 108 88" stroke="#be185d" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    </g>
+                </svg>
+            </div>
 
             <div class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                 <!-- Greeting -->
@@ -145,8 +362,8 @@
                 ];
             @endphp
             @foreach($services as $svc)
-            <a href="{{ $svc['href'] }}"
-               class="bento-hover bg-slate-50/50 hover:bg-white rounded-2xl p-5 border border-slate-100 flex flex-col gap-4 group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 {{ $svc['hover_bg'] }}">
+            <a href="{{ $svc['href'] }}" data-bento-index="{{ $loop->index }}"
+               class="bento-card bento-hover bg-slate-50/50 hover:bg-white rounded-2xl p-5 border border-slate-100 flex flex-col gap-4 group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 {{ $svc['hover_bg'] }} relative">
                 <div class="w-14 h-14 rounded-2xl {{ $svc['light'] }} border flex items-center justify-center transition-all duration-300 shadow-sm shrink-0">
                     {!! $svc['emoji'] !!}
                 </div>
@@ -322,5 +539,213 @@
     </div>
     @endif
 
+    {{-- ====== ESCAPING HIDE-AND-SEEK CAT MASCOT HTML ====== --}}
+    <div id="escaping-cat" class="absolute z-20 pointer-events-none cursor-pointer select-none transition-all duration-300 ease-out transform translate-y-8 opacity-0 scale-75" style="width: 60px; height: 60px; top: 0; left: 50%; margin-left: -30px; display: none;">
+        <!-- Speech Bubble above Cat -->
+        <div id="cat-bubble" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-[9px] font-black px-2 py-1 rounded-md shadow-md opacity-0 scale-75 transition-all duration-200 pointer-events-none whitespace-nowrap z-30">
+            Tangkap aku! 🐾
+            <div class="absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-amber-500 rotate-45"></div>
+        </div>
+        
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-md">
+            <style>
+                @keyframes cat-ears {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-5deg); }
+                }
+                .cat-left-ear { animation: cat-ears 3s infinite; transform-origin: 20px 20px; }
+                .cat-right-ear { animation: cat-ears 3s infinite alternate; transform-origin: 80px 20px; }
+            </style>
+            <!-- Cat Ears -->
+            <path d="M15 35 L5 10 L35 22 Z" fill="#f97316" stroke="#ea580c" stroke-width="2" class="cat-left-ear" />
+            <path d="M10 20 L8 12 L20 18 Z" fill="#fecdd3" class="cat-left-ear" />
+
+            <path d="M85 35 L95 10 L65 22 Z" fill="#f97316" stroke="#ea580c" stroke-width="2" class="cat-right-ear" />
+            <path d="M90 20 L92 12 L80 18 Z" fill="#fecdd3" class="cat-right-ear" />
+
+            <!-- Cat Head -->
+            <circle cx="50" cy="50" r="32" fill="#f97316" stroke="#ea580c" stroke-width="2" />
+            
+            <!-- Cat Eyes (Large expressive eyes) -->
+            <circle cx="36" cy="46" r="6" fill="#1e293b" />
+            <circle cx="34" cy="43" r="2" fill="#ffffff" />
+            
+            <circle cx="64" cy="46" r="6" fill="#1e293b" />
+            <circle cx="62" cy="43" r="2" fill="#ffffff" />
+            
+            <!-- Cat Cheeks -->
+            <circle cx="28" cy="54" r="3" fill="#f43f5e" opacity="0.4" />
+            <circle cx="72" cy="54" r="3" fill="#f43f5e" opacity="0.4" />
+            
+            <!-- Nose & Mouth -->
+            <polygon points="50,53 47,50 53,50" fill="#f43f5e" />
+            <path d="M46 56 C48 58 50 58 50 56 C50 58 52 58 54 56" stroke="#ea580c" stroke-width="2" stroke-linecap="round" fill="none" />
+            
+            <!-- Whiskers -->
+            <path d="M20 50 H6 M22 55 H8 M20 60 H10" stroke="#fed7aa" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M80 50 H94 M78 55 H92 M80 60 H90" stroke="#fed7aa" stroke-width="1.5" stroke-linecap="round" />
+
+            <!-- Cute Paws -->
+            <circle cx="30" cy="80" r="10" fill="#fed7aa" stroke="#ea580c" stroke-width="2" />
+            <circle cx="70" cy="80" r="10" fill="#fed7aa" stroke="#ea580c" stroke-width="2" />
+            <path d="M27 75 V85 M30 75 V85 M33 75 V85" stroke="#ea580c" stroke-width="1.5" />
+            <path d="M67 75 V85 M70 75 V85 M73 75 V85" stroke="#ea580c" stroke-width="1.5" />
+        </svg>
+    </div>
+
+    {{-- ====== SMOKE POOF CONTAINER ====== --}}
+    <div id="smoke-poof" class="absolute z-30 pointer-events-none" style="width: 70px; height: 70px; top: -35px; left: 50%; margin-left: -35px; display: none;">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <style>
+                @keyframes smoke-expand {
+                    0% { transform: scale(0.3); opacity: 0; }
+                    30% { transform: scale(1.1); opacity: 0.95; }
+                    80% { opacity: 0.8; }
+                    100% { transform: scale(1.4); opacity: 0; }
+                }
+                .smoke-cloud-anim { animation: smoke-expand 0.4s ease-out forwards; transform-origin: center; }
+            </style>
+            <g class="smoke-cloud-anim">
+                <circle cx="50" cy="50" r="24" fill="#f1f5f9" opacity="0.9" />
+                <circle cx="35" cy="40" r="16" fill="#f1f5f9" opacity="0.95" />
+                <circle cx="65" cy="45" r="16" fill="#f1f5f9" opacity="0.95" />
+                <circle cx="45" cy="62" r="14" fill="#cbd5e1" opacity="0.8" />
+                <circle cx="58" cy="58" r="14" fill="#cbd5e1" opacity="0.8" />
+            </g>
+        </svg>
+    </div>
+
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cat = document.getElementById('escaping-cat');
+        const bubble = document.getElementById('cat-bubble');
+        const cards = document.querySelectorAll('.bento-card');
+        const smoke = document.getElementById('smoke-poof');
+        
+        if (!cat || cards.length === 0 || !smoke) return;
+        
+        let currentCardIndex = -1;
+        let isMoving = false;
+        let catchesCount = 0;
+        
+        const catPhrases = [
+            "MEOW! Kaget! 🙀",
+            "Nggak kena! Wuuush! 💨",
+            "Coba lagi! Hahaha 🐾",
+            "Ups! Licin banget! 🧼",
+            "Jangan pencet aku! 😿",
+            "Tangkap aku kalau bisa! 🐈"
+        ];
+        
+        function spawnPawPrints(card) {
+            if (!card) return;
+            // Spawn 3 paws with walking delay
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const paw = document.createElement('div');
+                    paw.className = 'absolute pointer-events-none z-10 transition-opacity duration-700';
+                    paw.style.width = '18px';
+                    paw.style.height = '18px';
+                    
+                    // Walking trail coordinates
+                    const x = 25 + (i * 20) + (Math.random() * 8);
+                    const y = 35 + (Math.random() * 20);
+                    paw.style.left = `${x}%`;
+                    paw.style.top = `${y}%`;
+                    
+                    const rot = -20 + Math.random() * 40;
+                    
+                    paw.innerHTML = `
+                        <svg viewBox="0 0 30 30" fill="#f97316" style="transform: rotate(${rot}deg);" opacity="0.4" class="w-full h-full">
+                            <ellipse cx="15" cy="18" rx="6" ry="4" />
+                            <circle cx="9" cy="11" r="2" />
+                            <circle cx="13" cy="8" r="2" />
+                            <circle cx="17" cy="8" r="2" />
+                            <circle cx="21" cy="11" r="2" />
+                        </svg>
+                    `;
+                    card.appendChild(paw);
+                    
+                    // Fade out
+                    setTimeout(() => {
+                        paw.style.opacity = '0';
+                        setTimeout(() => paw.remove(), 700);
+                    }, 500);
+                }, i * 140);
+            }
+        }
+        
+        function moveCat() {
+            if (isMoving) return;
+            isMoving = true;
+            
+            const oldCard = cards[currentCardIndex];
+            if (oldCard) {
+                // Show smoke poof
+                oldCard.appendChild(smoke);
+                smoke.style.display = 'block';
+                const smokeSvg = smoke.querySelector('g');
+                smokeSvg.style.animation = 'none';
+                smoke.offsetHeight; // trigger reflow
+                smokeSvg.style.animation = 'smoke-expand 0.4s ease-out forwards';
+                
+                // Spawn footprints walking trail
+                spawnPawPrints(oldCard);
+                
+                setTimeout(() => {
+                    smoke.style.display = 'none';
+                }, 400);
+            }
+            
+            // Hide cat
+            cat.classList.add('translate-y-8', 'opacity-0', 'scale-75', 'pointer-events-none');
+            cat.classList.remove('-translate-y-9', 'opacity-100', 'scale-100', 'pointer-events-auto');
+            bubble.classList.remove('opacity-100', 'scale-100');
+            
+            setTimeout(() => {
+                // Select new card
+                let newIndex;
+                do {
+                    newIndex = Math.floor(Math.random() * cards.length);
+                } while (newIndex === currentCardIndex && cards.length > 1);
+                
+                currentCardIndex = newIndex;
+                const targetCard = cards[currentCardIndex];
+                
+                // Append cat to target
+                targetCard.appendChild(cat);
+                cat.style.display = 'block';
+                
+                setTimeout(() => {
+                    cat.classList.remove('translate-y-8', 'opacity-0', 'scale-75', 'pointer-events-none');
+                    cat.classList.add('-translate-y-9', 'opacity-100', 'scale-100', 'pointer-events-auto');
+                    
+                    if (catchesCount > 0) {
+                        const randomPhrase = catPhrases[Math.floor(Math.random() * catPhrases.length)];
+                        bubble.innerText = randomPhrase;
+                    }
+                    
+                    setTimeout(() => {
+                        bubble.classList.add('opacity-100', 'scale-100');
+                    }, 200);
+                    
+                    isMoving = false;
+                }, 100);
+            }, 300);
+        }
+        
+        // Escape when cursor enters cat body
+        cat.addEventListener('mouseenter', function() {
+            catchesCount++;
+            moveCat();
+        });
+        
+        // Initial spawn delay
+        setTimeout(moveCat, 1500);
+    });
+</script>
+@endpush
 @endsection

@@ -270,22 +270,190 @@
         <div class="particle w-2.5 h-2.5 bg-amber-300 left-[68%]" style="animation-duration:16s; animation-delay:4s;"></div>
         <div class="particle w-2 h-2 bg-emerald-300 left-[90%]" style="animation-duration:17s; animation-delay:2s;"></div>
         <div class="particle w-3 h-3 bg-teal-300 left-[35%]" style="animation-duration:19s; animation-delay:7s;"></div>
+
+        <!-- Cute Floating Background Clouds & Balloons (Festive upgrade) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            <style>
+                @keyframes bg-cloud-move {
+                    0% { transform: translateX(-150px) translateY(0); }
+                    100% { transform: translateX(110vw) translateY(10px); }
+                }
+                @keyframes bg-balloon-float {
+                    0% { transform: translateY(110vh) translateX(0) scale(0.65); opacity: 0; }
+                    12% { opacity: 0.35; }
+                    88% { opacity: 0.35; }
+                    100% { transform: translateY(-15vh) translateX(40px) scale(0.85); opacity: 0; }
+                }
+                .bg-floating-cloud {
+                    position: absolute;
+                    opacity: 0.6;
+                    animation: bg-cloud-move linear infinite;
+                }
+                .bg-floating-balloon {
+                    position: absolute;
+                    animation: bg-balloon-float linear infinite;
+                }
+            </style>
+            
+            <!-- Drifting Clouds -->
+            <div class="bg-floating-cloud top-[12%]" style="animation-duration: 48s; animation-delay: 0s;">
+                <svg width="110" height="70" viewBox="0 0 100 60" fill="#ffffff" opacity="0.8"><path d="M20 40 C20 30, 35 25, 45 35 C55 30, 70 35, 75 45 C85 45, 90 52, 85 60 L15 60 C5 60, 5 45, 20 40 Z"/></svg>
+            </div>
+            <div class="bg-floating-cloud top-[60%]" style="animation-duration: 56s; animation-delay: 18s;">
+                <svg width="130" height="80" viewBox="0 0 120 70" fill="#ffffff" opacity="0.6"><path d="M25 45 C25 35, 40 30, 50 40 C62 35, 78 40, 85 50 C95 50, 100 58, 95 67 L20 67 C10 67, 10 52, 25 45 Z"/></svg>
+            </div>
+
+            <!-- Rising Balloons -->
+            <div class="bg-floating-balloon left-[12%]" style="animation-duration: 26s; animation-delay: 1s;">
+                <svg width="35" height="50" viewBox="0 0 30 45">
+                    <ellipse cx="15" cy="18" rx="12" ry="15" fill="#f43f5e" />
+                    <polygon points="15,33 12,36 18,36" fill="#f43f5e" />
+                    <path d="M15 36 Q12 40 15 44" stroke="#94a3b8" stroke-width="1.2" fill="none" />
+                </svg>
+            </div>
+            <div class="bg-floating-balloon left-[85%]" style="animation-duration: 29s; animation-delay: 9s;">
+                <svg width="38" height="54" viewBox="0 0 30 45">
+                    <ellipse cx="15" cy="18" rx="12" ry="15" fill="#fbbf24" />
+                    <polygon points="15,33 12,36 18,36" fill="#fbbf24" />
+                    <path d="M15 36 Q18 40 15 44" stroke="#94a3b8" stroke-width="1.2" fill="none" />
+                </svg>
+            </div>
+        </div>
     </div>
 
     <!-- Main Container -->
-    <div class="w-full max-w-5xl z-10 relative">
+    <div class="w-full max-w-md lg:max-w-5xl z-10 relative">
         <!-- Colorful ambient glow backing overlay -->
         <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-amber-500/15 rounded-3xl sm:rounded-[2.7rem] blur-3xl opacity-80 pointer-events-none"></div>
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl shadow-emerald-900/10 border border-slate-200/50 relative">
 
             {{-- LEFT PANEL: Branding (Only visible on desktop) --}}
             <div class="lg:col-span-2 hidden lg:flex relative flex-col justify-between p-10 overflow-hidden min-h-[600px]">
-                <!-- Background image and lush emerald gradient overlay -->
-                <div class="absolute inset-0">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop"
-                         class="w-full h-full object-cover" alt="Desa Asri">
-                    <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/80 via-emerald-800/70 to-teal-900/90"></div>
-                    <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(16,185,129,0.35),rgba(20,184,166,0.35))]"></div>
+                <!-- Background and lush emerald gradient overlay with cartoon portal SVG -->
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-900 via-emerald-800 to-teal-950">
+                    <!-- Glowing decorative blobs inside the panel -->
+                    <div class="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-emerald-500/25 blur-3xl"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-teal-400/25 blur-3xl"></div>
+                    
+                    <!-- Portal Cartoon Illustration Background (Super Meriah Upgrade) -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-85 lg:opacity-90 pointer-events-none select-none z-0">
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-[340px] h-auto drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                            <style>
+                                @keyframes portal-glow {
+                                    0%, 100% { transform: scale(1); opacity: 0.9; filter: drop-shadow(0 0 5px #10b981); }
+                                    50% { transform: scale(1.04); opacity: 1; filter: drop-shadow(0 0 15px #34d399); }
+                                }
+                                @keyframes floating-key {
+                                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                                    50% { transform: translateY(-15px) rotate(8deg); }
+                                }
+                                @keyframes float-letter-1 {
+                                    0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
+                                    15% { opacity: 1; }
+                                    85% { opacity: 1; }
+                                    100% { transform: translate(55px, -90px) scale(0.95) rotate(45deg); opacity: 0; }
+                                }
+                                @keyframes float-letter-2 {
+                                    0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
+                                    15% { opacity: 1; }
+                                    85% { opacity: 1; }
+                                    100% { transform: translate(-45px, -100px) scale(0.9) rotate(-35deg); opacity: 0; }
+                                }
+                                @keyframes rotate-gear {
+                                    0% { transform: rotate(0deg); }
+                                    100% { transform: rotate(360deg); }
+                                }
+                                @keyframes rotate-gear-counter {
+                                    0% { transform: rotate(360deg); }
+                                    100% { transform: rotate(0deg); }
+                                }
+                                @keyframes star-blink-local {
+                                    0%, 100% { transform: scale(0.8); opacity: 0.4; }
+                                    50% { transform: scale(1.2); opacity: 1; }
+                                }
+                                @keyframes smoke-heart {
+                                    0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+                                    30% { opacity: 0.9; }
+                                    100% { transform: translate(-10px, -45px) scale(1.2); opacity: 0; }
+                                }
+                                .portal-ring { animation: portal-glow 3.5s ease-in-out infinite; transform-origin: 200px 200px; }
+                                .portal-key { animation: floating-key 2.5s ease-in-out infinite; transform-origin: 260px 170px; }
+                                .portal-letter-1 { animation: float-letter-1 5s linear infinite; transform-origin: 180px 230px; }
+                                .portal-letter-2 { animation: float-letter-2 4.5s linear infinite; animation-delay: 2.2s; transform-origin: 180px 230px; }
+                                .portal-gear { animation: rotate-gear 20s linear infinite; transform-origin: 200px 200px; }
+                                .portal-gear-inner { animation: rotate-gear-counter 12s linear infinite; transform-origin: 200px 200px; }
+                                .portal-star { animation: star-blink-local 2s infinite ease-in-out; transform-origin: center; }
+                                .portal-smoke { animation: smoke-heart 3s infinite linear; transform-origin: 167px 190px; }
+                            </style>
+
+                            <!-- STARS IN SKY -->
+                            <path d="M50 80 L52 83 L55 84 L52 85 L50 88 L48 85 L45 84 L48 83 Z" fill="#fbbf24" class="portal-star" style="animation-delay: 0s;" />
+                            <path d="M340 70 L342 73 L345 74 L342 75 L340 78 L338 75 L335 74 L338 73 Z" fill="#fbbf24" class="portal-star" style="animation-delay: 0.8s;" />
+                            <path d="M90 120 L91 122 L93 123 L91 124 L90 126 L89 124 L87 123 L89 122 Z" fill="#38bdf8" class="portal-star" style="animation-delay: 0.4s;" />
+                            <path d="M310 140 L311 142 L313 143 L311 144 L310 146 L309 144 L307 143 L309 142 Z" fill="#38bdf8" class="portal-star" style="animation-delay: 1.2s;" />
+
+                            <!-- BACKGROUND GLOWING RINGS -->
+                            <circle cx="200" cy="200" r="148" stroke="#10b981" stroke-width="2.5" stroke-dasharray="10 14" class="portal-gear" opacity="0.5" />
+                            <circle cx="200" cy="200" r="132" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6 8" class="portal-gear-inner" opacity="0.6" />
+                            <circle cx="200" cy="200" r="120" fill="url(#portalGrad)" class="portal-ring" />
+                            <circle cx="200" cy="200" r="120" stroke="#34d399" stroke-width="3" opacity="0.8" />
+
+                            <!-- CHIMNEY SMOKE HEART -->
+                            <path d="M166 185 C164 182, 161 182, 159 184 C157 186, 157 189, 159 191 L166 198 L173 191 C175 189, 175 186, 173 184 C171 182, 168 182, 166 185 Z" fill="#a7f3d0" class="portal-smoke" />
+                            <path d="M166 185 C164 182, 161 182, 159 184 C157 186, 157 189, 159 191 L166 198 L173 191 C175 189, 175 186, 173 184 C171 182, 168 182, 166 185 Z" fill="#cbd5e1" class="portal-smoke" style="animation-delay: 1.5s;" />
+
+                            <!-- CUTE NEIGHBORHOOD HOUSE -->
+                            <path d="M110 260 C150 255 250 255 290 260 L290 270 L110 270 Z" fill="#047857" />
+                            <rect x="140" y="190" width="80" height="70" rx="10" fill="#f8fafc" stroke="#10b981" stroke-width="2" />
+                            <path d="M130 195 L180 145 C190 135 210 135 220 145 L270 195 Z" fill="#10b981" />
+                            <!-- Chimney -->
+                            <rect x="162" y="172" width="10" height="20" fill="#047857" />
+                            <rect x="160" y="170" width="14" height="4" fill="#fbbf24" rx="1" />
+                            
+                            <circle cx="200" cy="140" r="8" fill="#fbbf24" />
+                            <rect x="230" y="155" width="16" height="25" fill="#e2e8f0" />
+                            <path d="M226 155 L246 155" stroke="#cbd5e1" stroke-width="3" />
+                            <path d="M165 260 V215 C165 210 170 205 180 205 C190 205 195 210 195 215 V260 Z" fill="#0f766e" />
+                            <circle cx="172" cy="235" r="3" fill="#fbbf24" />
+                            <rect x="150" y="210" width="20" height="20" rx="4" fill="#fbbf24" opacity="0.9" />
+                            <path d="M160 210 V230 M150 220 H170" stroke="#f59e0b" stroke-width="1.5" />
+
+                            <!-- COZY TREES -->
+                            <path d="M90 260C90 230 110 210 120 210C130 210 135 230 135 260Z" fill="#065f46" opacity="0.85" />
+                            <path d="M285 260C285 235 298 220 305 220C312 220 315 235 315 260Z" fill="#065f46" opacity="0.85" />
+
+                            <!-- FLOATING LETTERS -->
+                            <g class="portal-letter-1">
+                                <rect x="175" y="225" width="24" height="16" rx="3" fill="#ffffff" filter="url(#shadow-portal-small)" />
+                                <path d="M175 225 L187 233 L199 225" stroke="#10b981" stroke-width="2" />
+                            </g>
+                            <g class="portal-letter-2">
+                                <rect x="175" y="225" width="24" height="16" rx="3" fill="#e0f2fe" filter="url(#shadow-portal-small)" />
+                                <path d="M175 225 L187 233 L199 225" stroke="#38bdf8" stroke-width="2" />
+                            </g>
+
+                            <!-- FLOATING SECURITY KEY (Vibrant yellow and orange) -->
+                            <g class="portal-key">
+                                <circle cx="260" cy="160" r="14" stroke="#fbbf24" stroke-width="5" fill="#fef08a" />
+                                <circle cx="260" cy="160" r="5" fill="#d97706" />
+                                <rect x="257" y="174" width="6" height="24" rx="2.5" fill="#fbbf24" />
+                                <rect x="263" y="184" width="8" height="5" rx="1.5" fill="#fbbf24" />
+                                <rect x="263" y="193" width="6" height="5" rx="1.5" fill="#fbbf24" />
+                            </g>
+
+                            <!-- GRADIENT & SHADOW DEFINITIONS -->
+                            <defs>
+                                <radialGradient id="portalGrad" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.4"/>
+                                    <stop offset="65%" stop-color="#115e59" stop-opacity="0.12"/>
+                                    <stop offset="100%" stop-color="#115e59" stop-opacity="0"/>
+                                </radialGradient>
+                                <filter id="shadow-portal-small" x="-2" y="-1" width="28" height="20" filterUnits="userSpaceOnUse">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#047857" flood-opacity="0.1" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Top branding -->

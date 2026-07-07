@@ -206,7 +206,7 @@
         <div class="particle w-3 h-3 bg-teal-300 left-[35%]" style="animation-duration:19s; animation-delay:7s;"></div>
     </div>
 
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden relative z-10">
 
         {{-- ===================== SIDEBAR ===================== --}}
         <aside id="sidebar"
