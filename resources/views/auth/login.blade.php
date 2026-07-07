@@ -5,7 +5,116 @@
 @section('content')
 
 <div class="mb-6">
-    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">Selamat Datang, Tetangga! <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></h2>
+    <!-- Cute Cartoon Key Mascot -->
+    <div id="key-mascot-container" class="w-16 h-16 sm:w-20 sm:h-20 mb-3 select-none">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <style>
+                @keyframes key-bounce {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    50% { transform: translateY(-6px) rotate(4deg); }
+                }
+                @keyframes key-wink {
+                    0%, 92%, 100% { transform: scaleY(1); }
+                    96% { transform: scaleY(0.1); }
+                }
+                @keyframes star-pop {
+                    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+                    50% { transform: scale(1.3) rotate(90deg); opacity: 1; }
+                    100% { transform: scale(1) rotate(180deg); opacity: 0.85; }
+                }
+                .key-bounce-anim { animation: key-bounce 3s ease-in-out infinite; }
+                .key-wink-anim { animation: key-wink 4s infinite; transform-origin: 50px 35px; }
+                
+                .key-left-arm-anim {
+                    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    transform-origin: 26px 44px;
+                }
+                .key-right-arm-anim {
+                    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    transform-origin: 74px 44px;
+                }
+                .key-eyes-closed {
+                    transition: opacity 0.3s ease;
+                }
+                .key-eyes-group {
+                    transition: opacity 0.3s ease;
+                }
+                .key-mascot-star {
+                    transform-origin: 80px 20px;
+                    transform: scale(0);
+                    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
+
+                /* When password is focused (hide-eyes active) */
+                .hide-eyes .key-left-arm-anim {
+                    transform: translate(14px, -11px) rotate(35deg);
+                }
+                .hide-eyes .key-right-arm-anim {
+                    transform: translate(-14px, -11px) rotate(-35deg);
+                }
+                .hide-eyes .key-eyes-group {
+                    opacity: 0;
+                }
+                .hide-eyes .key-eyes-closed {
+                    opacity: 1;
+                }
+                .hide-eyes .key-mascot-star {
+                    transform: scale(1.2);
+                    animation: star-pop 0.8s ease-out forwards;
+                }
+            </style>
+            
+            <g class="key-bounce-anim">
+                <!-- Key Head (Face) -->
+                <circle cx="50" cy="35" r="22" stroke="#f59e0b" stroke-width="5" fill="#fef08a" />
+                
+                <!-- Eye Left & Right (Normal blinking) -->
+                <g class="key-wink-anim key-eyes-group">
+                    <circle cx="42" cy="32" r="3.2" fill="#92400e" />
+                    <circle cx="58" cy="32" r="3.2" fill="#92400e" />
+                </g>
+
+                <!-- Eye Closed Squinting (Shown on hide-eyes) -->
+                <g class="key-eyes-closed" opacity="0">
+                    <path d="M38 34 Q42 38 46 34" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <path d="M54 34 Q58 38 62 34" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                </g>
+
+                <!-- Happy Smile -->
+                <path d="M46 42C46 45 54 45 54 42" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                
+                <!-- Blush -->
+                <circle cx="37" cy="39" r="2.5" fill="#f472b6" opacity="0.6" />
+                <circle cx="63" cy="39" r="2.5" fill="#f472b6" opacity="0.6" />
+                
+                <!-- Inner Key Hole -->
+                <circle cx="50" cy="20" r="4" fill="#d97706" opacity="0.4" />
+                
+                <!-- Arms / Hands (Covering eyes interaction) -->
+                <g class="key-left-arm-anim">
+                    <path d="M26 44 Q20 38 27 33" stroke="#f59e0b" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                    <circle cx="27" cy="33" r="3.5" fill="#fbcfe8" />
+                </g>
+                <g class="key-right-arm-anim">
+                    <path d="M74 44 Q80 38 73 33" stroke="#f59e0b" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                    <circle cx="73" cy="33" r="3.5" fill="#fbcfe8" />
+                </g>
+                
+                <!-- Key Body / Shaft -->
+                <rect x="46" y="57" width="8" height="28" rx="2.5" fill="#f59e0b" />
+                
+                <!-- Key Teeth -->
+                <rect x="54" y="65" width="10" height="6" rx="1.5" fill="#f59e0b" />
+                <rect x="54" y="76" width="8" height="6" rx="1.5" fill="#f59e0b" />
+                
+                <!-- Sparkle / Star (Popping) -->
+                <g class="key-mascot-star">
+                    <path d="M80 16 L82 21 L87 23 L82 25 L80 30 L78 25 L73 23 L78 21 Z" fill="#fbbf24" />
+                </g>
+            </g>
+        </svg>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">Selamat Datang, Tetangga! <svg class="w-8 h-8 text-emerald-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></h2>
     <p class="text-slate-500 font-semibold text-xs sm:text-sm">Silakan masuk menggunakan akun Bapak/Ibu untuk mengakses seluruh layanan digital RT 08.</p>
 </div>
 
@@ -104,6 +213,18 @@
     const pw = document.getElementById('password');
     const btn = document.getElementById('toggle-pw');
     const eye = document.getElementById('eye-open');
+    const mascot = document.getElementById('key-mascot-container');
+
+    // Interactive Mascot Eye-Covering
+    if (pw && mascot) {
+        pw.addEventListener('focus', () => {
+            mascot.classList.add('hide-eyes');
+        });
+        pw.addEventListener('blur', () => {
+            mascot.classList.remove('hide-eyes');
+        });
+    }
+
     btn.addEventListener('click', () => {
         const isText = pw.type === 'text';
         pw.type = isText ? 'password' : 'text';
