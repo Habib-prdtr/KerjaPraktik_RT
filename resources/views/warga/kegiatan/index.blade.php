@@ -44,7 +44,7 @@
             {{-- Bagian Gambar / Header Banner --}}
             @if($item->foto)
                 <div class="relative w-full h-48 bg-slate-100 overflow-hidden">
-                    <img src="{{ Storage::url($item->foto) }}" alt="{{ $item->nama_kegiatan }}"
+                    <img src="{{ $item->foto_url }}" alt="{{ $item->nama_kegiatan }}"
                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent"></div>
                     

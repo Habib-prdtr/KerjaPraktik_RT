@@ -1,0 +1,122 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam roundcorner 5
+skinparam shadowing false
+skinparam linetype ortho
+skinparam defaultFontName Arial
+skinparam nodesep 70
+skinparam ranksep 80
+
+skinparam class {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+  HeaderBackgroundColor #D5E8D4
+  ArrowColor #333333
+}
+
+hide circle
+hide methods
+
+entity "users" as users #DAE8FC {
+  * id : bigint <<PK>>
+  --
+  * warga_id : bigint <<FK>>
+  * name : varchar
+  * email : varchar
+  * password : varchar
+  * role : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "warga" as warga #FFE6CC {
+  * id : bigint <<PK>>
+  --
+  * kartu_keluarga_id : bigint <<FK>>
+  * nik : varchar
+  * nama : varchar
+  * jenis_kelamin : varchar
+  * tanggal_lahir : date
+  * agama : varchar
+  * pekerjaan : varchar
+  * status_perkawinan : varchar
+  * status : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "kartu_keluarga" as kk #FFF2CC {
+  * id : bigint <<PK>>
+  --
+  * no_kk : varchar
+  * kepala_keluarga : varchar
+  * alamat : text
+  * rt : varchar
+  * rw : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "pengajuan" as pengajuan #F8CECC {
+  <<Tabel Pengaduan/Laporan>>
+  * id : bigint <<PK>>
+  --
+  * warga_id : bigint <<FK>>
+  * judul : varchar
+  * isi : text
+  * foto : varchar
+  * status : varchar
+  * tanggapan_admin : text
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "surat" as surat #D5E8D4 {
+  * id : bigint <<PK>>
+  --
+  * warga_id : bigint <<FK>>
+  * jenis_surat : varchar
+  * nomor_surat : varchar
+  * keperluan : text
+  * status : varchar
+  * file_pdf : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "pengumuman" as pengumuman #E1D5E7 {
+  * id : bigint <<PK>>
+  --
+  * created_by : bigint <<FK>>
+  * judul : varchar
+  * isi : text
+  * foto : varchar
+  * tanggal : date
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "kegiatan_rt" as kegiatan #E1D5E7 {
+  * id : bigint <<PK>>
+  --
+  * created_by : bigint <<FK>>
+  * nama_kegiatan : varchar
+  * deskripsi : text
+  * foto : varchar
+  * tanggal_kegiatan : datetime
+  * lokasi : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+' Layout hints to prevent overlapping and create a grid
+users "1" -down- "1" warga : "relasi akun"
+users "1" -right- "N" pengumuman : "membuat"
+users "1" -left- "N" kegiatan : "membuat"
+
+warga "N" -left- "1" kk : "termasuk"
+warga "1" -down- "N" pengajuan : "membuat"
+warga "1" -right- "N" surat : "meminta"
+
+@enduml

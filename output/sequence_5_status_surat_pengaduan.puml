@@ -1,0 +1,61 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Warga" as Warga <<Warga>>
+boundary "Halaman Riwayat" as View
+control "RiwayatController" as Controller
+entity "Model" as Model
+database "Database" as DB
+
+Warga -> View : Buka Halaman Status/Riwayat
+activate View
+View -> Controller : GET /riwayat
+activate Controller
+
+Controller -> Model : getRiwayatByUserId(user_id)
+activate Model
+Model -> DB : SELECT surat & pengaduan
+activate DB
+DB --> Model : List Data Status
+deactivate DB
+Model --> Controller : Data History
+deactivate Model
+
+Controller --> View : Render View History
+View --> Warga : Menampilkan Data Status
+deactivate Controller
+deactivate View
+@enduml

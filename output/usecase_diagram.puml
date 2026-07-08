@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam roundcorner 15
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam nodesep 40
+skinparam ranksep 70
+
+skinparam usecase {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+  ArrowColor #666666
+}
+
+skinparam actor {
+  BackgroundColor #DAE8FC
+  BorderColor #6C8EBF
+}
+
+skinparam package {
+  BackgroundColor #FFFFFF
+  BorderColor #666666
+}
+
+left to right direction
+actor "Warga" as warga
+actor "Ketua RT / Admin" as admin
+
+package "Sistem Informasi Rukun Tetangga" {
+  usecase "Autentikasi\n(Login)" as UC1
+  
+  usecase "Melihat Pengumuman\n& Kegiatan" as UC2
+  usecase "Mengajukan\nPembuatan Surat" as UC3
+  usecase "Melakukan\nPengaduan/Laporan" as UC4
+  usecase "Melihat Status\nSurat/Pengaduan" as UC5
+  
+  usecase "Mengelola Data\nWarga & KK" as UC6
+  usecase "Mengelola Pengumuman\n& Kegiatan" as UC7
+  usecase "Validasi Surat\n& Upload PDF" as UC8
+  usecase "Validasi & Tanggapi\nPengaduan" as UC9
+}
+
+warga --> UC1
+warga --> UC2
+warga --> UC3
+warga --> UC4
+warga --> UC5
+
+UC1 <-- admin
+UC6 <-- admin
+UC7 <-- admin
+UC8 <-- admin
+UC9 <-- admin
+@enduml

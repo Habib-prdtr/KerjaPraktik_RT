@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+skinparam ArrowMessageAlignment center
+skinparam Nodesep 40
+skinparam Ranksep 40
+
+|#DAE8FC|Warga|
+start
+:Login ke Sistem;
+:Pilih Menu (Surat / Pengaduan);
+
+if (Pilihan Menu?) then (Pengajuan Surat)
+  :Mengisi Form Keperluan\n& Jenis Surat;
+else (Pengaduan/Laporan)
+  :Mengisi Form Judul,\nIsi & Foto Pengaduan;
+endif
+:Kirim Data;
+
+|#D5E8D4|Sistem|
+:Menyimpan Data ke Database\ndengan status "Menunggu";
+
+|#F8CECC|Ketua RT / Admin|
+:Menerima Notifikasi\n& Melihat Daftar;
+:Memeriksa Data;
+
+if (Apakah Data\nValid & Disetujui?) then (Ya)
+  if (Jenis?) then (Surat)
+    :Input Nomor Surat\n& Upload File PDF;
+  else (Pengaduan)
+    :Memberikan Tanggapan Admin;
+  endif
+  :Ubah Status "Selesai"\natau "Disetujui";
+else (Tidak)
+  :Berikan Keterangan\nPenolakan;
+  :Ubah Status "Ditolak";
+endif
+
+|#DAE8FC|Warga|
+:Melihat Status Pembaruan;
+if (Status Selesai\n& Jenis Surat?) then (Ya)
+  :Unduh File PDF Surat;
+else (Lainnya)
+  :Membaca Tanggapan\natau Keterangan;
+endif
+stop
+@enduml

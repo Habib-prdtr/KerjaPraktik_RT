@@ -1,0 +1,62 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Admin" as Admin <<Admin>>
+boundary "Halaman Data Warga" as View
+control "WargaController" as Controller
+entity "User (Model)" as Model
+database "Database" as DB
+
+Admin -> View : Input Data Warga Baru / Edit
+activate View
+View -> Controller : POST /admin/warga (atau PUT)
+activate Controller
+Controller -> Controller : Validasi Input
+
+Controller -> Model : save(data_warga)
+activate Model
+Model -> DB : INSERT/UPDATE users
+activate DB
+DB --> Model : OK
+deactivate DB
+Model --> Controller : Success
+deactivate Model
+
+Controller --> View : Redirect & Notifikasi
+View --> Admin : Menampilkan Pesan Sukses
+deactivate Controller
+deactivate View
+@enduml

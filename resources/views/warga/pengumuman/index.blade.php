@@ -1,4 +1,4 @@
-﻿@extends('layouts.warga')
+@extends('layouts.warga')
 @section('title', 'Papan Mading RT — Portal Warga RT 08')
 
 @section('content')
@@ -35,6 +35,17 @@
         @php $isNew = $umum->tanggal >= now()->subDays(3)->toDateString(); @endphp
         <a href="{{ route('warga.pengumuman.show', $umum) }}"
            class="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group flex flex-col relative">
+
+            {{-- Foto thumbnail (sama seperti landing page) --}}
+            @if($umum->foto)
+                <div class="h-48 overflow-hidden relative">
+                    <div class="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors z-10"></div>
+                    <img src="{{ Str::startsWith($umum->foto, 'http') ? $umum->foto : Storage::url($umum->foto) }}"
+                         alt="{{ $umum->judul }}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            @endif
+
             {{-- Left accent bar --}}
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-teal-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 

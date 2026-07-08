@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#DAE8FC|Pengguna|
+start
+:Membuka Halaman Login;
+:Memasukkan NIK/Username dan Password;
+:Klik Tombol Login;
+
+|#D5E8D4|Sistem|
+:Validasi Data Kredensial;
+if (Kredensial Valid?) then (Ya)
+  :Buat Sesi Login;
+  :Arahkan ke Dashboard/Halaman Utama;
+else (Tidak)
+  :Tampilkan Pesan Error;
+  |#DAE8FC|Pengguna|
+  :Kembali ke Halaman Login;
+  stop
+endif
+
+|#DAE8FC|Pengguna|
+:Menampilkan Halaman Utama;
+stop
+@enduml

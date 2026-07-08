@@ -38,6 +38,15 @@
         </div>
     </div>
 
+    {{-- Foto (jika ada) --}}
+    @if($pengumuman->foto)
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+            <img src="{{ Str::startsWith($pengumuman->foto, 'http') ? $pengumuman->foto : Storage::url($pengumuman->foto) }}"
+                 alt="{{ $pengumuman->judul }}"
+                 class="w-full max-h-80 object-cover">
+        </div>
+    @endif
+
     {{-- Content --}}
     <div class="card-premium p-6 md:p-8 bg-white border border-slate-100 shadow-sm">
         <div class="text-slate-700 text-sm md:text-base font-bold leading-relaxed whitespace-pre-wrap">

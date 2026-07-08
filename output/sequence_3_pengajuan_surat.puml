@@ -1,0 +1,62 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Warga" as Warga <<Warga>>
+boundary "Halaman Pengajuan Surat" as View
+control "SuratController" as Controller
+entity "Surat (Model)" as Model
+database "Database" as DB
+
+Warga -> View : Input Jenis & Keperluan Surat
+activate View
+View -> Controller : POST /surat
+activate Controller
+Controller -> Controller : Validasi Data Input
+
+Controller -> Model : create(data_surat)
+activate Model
+Model -> DB : INSERT INTO surat
+activate DB
+DB --> Model : OK (id_surat)
+deactivate DB
+Model --> Controller : Success
+deactivate Model
+
+Controller --> View : Redirect & Notifikasi Sukses
+View --> Warga : Tampilkan Pesan Sukses
+deactivate Controller
+deactivate View
+@enduml

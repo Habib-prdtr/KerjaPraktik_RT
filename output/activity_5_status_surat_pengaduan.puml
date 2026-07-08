@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#DAE8FC|Warga|
+start
+:Pilih Menu Riwayat / Status;
+
+|#D5E8D4|Sistem|
+:Ambil Data Surat & Pengaduan milik Warga;
+:Tampilkan Daftar Riwayat beserta Statusnya;
+
+|#DAE8FC|Warga|
+if (Pilih Item?) then (Pengajuan Surat Selesai)
+  |#D5E8D4|Sistem|
+  :Menyediakan Link Download PDF;
+  |#DAE8FC|Warga|
+  :Unduh File Surat PDF;
+else (Pengaduan Ditanggapi)
+  |#D5E8D4|Sistem|
+  :Menampilkan Detail Tanggapan;
+  |#DAE8FC|Warga|
+  :Membaca Tanggapan Admin;
+endif
+stop
+@enduml

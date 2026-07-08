@@ -1,0 +1,35 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#F8CECC|Admin|
+start
+:Pilih Menu Kelola Data Warga;
+:Pilih Aksi (Tambah/Edit/Hapus Data);
+
+if (Aksi?) then (Tambah/Edit)
+  :Mengisi Form Data Warga & KK;
+  :Klik Simpan;
+  |#D5E8D4|Sistem|
+  :Validasi Data Warga;
+  if (Valid?) then (Ya)
+    :Simpan Perubahan ke Database;
+    :Tampilkan Pesan Sukses;
+  else (Tidak)
+    :Tampilkan Pesan Error Form;
+  endif
+else (Hapus)
+  |#F8CECC|Admin|
+  :Konfirmasi Hapus Data;
+  |#D5E8D4|Sistem|
+  :Hapus Data Warga dari Database;
+  :Tampilkan Pesan Sukses;
+endif
+stop
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Warga" as Warga <<Warga>>
+boundary "Halaman Pengaduan" as View
+control "PengaduanController" as Controller
+entity "Pengaduan (Model)" as Model
+database "Database" as DB
+
+Warga -> View : Input Judul, Deskripsi, Upload Foto
+activate View
+View -> Controller : POST /pengaduan
+activate Controller
+Controller -> Controller : Validasi Input & Proses Upload Foto
+
+Controller -> Model : create(data_pengaduan)
+activate Model
+Model -> DB : INSERT INTO pengaduan
+activate DB
+DB --> Model : OK (id_pengaduan)
+deactivate DB
+Model --> Controller : Success
+deactivate Model
+
+Controller --> View : Redirect & Notifikasi
+View --> Warga : Tampilkan Pesan Berhasil
+deactivate Controller
+deactivate View
+@enduml

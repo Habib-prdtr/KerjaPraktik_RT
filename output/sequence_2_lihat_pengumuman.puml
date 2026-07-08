@@ -1,0 +1,71 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Warga" as User <<Warga>>
+boundary "Halaman Pengumuman" as View
+control "PengumumanController" as Controller
+entity "Pengumuman" as Model
+database "Database" as DB
+
+User -> View : Buka Menu Pengumuman
+activate View
+View -> Controller : GET /pengumuman
+activate Controller
+Controller -> Model : getAll()
+activate Model
+Model -> DB : SELECT * FROM pengumuman
+activate DB
+DB --> Model : List Data Pengumuman
+deactivate DB
+Model --> Controller : Data Pengumuman
+deactivate Model
+
+Controller --> View : Render Data
+View --> User : Tampilkan Daftar Pengumuman
+deactivate Controller
+
+User -> View : Klik Detail Pengumuman
+View -> Controller : GET /pengumuman/{id}
+activate Controller
+Controller -> Model : find(id)
+activate Model
+Model --> Controller : Data Detail
+deactivate Model
+Controller --> View : Render Detail
+View --> User : Tampilkan Detail Pengumuman
+deactivate Controller
+deactivate View
+@enduml

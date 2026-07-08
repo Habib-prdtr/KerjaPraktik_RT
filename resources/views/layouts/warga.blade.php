@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -471,7 +472,30 @@
             });
         }, 5000);
 
-
+        // Global Confirm Modal Logic with SweetAlert2
+        function confirmAction(event, message) {
+            event.preventDefault();
+            const form = event.target;
+            
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444', // red-500
+                cancelButtonColor: '#94a3b8',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal',
+                reverseButtons: true,
+                customClass: {
+                    popup: 'rounded-[1.5rem]',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
     </script>
     @stack('scripts')
 </body>

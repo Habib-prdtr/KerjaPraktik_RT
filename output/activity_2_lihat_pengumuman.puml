@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#DAE8FC|Warga|
+start
+:Pilih Menu Pengumuman & Kegiatan;
+
+|#D5E8D4|Sistem|
+:Mengambil Data Pengumuman dari Database;
+:Menampilkan Daftar Pengumuman;
+
+|#DAE8FC|Warga|
+:Melihat Daftar Pengumuman;
+if (Pilih Detail?) then (Ya)
+  :Klik Salah Satu Pengumuman;
+  |#D5E8D4|Sistem|
+  :Menampilkan Detail Pengumuman;
+else (Tidak)
+endif
+|#DAE8FC|Warga|
+stop
+@enduml
