@@ -1,0 +1,61 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  ParticipantPadding 40
+  BoxPadding 40
+}
+skinparam actor {
+  BackgroundColor<<Warga>> #DAE8FC
+  BorderColor<<Warga>> #6C8EBF
+  BackgroundColor<<Admin>> #F8CECC
+  BorderColor<<Admin>> #B85450
+}
+skinparam boundary {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam control {
+  BackgroundColor #D5E8D4
+  BorderColor #82B366
+}
+skinparam entity {
+  BackgroundColor #FFE6CC
+  BorderColor #D79B00
+}
+skinparam database {
+  BackgroundColor #E1D5E7
+  BorderColor #9673A6
+}
+
+actor "Admin" as Admin <<Admin>>
+boundary "Halaman Tanggapan Pengaduan" as View
+control "PengaduanAdminController" as Controller
+entity "Pengaduan (Model)" as Model
+database "Database" as DB
+
+Admin -> View : Input Teks Tanggapan & Submit
+activate View
+View -> Controller : POST /admin/pengaduan/{id}/tanggapan
+activate Controller
+
+Controller -> Model : update(tanggapan, status='Selesai')
+activate Model
+Model -> DB : UPDATE pengaduan
+activate DB
+DB --> Model : OK
+deactivate DB
+Model --> Controller : Success
+deactivate Model
+
+Controller --> View : Redirect
+View --> Admin : Menampilkan Pesan Pengaduan Ditanggapi
+deactivate Controller
+deactivate View
+@enduml

@@ -80,7 +80,7 @@
             @if($kegiatan->foto)
             <div>
                 <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Foto Dokumentasi</p>
-                <img src="{{ Storage::url($kegiatan->foto) }}" alt="Foto Kegiatan" class="max-w-md w-full rounded-xl border border-slate-200 shadow-sm">
+                <img src="{{ $kegiatan->foto_url }}" alt="Foto Kegiatan" class="max-w-md w-full rounded-xl border border-slate-200 shadow-sm">
             </div>
             @endif
         </div>

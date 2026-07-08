@@ -1,0 +1,79 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+skinparam Nodesep 40
+skinparam Ranksep 40
+skinparam ArrowColor #666666
+
+<style>
+activity {
+  RoundCorner 0
+  LineColor #999999
+}
+activityDiamond {
+  BackgroundColor #FFE6CC
+  LineColor #D79B00
+}
+.terminal {
+  BackgroundColor #E1D5E7
+  LineColor #9673A6
+  RoundCorner 50
+}
+</style>
+
+<<terminal>> :Mulai;
+
+#DAE8FC:Masukkan Username\n& Password Login/
+
+#D5E8D4:Sistem Memvalidasi Kredensial;
+
+if (Kredensial Valid?) then (Ya)
+  
+  #D5E8D4:Menampilkan Halaman Dashboard;
+  
+  if (Pilih Menu Aplikasi?) then (Pengajuan Surat)
+    
+    #DAE8FC:Warga Menginput Jenis Surat\n& Detail Keperluan/
+    
+    #D5E8D4:Sistem Menyimpan Data Pengajuan\nke Database;
+    
+    #F8CECC:Admin Memeriksa Permintaan\nPembuatan Surat;
+    
+    if (Disetujui Admin?) then (Ya)
+      #F8CECC:Admin Menginput Nomor Surat\n& Mengunggah File PDF/
+      #D5E8D4:Sistem Memperbarui Status\nMenjadi "Selesai";
+      #DAE8FC:Warga Mengunduh File PDF Surat}
+    else (Tidak)
+      #F8CECC:Admin Menginput Keterangan\nPenolakan/
+      #D5E8D4:Sistem Memperbarui Status\nMenjadi "Ditolak";
+    endif
+    
+  else (Pengaduan & Laporan)
+    
+    #DAE8FC:Warga Menginput Judul, Isi Laporan,\n& Mengunggah Foto Bukti/
+    
+    #D5E8D4:Sistem Menyimpan Data Pengaduan\nke Database;
+    
+    #F8CECC:Admin Memeriksa Laporan Warga;
+    
+    if (Tindak Lanjut Laporan?) then (Ya)
+      #F8CECC:Admin Menginput Tanggapan\n& Solusi/
+      #D5E8D4:Sistem Memperbarui Status\nMenjadi "Selesai";
+    else (Tidak)
+      #F8CECC:Admin Menolak Laporan/
+      #D5E8D4:Sistem Memperbarui Status\nMenjadi "Ditolak";
+    endif
+    
+    #DAE8FC:Warga Membaca Tanggapan/
+    
+  endif
+
+else (Tidak)
+  #D5E8D4:Tampilkan Pesan Error\n(Login Gagal)/
+endif
+
+<<terminal>> :Selesai;
+@enduml

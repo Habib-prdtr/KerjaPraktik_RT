@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#F8CECC|Admin|
+start
+:Pilih Menu Daftar Pengaduan;
+:Pilih Pengaduan yang Menunggu Tanggapan;
+:Mempelajari Laporan & Foto;
+
+if (Tindak Lanjut?) then (Proses / Setujui)
+  :Tulis Tanggapan Balasan untuk Warga;
+  :Klik Selesai / Tanggapi;
+  |#D5E8D4|Sistem|
+  :Ubah Status Menjadi "Selesai";
+  :Simpan Data Tanggapan;
+else (Tolak)
+  |#F8CECC|Admin|
+  :Tulis Alasan Laporan Ditolak;
+  :Klik Tolak;
+  |#D5E8D4|Sistem|
+  :Ubah Status Menjadi "Ditolak";
+endif
+:Kirim Notifikasi ke Warga;
+stop
+@enduml

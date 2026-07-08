@@ -1,0 +1,72 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam defaultFontName Arial
+skinparam maxMessageSize 150
+skinparam wrapWidth 200
+skinparam ParticipantPadding 40
+skinparam BoxPadding 40
+autonumber
+
+skinparam sequence {
+  ArrowColor #333333
+  ActorBorderColor #6C8EBF
+  LifeLineBorderColor #6C8EBF
+  LifeLineBackgroundColor #DAE8FC
+  
+  ParticipantBorderColor #82B366
+  ParticipantBackgroundColor #D5E8D4
+  ParticipantFontName Arial
+  
+  EntityBorderColor #D79B00
+  EntityBackgroundColor #FFE6CC
+  
+  DatabaseBorderColor #9673A6
+  DatabaseBackgroundColor #E1D5E7
+}
+
+actor "Warga" as Warga #DAE8FC
+boundary "Halaman Surat" as View #D5E8D4
+control "SuratController" as Controller #D5E8D4
+entity "Surat (Model)" as ModelSurat #FFE6CC
+database "Database" as DB #E1D5E7
+
+Warga -> View : Mengisi Keperluan\n& Jenis Surat
+activate View
+View -> Controller : POST /surat (data)
+activate Controller
+
+Controller -> ModelSurat : create(warga_id, jenis,\nkeperluan, 'Menunggu')
+activate ModelSurat
+ModelSurat -> DB : INSERT INTO surat
+activate DB
+DB --> ModelSurat : OK (id_surat)
+deactivate DB
+ModelSurat --> Controller : Data Tersimpan
+deactivate ModelSurat
+
+Controller --> View : Redirect & Notifikasi
+View --> Warga : Tampilkan Pesan Sukses
+deactivate View
+deactivate Controller
+
+|||
+note over Controller, DB : --- Proses Admin Menyetujui ---
+|||
+
+actor "Ketua RT / Admin" as Admin #F8CECC
+
+Admin -> Controller : POST /surat/approve/{id}\n(nomor_surat, file_pdf)
+activate Controller
+Controller -> ModelSurat : update(nomor_surat,\nfile_pdf, status='Selesai')
+activate ModelSurat
+ModelSurat -> DB : UPDATE surat
+activate DB
+DB --> ModelSurat : OK
+deactivate DB
+ModelSurat --> Controller : Updated
+deactivate ModelSurat
+
+Controller --> Admin : Pesan Surat Di-upload
+deactivate Controller
+@enduml

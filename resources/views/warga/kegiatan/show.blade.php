@@ -48,7 +48,7 @@
     @if($kegiatan->foto)
     <div class="card-premium p-2 overflow-hidden bg-white border border-slate-100 shadow-sm group">
         <div class="relative overflow-hidden rounded-[1.25rem] bg-slate-100">
-            <img src="{{ Storage::url($kegiatan->foto) }}" alt="Foto Kegiatan"
+            <img src="{{ $kegiatan->foto_url }}" alt="Foto Kegiatan"
                  class="w-full h-auto max-h-80 object-cover group-hover:scale-[1.01] transition-transform duration-700">
             <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 <p class="flex items-center gap-1 text-[10px] font-black text-slate-700 uppercase tracking-widest"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Dokumentasi</p>

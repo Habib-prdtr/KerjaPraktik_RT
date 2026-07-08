@@ -391,10 +391,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($kegiatan as $item)
                         @php
-                            $fotos = is_string($item->foto) ? json_decode($item->foto, true) : $item->foto;
-                            if (is_string($item->foto) && json_last_error() !== JSON_ERROR_NONE) {
-                                $fotos = [$item->foto];
-                            }
+                            // Gunakan accessor ->fotos yang mengembalikan array lengkap
+                            // langsung dari raw DB value (tanpa double json_decode)
+                            $fotos = $item->fotos;
                         @endphp
                         <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(99,102,241,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full relative cursor-pointer"
                             onclick="openGallery({{ json_encode($fotos) }}, '{{ addslashes($item->nama_kegiatan) }}')">

@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#DAE8FC|Warga|
+start
+:Pilih Menu Pengajuan Surat;
+:Pilih Jenis Surat;
+:Mengisi Form Keperluan Surat;
+:Klik Kirim Pengajuan;
+
+|#D5E8D4|Sistem|
+:Validasi Input Data;
+if (Data Lengkap?) then (Ya)
+  :Simpan Data Surat ke Database\ndengan Status "Menunggu";
+  :Tampilkan Pesan Sukses;
+else (Tidak)
+  :Tampilkan Pesan Error;
+  |#DAE8FC|Warga|
+  :Melengkapi Form Kembali;
+  stop
+endif
+stop
+@enduml

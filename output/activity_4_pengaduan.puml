@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#DAE8FC|Warga|
+start
+:Pilih Menu Pengaduan/Laporan;
+:Mengisi Judul, Deskripsi, dan Foto Bukti;
+:Klik Kirim Pengaduan;
+
+|#D5E8D4|Sistem|
+:Validasi Input Data & Upload Foto;
+if (Data Valid?) then (Ya)
+  :Simpan Data Pengaduan ke Database\ndengan Status "Menunggu";
+  :Tampilkan Pesan Sukses;
+else (Tidak)
+  :Tampilkan Pesan Error;
+  |#DAE8FC|Warga|
+  :Perbaiki Isian Form;
+  stop
+endif
+stop
+@enduml

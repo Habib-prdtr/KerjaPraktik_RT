@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FDFDFD
+skinparam ActivityBackgroundColor #FFE6CC
+skinparam ActivityBorderColor #D79B00
+skinparam ActivityDiamondBackgroundColor #E1D5E7
+skinparam ActivityDiamondBorderColor #9673A6
+skinparam ArrowColor #666666
+skinparam defaultFontName Arial
+
+|#F8CECC|Admin|
+start
+:Pilih Menu Kelola Pengumuman;
+:Pilih Aksi (Buat Baru / Edit / Hapus);
+
+if (Aksi?) then (Buat Baru / Edit)
+  :Isi Form Judul, Isi Pengumuman, & Foto;
+  :Klik Simpan;
+  |#D5E8D4|Sistem|
+  :Validasi Input & Proses Upload;
+  :Simpan Data ke Database;
+else (Hapus)
+  |#F8CECC|Admin|
+  :Konfirmasi Hapus;
+  |#D5E8D4|Sistem|
+  :Hapus Data dari Database;
+endif
+:Tampilkan Pesan Sukses;
+stop
+@enduml

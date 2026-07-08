@@ -475,17 +475,23 @@
                     <p class="text-sm font-bold text-slate-600">Saat ini belum ada pengumuman baru</p>
                 </div>
                 @else
-                    <div class="relative pl-4 border-l-2 border-emerald-100 space-y-4 py-1">
+                    <div class="flex flex-col gap-3">
                         @foreach($pengumumanTerbaru->take(3) as $umum)
-                        <div class="relative group">
-                            <div class="absolute -left-[1.35rem] top-2 w-3.5 h-3.5 bg-white border-2 border-emerald-300 rounded-full group-hover:bg-emerald-600 group-hover:border-emerald-600 transition-all shadow-sm"></div>
-                            <a href="{{ route('warga.pengumuman.show', $umum) }}"
-                               class="block p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-emerald-50/20 hover:border-emerald-200 transition-all">
+                        <a href="{{ route('warga.pengumuman.show', $umum) }}"
+                           class="group block rounded-2xl bg-slate-50 border border-slate-100 hover:bg-emerald-50/20 hover:border-emerald-200 transition-all overflow-hidden">
+                            @if($umum->foto)
+                                <div class="h-36 overflow-hidden relative">
+                                    <img src="{{ Str::startsWith($umum->foto, 'http') ? $umum->foto : Storage::url($umum->foto) }}"
+                                         alt="{{ $umum->judul }}"
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            @endif
+                            <div class="p-4">
                                 <p class="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-1">{{ \Carbon\Carbon::parse($umum->tanggal)->translatedFormat('d M Y') }}</p>
                                 <p class="text-sm font-extrabold text-slate-800 leading-tight line-clamp-1 group-hover:text-emerald-700 transition-colors">{{ $umum->judul }}</p>
                                 <p class="text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2">{{ Str::limit(strip_tags($umum->isi), 90) }}</p>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                         @endforeach
                     </div>
                 @endif
