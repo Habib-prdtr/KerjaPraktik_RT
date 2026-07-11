@@ -53,12 +53,27 @@ class PengumumanController extends Controller
             'tanggal.date'     => 'Format tanggal tidak valid.',
         ]);
 
-        Pengumuman::create([
+        $pengumuman = Pengumuman::create([
             'judul'      => $request->judul,
             'isi'        => $request->isi,
             'tanggal'    => $request->tanggal,
             'created_by' => Auth::id(),
         ]);
+
+        // Kirim Push Notification ke seluruh warga yang login
+        try {
+            $users = \App\Models\User::all();
+            \Illuminate\Support\Facades\Notification::send(
+                $users,
+                new \App\Notifications\NewPengumumanNotification(
+                    'Pengumuman Baru: ' . $pengumuman->judul,
+                    \Illuminate\Support\Str::limit(strip_tags($pengumuman->isi), 100),
+                    route('warga.pengumuman.show', $pengumuman->id)
+                )
+            );
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('WebPush Error: ' . $e->getMessage());
+        }
 
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil ditambahkan.');

@@ -33,8 +33,8 @@ console.log(`  \x1b[32m${url}\x1b[0m\n`);
 console.log(`\x1b[33mMenjalankan Server Laravel (Port 8000) & Vite Assets...\x1b[0m\n`);
 
 // Run artisan serve and vite concurrently
-const artisan = spawn('php', ['artisan', 'serve', '--host=0.0.0.0', '--port=8000'], { stdio: 'inherit' });
-const vite = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['run', 'dev', '--', '--host', localIp], { stdio: 'inherit' });
+const artisan = spawn('php', ['artisan', 'serve', '--host=0.0.0.0', '--port=8000'], { stdio: 'inherit', shell: true });
+const vite = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['run', 'dev', '--', '--host', localIp], { stdio: 'inherit', shell: true });
 
 process.on('SIGINT', () => {
     artisan.kill();
