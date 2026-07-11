@@ -89,12 +89,18 @@ Route::middleware(['auth', 'is_warga'])->prefix('warga')->name('warga.')->group(
     Route::get('/kegiatan/{kegiatan}', [KegiatanRtController::class, 'showWarga'])->name('kegiatan.show');
 });
 
+use App\Http\Controllers\PushSubscriptionController;
+
 // ======================================================
 // PROFIL (Semua user yang login)
 // ======================================================
 Route::middleware('auth')->group(function () {
     Route::get('/profil', [UserController::class, 'profile'])->name('profile');
     Route::patch('/profil', [UserController::class, 'updateProfile'])->name('profile.update');
+    
+    // WebPush Subscriptions
+    Route::post('/push-subscriptions', [PushSubscriptionController::class, 'subscribe'])->name('push.subscribe');
+    Route::post('/push-subscriptions/delete', [PushSubscriptionController::class, 'unsubscribe'])->name('push.unsubscribe');
 });
 
 // ======================================================

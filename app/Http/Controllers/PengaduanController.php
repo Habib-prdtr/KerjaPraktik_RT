@@ -66,6 +66,20 @@ class PengaduanController extends Controller
             'tanggapan_admin' => $request->tanggapan_admin,
         ]);
 
+        // Kirim Push Notification ke warga yang mengajukan
+        try {
+            $user = $pengaduan->warga?->user;
+            if ($user) {
+                $user->notify(new \App\Notifications\PengaduanUpdatedNotification(
+                    'Pembaruan Pengaduan',
+                    'Pengaduan Anda "' . \Illuminate\Support\Str::limit($pengaduan->judul, 30) . '" sekarang berstatus: ' . $request->status,
+                    route('warga.pengaduan.show', $pengaduan->id)
+                ));
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('WebPush Error: ' . $e->getMessage());
+        }
+
         return redirect()->route('admin.pengaduan.index')->with('success', 'Tanggapan berhasil dikirim.');
     }
 
@@ -138,13 +152,28 @@ class PengaduanController extends Controller
             $fotoPath = $request->file('foto')->storeAs('pengaduan', $fileName, 'public');
         }
 
-        Pengajuan::create([
+        $pengaduan = Pengajuan::create([
             'warga_id' => $warga->id,
             'judul'    => $request->judul,
             'isi'      => $request->isi,
             'foto'     => $fotoPath,
             'status'   => 'dikirim',
         ]);
+
+        // Kirim Push Notification ke seluruh Admin RT
+        try {
+            $admins = \App\Models\User::where('role', 'admin')->get();
+            \Illuminate\Support\Facades\Notification::send(
+                $admins,
+                new \App\Notifications\NewPengaduanNotification(
+                    'Laporan Pengaduan Baru',
+                    'Dari ' . $warga->nama . ': "' . \Illuminate\Support\Str::limit($pengaduan->judul, 30) . '"',
+                    route('admin.pengaduan.show', $pengaduan->id)
+                )
+            );
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('WebPush Error: ' . $e->getMessage());
+        }
 
         return redirect()->route('warga.pengaduan.index')
             ->with('success', 'Pengaduan berhasil dikirim. Kami akan segera menindaklanjuti.');
