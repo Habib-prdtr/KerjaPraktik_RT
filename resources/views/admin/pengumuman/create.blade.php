@@ -11,7 +11,7 @@
             <h2 class="font-semibold text-slate-800">Form Pengumuman Baru</h2>
         </div>
 
-        <form method="POST" action="{{ route('admin.pengumuman.store') }}" class="px-6 py-6 space-y-5">
+        <form method="POST" action="{{ route('admin.pengumuman.store') }}" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
             @csrf
 
             <div>
@@ -34,6 +34,14 @@
                 <textarea id="isi" name="isi" rows="8" placeholder="Tulis isi pengumuman di sini…"
                           class="w-full px-4 py-3 text-sm rounded-xl border @error('isi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none leading-relaxed">{{ old('isi') }}</textarea>
                 @error('isi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
+            </div>
+
+            <div>
+                <label for="foto" class="block text-sm font-medium text-slate-700 mb-1.5">Foto (Opsional)</label>
+                <input type="file" id="foto" name="foto" accept="image/*"
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <p class="mt-1 text-xs text-slate-500">Format: JPG, PNG, GIF (Maks. 2MB)</p>
+                @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
             <div class="flex items-center gap-3 pt-2">

@@ -73,12 +73,13 @@ class DatabaseSeeder extends Seeder
         // ──────────────────────────────────────────────────────────────
         // STEP 3: Seed Users (Admin & Beberapa Warga)
         // Menggunakan data warga yang sudah ada dari WargaSeeder.
-        // User admin dihubungkan ke warga pertama (Budi Santoso / KK 00).
+        // User admin dihubungkan ke warga pertama (Solichin / KK 00).
         // ──────────────────────────────────────────────────────────────
 
-        // Ambil beberapa warga untuk dijadikan user
-        $wargaAdmin   = Warga::where('nik', '3201080115800001')->first(); // Budi Santoso
-        $wargaBudi    = Warga::where('nik', '3201080115800001')->first(); // Budi Santoso (sama, sebagai admin)
+        // User admin dihubungkan ke warga pertama (Solichin / KK 00).
+        // ---------------------------------------------------
+        $wargaAdmin   = Warga::where('nik', '3201080115800001')->first(); // Solichin
+        $wargaBudi    = Warga::where('nik', '3201080115800001')->first(); // Solichin (sama, sebagai admin)
         $wargaSiti    = Warga::where('nik', '3201081110880004')->first(); // Siti Aminah
         $wargaHendra  = Warga::where('nik', '3201082211770012')->first(); // Hendra Wijaya
         $wargaWahyu   = Warga::where('nik', '3201081209910024')->first(); // Wahyu Prasetyo
@@ -87,7 +88,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::firstOrCreate(
             ['email' => 'admin@gmail.com'],
             [
-                'name'     => 'Admin RT',
+                'name'     => 'Solichin',
                 'password' => Hash::make('password'),
                 'role'     => 'admin',
                 'warga_id' => $wargaAdmin?->id,
@@ -151,7 +152,7 @@ class DatabaseSeeder extends Seeder
         Pengumuman::create([
             'judul'      => 'Vaksinasi Massal Gratis',
             'isi'        => 'Pemberitahuan kepada seluruh warga RT 08, akan diadakan vaksinasi massal '
-                . 'gratis di Balai RW 03 pada tanggal ' . now()->addDays(3)->format('d F Y') . '. '
+                . 'gratis di Balai RW 02 pada tanggal ' . now()->addDays(3)->format('d F Y') . '. '
                 . 'Harap membawa KTP dan buku vaksinasi.',
             'tanggal'    => now()->addDays(2)->toDateString(),
             'foto'       => 'https://loremflickr.com/1200/800/vaccine,injection?lock=21',
@@ -197,7 +198,7 @@ class DatabaseSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         // Ambil beberapa warga untuk data surat
-        $warga1 = Warga::where('nik', '3201080115800001')->first(); // Budi Santoso
+        $warga1 = Warga::where('nik', '3201080115800001')->first(); // Solichin
         $warga2 = Warga::where('nik', '3201081110880004')->first(); // Siti Aminah
         $warga3 = Warga::where('nik', '3201082211770012')->first(); // Hendra Wijaya
         $warga4 = Warga::where('nik', '3201081209910024')->first(); // Wahyu Prasetyo

@@ -58,6 +58,12 @@
             </div>
 
             <div class="prose prose-slate max-w-none text-sm leading-relaxed text-slate-700 bg-slate-50 rounded-xl p-5 whitespace-pre-wrap">{{ $pengumuman->isi }}</div>
+
+            @if($pengumuman->foto)
+            <div class="mt-4">
+                <img src="{{ Str::startsWith($pengumuman->foto, 'http') ? $pengumuman->foto : Storage::url($pengumuman->foto) }}" alt="Foto Pengumuman" class="rounded-xl max-w-full lg:max-w-xl border border-slate-200">
+            </div>
+            @endif
         </div>
     </div>
 </div>
