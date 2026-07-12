@@ -186,7 +186,7 @@
                     </h1>
                     <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
                         Platform layanan mandiri untuk warga RT 08 RW 02 Desa Penambangan. Dapatkan informasi terbaru,
-                        ajukan surat, dan sampaikan aspirasi dengan mudah dan cepat.
+                        ajukan surat pengantar, dan sampaikan aspirasi Anda dengan mudah dan cepat.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         @auth

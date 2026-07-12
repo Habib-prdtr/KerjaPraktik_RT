@@ -50,82 +50,82 @@ class KartuKeluargaSeeder extends Seeder
             // KK 01 - Kepala keluarga laki-laki
             [
                 'no_kk'           => '3201080101010001',
-                'kepala_keluarga' => 'Budi Santoso',
-                'alamat'          => 'Jl. Merpati No. 10',
+                'kepala_keluarga' => 'Solichin',
+                'alamat'          => 'Penambangan No. 10',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 02 - Kepala keluarga perempuan (janda/duda)
             [
                 'no_kk'           => '3201080101010002',
                 'kepala_keluarga' => 'Siti Aminah',
-                'alamat'          => 'Jl. Merpati No. 12',
+                'alamat'          => 'Penambangan No. 12',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 03
             [
                 'no_kk'           => '3201080101010003',
                 'kepala_keluarga' => 'Ahmad Fauzi',
-                'alamat'          => 'Jl. Kenanga No. 5',
+                'alamat'          => 'Penambangan No. 5',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 04
             [
                 'no_kk'           => '3201080101010004',
                 'kepala_keluarga' => 'Dewi Rahayu',
-                'alamat'          => 'Jl. Kenanga No. 7',
+                'alamat'          => 'Penambangan No. 7',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 05
             [
                 'no_kk'           => '3201080101010005',
                 'kepala_keluarga' => 'Hendra Wijaya',
-                'alamat'          => 'Jl. Melati No. 3',
+                'alamat'          => 'Penambangan No. 3',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 06
             [
                 'no_kk'           => '3201080101010006',
                 'kepala_keluarga' => 'Rina Kusuma',
-                'alamat'          => 'Jl. Melati No. 9',
+                'alamat'          => 'Penambangan No. 9',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 07
             [
                 'no_kk'           => '3201080101010007',
                 'kepala_keluarga' => 'Joko Purnomo',
-                'alamat'          => 'Jl. Dahlia No. 2',
+                'alamat'          => 'Penambangan No. 2',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 08
             [
                 'no_kk'           => '3201080101010008',
                 'kepala_keluarga' => 'Supriyanto',
-                'alamat'          => 'Jl. Dahlia No. 8',
+                'alamat'          => 'Penambangan No. 8',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 09
             [
                 'no_kk'           => '3201080101010009',
                 'kepala_keluarga' => 'Lestari Ningrum',
-                'alamat'          => 'Jl. Anggrek No. 4',
+                'alamat'          => 'Penambangan No. 4',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
             // KK 10
             [
                 'no_kk'           => '3201080101010010',
                 'kepala_keluarga' => 'Wahyu Prasetyo',
-                'alamat'          => 'Jl. Anggrek No. 11',
+                'alamat'          => 'Penambangan No. 11',
                 'rt'              => '08',
-                'rw'              => '03',
+                'rw'              => '02',
             ],
         ];
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PengumumanController extends Controller
 {
@@ -45,6 +46,7 @@ class PengumumanController extends Controller
             'judul'   => 'required|string|max:150',
             'isi'     => 'required|string',
             'tanggal' => 'required|date',
+            'foto'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'judul.required'   => 'Judul pengumuman wajib diisi.',
             'judul.max'        => 'Judul maksimal 150 karakter.',
@@ -53,10 +55,16 @@ class PengumumanController extends Controller
             'tanggal.date'     => 'Format tanggal tidak valid.',
         ]);
 
+        $fotoPath = null;
+        if ($request->hasFile('foto')) {
+            $fotoPath = $request->file('foto')->store('pengumuman', 'public');
+        }
+
         $pengumuman = Pengumuman::create([
             'judul'      => $request->judul,
             'isi'        => $request->isi,
             'tanggal'    => $request->tanggal,
+            'foto'       => $fotoPath,
             'created_by' => Auth::id(),
         ]);
 
@@ -105,13 +113,23 @@ class PengumumanController extends Controller
             'judul'   => 'required|string|max:150',
             'isi'     => 'required|string',
             'tanggal' => 'required|date',
+            'foto'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'judul.required'   => 'Judul pengumuman wajib diisi.',
             'isi.required'     => 'Isi pengumuman wajib diisi.',
             'tanggal.required' => 'Tanggal wajib diisi.',
         ]);
 
-        $pengumuman->update($request->only(['judul', 'isi', 'tanggal']));
+        $data = $request->only(['judul', 'isi', 'tanggal']);
+
+        if ($request->hasFile('foto')) {
+            if ($pengumuman->foto && Storage::disk('public')->exists($pengumuman->foto)) {
+                Storage::disk('public')->delete($pengumuman->foto);
+            }
+            $data['foto'] = $request->file('foto')->store('pengumuman', 'public');
+        }
+
+        $pengumuman->update($data);
 
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil diperbarui.');

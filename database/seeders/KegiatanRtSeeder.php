@@ -116,7 +116,7 @@ class KegiatanRtSeeder extends Seeder
                 'deskripsi'     => 'Pemeriksaan kesehatan rutin untuk balita (timbang berat badan, imunisasi) '
                     . 'dan cek kesehatan gratis untuk warga lanjut usia. Didukung oleh Puskesmas setempat.',
                 'tanggal'       => now()->subDays(14)->toDateString(),
-                'lokasi'        => 'Balai RW 03',
+                'lokasi'        => 'Balai RW 02',
                 'foto'          => json_encode([
                     'https://loremflickr.com/1200/800/healthcare,children?lock=5',
                 ]),
@@ -170,7 +170,7 @@ class KegiatanRtSeeder extends Seeder
                 'deskripsi'     => 'Program vaksinasi gratis untuk seluruh warga RT 08 yang belum mendapatkan '
                     . 'vaksin booster. Harap membawa KTP dan buku vaksinasi. Didukung Puskesmas Kecamatan.',
                 'tanggal'       => now()->addDays(3)->toDateString(),
-                'lokasi'        => 'Balai RW 03',
+                'lokasi'        => 'Balai RW 02',
                 'foto'          => json_encode([
                     'https://loremflickr.com/1200/800/vaccine,injection?lock=11',
                 ]),
@@ -183,7 +183,7 @@ class KegiatanRtSeeder extends Seeder
                 'deskripsi'     => 'Rapat musyawarah untuk pemilihan dan pembentukan kepengurusan RT 08 periode baru. '
                     . 'Seluruh kepala keluarga wajib hadir. Satu keluarga satu suara.',
                 'tanggal'       => now()->addDays(7)->toDateString(),
-                'lokasi'        => 'Aula Kelurahan',
+                'lokasi'        => 'Balai Desa Penambangan',
                 'foto'          => json_encode([
                     'https://loremflickr.com/1200/800/election,voting?lock=12',
                 ]),

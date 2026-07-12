@@ -12,7 +12,7 @@
             <a href="{{ route('admin.pengumuman.show', $pengumuman) }}" class="text-sm text-emerald-600 hover:underline">← Detail</a>
         </div>
 
-        <form method="POST" action="{{ route('admin.pengumuman.update', $pengumuman) }}" class="px-6 py-6 space-y-5">
+        <form method="POST" action="{{ route('admin.pengumuman.update', $pengumuman) }}" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
             @csrf
             @method('PUT')
 
@@ -35,6 +35,19 @@
                 <textarea id="isi" name="isi" rows="8"
                           class="w-full px-4 py-3 text-sm rounded-xl border @error('isi') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none leading-relaxed">{{ old('isi', $pengumuman->isi) }}</textarea>
                 @error('isi')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
+            </div>
+
+            <div>
+                <label for="foto" class="block text-sm font-medium text-slate-700 mb-1.5">Ubah Foto (Opsional)</label>
+                @if($pengumuman->foto)
+                    <div class="mb-3">
+                        <img src="{{ Str::startsWith($pengumuman->foto, 'http') ? $pengumuman->foto : Storage::url($pengumuman->foto) }}" alt="Foto saat ini" class="w-32 h-32 object-cover rounded-xl border border-slate-200 shadow-sm">
+                    </div>
+                @endif
+                <input type="file" id="foto" name="foto" accept="image/*"
+                       class="w-full px-4 py-2.5 text-sm rounded-xl border @error('foto') border-red-400 bg-red-50 @else border-slate-200 @enderror focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <p class="mt-1 text-xs text-slate-500">Format: JPG, PNG, GIF (Maks. 2MB). Kosongkan jika tidak ingin mengubah foto.</p>
+                @error('foto')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
             </div>
 
             <div class="flex items-center gap-3 pt-2">

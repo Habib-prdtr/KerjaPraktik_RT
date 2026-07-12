@@ -65,11 +65,11 @@ class WargaSeeder extends Seeder
          */
         $wargaPerKK = [
 
-            // ── KK 00: Budi Santoso ────────────────────────────────────────────
+            // ── KK 00: Solichin ────────────────────────────────────────────
             [
                 [
                     'nik'               => '3201080115800001',
-                    'nama'              => 'Budi Santoso',
+                    'nama'              => 'Solichin',
                     'jenis_kelamin'     => 'L',
                     'tanggal_lahir'     => '1980-01-15',
                     'agama'             => 'Islam',
@@ -89,7 +89,7 @@ class WargaSeeder extends Seeder
                 ],
                 [
                     'nik'               => '3201081005100003',
-                    'nama'              => 'Reza Budi Santoso',
+                    'nama'              => 'Reza Solichin',
                     'jenis_kelamin'     => 'L',
                     'tanggal_lahir'     => '2010-05-10',
                     'agama'             => 'Islam',
